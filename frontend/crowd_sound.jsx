@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
 
   if (window.current_user) {
-
+    
   }
   ReactDOM.render(<Root store={store}/>, root);
 });
