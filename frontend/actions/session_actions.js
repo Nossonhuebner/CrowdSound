@@ -1,5 +1,5 @@
 import * as SessionApiUtil from '../util/session_api_util';
-export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
+export const RECEIVE_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 
 export const logIn = (user) => {
@@ -19,7 +19,7 @@ export const logOut = () => {
 
 
 export const reciveUser = (user) => ({
-  type: RECEIVE_CURRENT_USER,
+  type: RECEIVE_USER,
   user
 });
 

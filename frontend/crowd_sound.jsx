@@ -6,8 +6,23 @@ import { createUser } from './actions/user_actions';
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  let store;
+  let preloadedState = {};
+
+  if (window.currentUser) {
+
+    preloadedState = {
+      entities: {
+        users: { [window.currentUser.id]: window.currentUser}
+      },
+      session: {id: window.currentUser.id}
+    };
+
+  }
+
+  store = configureStore(preloadedState);
+  delete window.currentUser;
   const root = document.getElementById('root');
-  const store = configureStore();
 
   window.getState = store.getState;
   window.dispatch = store.dispatch;
