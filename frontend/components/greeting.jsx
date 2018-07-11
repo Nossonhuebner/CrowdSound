@@ -9,13 +9,13 @@ export default (props) => {
                 <button onClick={props.logOut}>log out</button>
               </div>
               :<div>
-                <button onClick={() => dispatch(openModal('signup'))}>
+                <button className="signup-button" onClick={() => dispatch(openModal('signup'))}>
                   Signup
                 </button>
 
                 <br></br>
 
-                <button onClick={() => dispatch(openModal('login'))}>
+                <button className="login-button" onClick={() => dispatch(openModal('login'))}>
                   Login
                 </button>
               </div>;

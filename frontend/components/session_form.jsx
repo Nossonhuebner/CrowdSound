@@ -24,19 +24,15 @@ class sessionForm extends React.Component {
       <div>
         <h2>{this.props.formType}</h2>
         {this.props.otherForm}
-          <ul>
+          <ul className="modal-errors">
             {errors}
           </ul>
-        <form onSubmit={this.handleSubmit}>
-          <label>username
-            <input type="text" onChange={this.handleChange('username')} value={this.state.username} />
-          </label>
-
-          <label>password
-            <input type="password" onChange={this.handleChange('password')} value={this.state.password} />
-          </label>
-
-          <button>{this.props.formType}</button>
+        <form className="model-form" onSubmit={this.handleSubmit}>
+            <input placeholder="Your Username *" className="modal-input" type="text" onChange={this.handleChange('username')} value={this.state.username} />
+          <br></br>
+            <input placeholder="Your Password *" className="modal-input" type="password" onChange={this.handleChange('password')} value={this.state.password} />
+          <br></br>
+          <button className="modal-submit">{this.props.formType}</button>
         </form>
       </div>
     );
