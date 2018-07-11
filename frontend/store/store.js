@@ -4,5 +4,5 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 export default (defaultState = {}) => {
-  return createStore(RootReducer, defaultState, applyMiddleware(thunk))
+  return createStore(RootReducer, defaultState, applyMiddleware(thunk, logger))
 };

@@ -16,10 +16,6 @@ class sessionForm extends React.Component {
       return <Redirect to="/"/>;
     }
 
-    const altLink = this.props.formType === 'signup' ?
-          <Link to="/login">log in</Link> :
-          <Link to="/signup">sign up</Link>  ;
-
     const errors = this.props.errors.map((error, idx) => {
       return (<li key={idx}>{error}</li>);
     });
@@ -27,10 +23,10 @@ class sessionForm extends React.Component {
     return(
       <div>
         <h2>{this.props.formType}</h2>
-        {altLink}
-        <ul>
-          {errors}
-        </ul>
+        {this.props.otherForm}
+          <ul>
+            {errors}
+          </ul>
         <form onSubmit={this.handleSubmit}>
           <label>username
             <input type="text" onChange={this.handleChange('username')} value={this.state.username} />
