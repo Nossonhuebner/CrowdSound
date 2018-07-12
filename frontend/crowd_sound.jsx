@@ -8,7 +8,6 @@ import { createUser } from './actions/user_actions';
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   let preloadedState = {};
-
   if (window.currentUser) {
 
     preloadedState = {

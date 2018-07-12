@@ -27,8 +27,8 @@ export default (props) => {
   return (
     <div>
       <header className='greeting-bar'>
+        <h1>Logo</h1>
 
-        <h1>hey</h1>
           {personal}
       </header>
     </div>

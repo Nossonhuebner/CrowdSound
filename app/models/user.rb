@@ -1,9 +1,35 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint(8)        not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   validates :username, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
+
+  has_one_attached :photo
+  has_many_attached :tracks
+
+  has_many :followers,
+  foreign_key: :follower_id,
+  class_name: :Follows
+
+  has_many :followees,
+  foreign_key: :followee_id,
+  class_name: :Follows
+
+  has_many :likes
+  has_many :reposts
 
   attr_reader :password
 

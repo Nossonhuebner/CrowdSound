@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * ...
 
-npm install --save webpack react react-dom react-redux redux redux-logger babel-core babel-loader babel-preset-react babel-preset-env redux-thunk react-router-dom lodash
+npm install --save webpack react react-dom react-redux redux redux-logger babel-core babel-loader babel-preset-react babel-preset-env redux-thunk react-router-dom lodash react-addons-css-transition-group
