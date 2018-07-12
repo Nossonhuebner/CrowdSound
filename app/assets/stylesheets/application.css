@@ -77,3 +77,7 @@ button{
     cursor: pointer;
     outline: inherit;
 }
+
+#root {
+  font-family: 'Ubuntu', sans-serif;
+}

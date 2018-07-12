@@ -5,7 +5,7 @@ import { OPEN_MODAL } from '../actions/modal_actions';
 export default (state = [], action)=> {
   switch (action.type) {
     case RECEIVE_ERRORS:
-      return action.errors.responseJSON;
+      return action.errors.responseJSON || [];
     case RECEIVE_USER:
       return [];
     case OPEN_MODAL:

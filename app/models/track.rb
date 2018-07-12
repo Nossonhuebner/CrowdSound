@@ -27,4 +27,6 @@ class Track < ApplicationRecord
   has_many :likes
   has_many :reposts
 
+  has_one_attached :file
+
 end

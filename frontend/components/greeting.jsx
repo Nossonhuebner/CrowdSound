@@ -6,7 +6,7 @@ import { logIn } from '../actions/session_actions';
 export default (props) => {
   const personal = props.currentUser ?
               <div>
-                <h2 className="welcome">{`Welcome, ${props.currentUser.username}`}</h2>
+                <h2 className="welcome">{`${props.currentUser.username}`}</h2>
                 <button className="login-button" onClick={props.logOut}>Sign Out</button>
               </div>
 
@@ -19,7 +19,7 @@ export default (props) => {
                   Create account
                 </button>
 
-                <button className="signup-button" onClick={() => dispatch(logIn({user:{username: 'User', password: 'hunter12'}}))}>
+                <button className="signup-button" onClick={() => dispatch(logIn({user:{username: 'Guest', password: 'hunter12'}}))}>
                   Demo
                 </button>
               </div>;

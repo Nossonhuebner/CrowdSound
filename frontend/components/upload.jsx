@@ -1,6 +1,9 @@
 import React from 'react';
+import { uploadTrack } from '../actions/track_actions';
+import { connect } from 'react-redux';
 
-export default class UploadTrack extends React.Component {
+
+class UploadTrack extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,36 +25,50 @@ export default class UploadTrack extends React.Component {
     }
   }
 
+  updateTitle(e) {
+    this.setState({title: e.currentTarget.value});
+  }
+
+  updateDescription(e) {
+    this.setState({description: e.currentTarget.value});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('post[title]', this.state.title);
-    if (this.state.trackFile) {
 
-      formData.append('post[track]', this.state.trackFile);
+    const formData = new FormData();
+    formData.append('track[title]', this.state.title);
+
+    if (this.state.trackFile) {
+      formData.append('track[file]', this.state.trackFile);
     }
-    $.ajax({
-      url: '/api/tracks',
-      method: 'POST',
-      data: formData,
-      contentType: false,
-      processData: false
-    }).then(
-      (response) => console.log(response.message),
-      (response) => {
-        console.log(response.responseJSON);
-      }
-    );
+    this.props.uploadTrack(formData);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
+      <form className="upload-form" onSubmit={this.handleSubmit.bind(this)}>
 
-        <input type="file" onChange={this.handleFile.bind(this)}/>
+        <input className="upload-title" placeholder="Track Name"
+          type="text" value={this.state.title} onChange={this.updateTitle.bind(this)}/>
 
-        <button>Upload a song</button>
+        <textarea className="upload-description"
+          placeholder="Description (Optional)" value={this.state.description}
+          onChange={this.updateDescription.bind(this)}></textarea>
+        <button className="button">
+          <input type="file" onChange={this.handleFile.bind(this)}/>
+        </button>
+
+        <input className="upload-submit" type="submit" value="Upload"
+          disabled={!Boolean(this.state.title && this.state.trackFile)}/>
+
       </form>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  uploadTrack: track => dispatch(uploadTrack(track))
+});
+
+export default connect(null, mapDispatchToProps)(UploadTrack);
