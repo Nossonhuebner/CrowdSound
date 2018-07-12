@@ -3,6 +3,7 @@ import { closeModal } from '../actions/modal_actions';
 import { connect } from 'react-redux';
 import Login from './login_form_container';
 import SignUp from './sign_up_form_container';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const Modal = ({ modal, closeModal }) => {
   if (!modal) {
@@ -18,11 +19,20 @@ const Modal = ({ modal, closeModal }) => {
   }
 
   return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+
+    <ReactCSSTransitionGroup
+      transitionName="modal"
+      transitionAppear={true}
+      transitionAppearTimeout={500}
+      transitionEnterTimeout={500}
+      transitionLeaveTimeout={300}>
+      <div className="modal-background" onClick={closeModal}>
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+          { component }
+        </div>
       </div>
-    </div>
+  </ReactCSSTransitionGroup>
+
   );
 };
 

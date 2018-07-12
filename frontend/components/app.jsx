@@ -8,7 +8,7 @@ import Modal from './modal';
 
 export default () => {
   return (
-    <div>
+    <div className="greeting-container">
       <Greeting />
       <Modal />
 

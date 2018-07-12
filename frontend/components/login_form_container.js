@@ -7,7 +7,7 @@ import { openModal, closeModal } from '../actions/modal_actions';
 
 const mapStateToProps = (state) => {
   const errors =  Object.values(state.errors);
-  return {formType: 'login', errors};
+  return {formType: 'Sign In', errors};
 };
 
 
@@ -15,8 +15,8 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(logIn(user)),
     otherForm: (
-      <button onClick={() => dispatch(openModal('signup'))}>
-        Signup
+      <button className="alt-session" onClick={() => dispatch(openModal('signup'))}>
+        Sign Up
       </button>
     ),
     closeModal: () => dispatch(closeModal())

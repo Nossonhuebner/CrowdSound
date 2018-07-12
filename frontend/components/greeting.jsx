@@ -1,31 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {openModal} from '../actions/modal_actions';
+import { logIn } from '../actions/session_actions';
 
 export default (props) => {
   const personal = props.currentUser ?
               <div>
-                <h2>{`Welcome, ${props.currentUser.username}`}</h2>
-                <button onClick={props.logOut}>log out</button>
+                <h2 className="welcome">{`Welcome, ${props.currentUser.username}`}</h2>
+                <button className="login-button" onClick={props.logOut}>Sign Out</button>
               </div>
-              :<div>
-                <button className="signup-button" onClick={() => dispatch(openModal('signup'))}>
-                  Signup
+
+              : <div>
+                <button className="login-button" onClick={() => dispatch(openModal('login'))}>
+                  Sign in
                 </button>
 
-                <br></br>
+                <button className="signup-button" onClick={() => dispatch(openModal('signup'))}>
+                  Create account
+                </button>
 
-                <button className="login-button" onClick={() => dispatch(openModal('login'))}>
-                  Login
+                <button className="signup-button" onClick={() => dispatch(logIn({user:{username: 'User', password: 'hunter12'}}))}>
+                  Demo
                 </button>
               </div>;
 
   return (
     <div>
-      <header>
+      <header className='greeting-bar'>
 
         <h1>hey</h1>
-        {personal}
+          {personal}
       </header>
     </div>
   );
