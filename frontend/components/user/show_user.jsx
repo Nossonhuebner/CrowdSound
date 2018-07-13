@@ -6,7 +6,7 @@ import { fetchUser } from '../../actions/user_actions';
 
 export default (props) => {
     const tracks = props.userTracks.map(track => (
-      <TrackItem key={track.id} track={track}/>
+      <TrackItem track={track}/>
     ));
 
     return (

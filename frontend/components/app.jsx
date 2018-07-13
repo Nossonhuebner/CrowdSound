@@ -16,7 +16,7 @@ const splash = () => (
 
 export default () => {
   return (
-    
+
     <div>
       <ProtectedRoute exact path="/upload" component={Upload}/>
       <ProtectedRoute path="/you" component={PersonlShow}/>
@@ -24,9 +24,9 @@ export default () => {
       <Greeting />
       <Modal />
 
-      <Route path="/users/:userId" component={ShowUser}/>
       <Switch>
-        <AuthRoute exact path = "/" component={splash}/>
+        <Route exact path="/users/:userId" component={ShowUser}/>
+        <AuthRoute path = "/" component={splash}/>
       </Switch>
     </div>
   );

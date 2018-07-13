@@ -10,7 +10,6 @@ export const uploadTrack = (track) => dispatch => {
 };
 
 export const deleteTrack = (id) => dispatch => {
-  debugger
   return TracksApiUtil.deleteTrack(id)
   .then(() => dispatch(removeTrack(id)), errors => dispatch(receiveErrors(errors)));
 };

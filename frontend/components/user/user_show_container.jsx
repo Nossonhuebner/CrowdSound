@@ -29,8 +29,8 @@ const mapStateToProps = (state, ownProps) => {
   return { user, userTracks };
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchUser: id => dispatch(fetchUser(id))
-});
+const mapDispatchToProps = dispatch => {
+  return {fetchUser: id => dispatch(fetchUser(id))};
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RandomUser));

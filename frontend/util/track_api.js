@@ -10,7 +10,6 @@ export const createUpload = (track) => {
 };
 
 export const deleteTrack = (id) => {
-  debugger
   return $.ajax({
     method: 'DELETE',
     url: `/api/tracks/${id}`

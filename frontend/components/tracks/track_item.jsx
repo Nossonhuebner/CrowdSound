@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { deleteTrack } from '../../actions/track_actions';
 
 const trackItem = ({track, deleteTrack, currentUserId}) => {
-  const button = (track.artistId === currentUserId) ?
+  const button = (track.artist_id === currentUserId) ?
     <button onClick={() => deleteTrack(track.id)}>Delete Track</button> :
       null;
 
@@ -13,6 +13,7 @@ const trackItem = ({track, deleteTrack, currentUserId}) => {
       <audio controls>
         <source src={track.fileUrl} type="audio/mpeg"/>
       </audio>
+      {button}
     </li>
   ) ;
 };
