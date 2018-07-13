@@ -10,6 +10,7 @@ export const uploadTrack = (track) => dispatch => {
 };
 
 export const deleteTrack = (id) => dispatch => {
+  debugger
   return TracksApiUtil.deleteTrack(id)
   .then(() => dispatch(removeTrack(id)), errors => dispatch(receiveErrors(errors)));
 };
@@ -26,11 +27,10 @@ export const removeTrack = (id) => ({
   id
 });
 
-// export const receiveTrack = (track) => {
-//   return {type: RECEIVE_TRACK, track};
-// };
+export const receiveTrack = (track) => {
+  return {type: RECEIVE_TRACK, track};
+};
 
 export const receiveTracks = (tracks) => {
-  debugger
-  return {type: RECEIVE_TRACK, tracks}
+  return {type: RECEIVE_TRACK, tracks};
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {openModal} from '../actions/modal_actions';
 import { logIn } from '../actions/session_actions';
-import Upload from './upload'
+import Upload from './upload';
 
 export default (props) => {
   const personal = props.currentUser ?

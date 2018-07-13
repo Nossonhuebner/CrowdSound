@@ -6,6 +6,7 @@ import SignUp from './sign_up_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal';
 import Upload from './upload';
+import PersonlShow from './you/show';
 
 const splash = () => (
   <div className="greeting-container"></div>
@@ -15,8 +16,8 @@ export default () => {
   return (
     <div>
       <ProtectedRoute exact path="/upload" component={Upload}/>
-      <ProtectedRoute path="/you" component={Upload}/>
-      
+      <ProtectedRoute path="/you" component={PersonlShow}/>
+
       <Greeting />
       <Modal />
 

@@ -2,7 +2,7 @@ import { RECEIVE_TRACK, REMOVE_TRACK, RECEIVE_TRACKS } from '../actions/track_ac
 import { merge } from 'lodash';
 import { RECEIVE_USER } from '../actions/user_actions';
 
-export default (state={}, action) => {
+export default (state = {}, action) => {
   const newState = merge({}, state);
   switch (action.type) {
     case RECEIVE_TRACK:

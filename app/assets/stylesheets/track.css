@@ -1,0 +1,7 @@
+.single-track {
+  display: flex;
+}
+
+audio {
+  background-color: blue;
+}

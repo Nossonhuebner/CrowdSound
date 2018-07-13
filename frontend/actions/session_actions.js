@@ -21,5 +21,4 @@ export const logOut = () => {
 
 export const logOutUser = () => ({
   type: LOGOUT_USER
-
 });
