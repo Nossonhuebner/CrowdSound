@@ -30,6 +30,10 @@ class User < ApplicationRecord
   has_many :likes
   has_many :reposts
 
+  has_many :tracks,
+  foreign_key: :artist_id,
+  class_name: :Track
+
   attr_reader :password
 
   def self.find_by_credentials(username, password)

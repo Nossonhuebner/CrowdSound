@@ -15,8 +15,11 @@ export default () => {
   return (
     <div>
       <ProtectedRoute exact path="/upload" component={Upload}/>
+      <ProtectedRoute path="/you" component={Upload}/>
+      
       <Greeting />
       <Modal />
+
       <AuthRoute exact path = "/" component={splash}/>
     </div>
   );

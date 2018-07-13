@@ -16,13 +16,15 @@ export const createUser = (user) => {
 export const fetchUser = (id) => {
   return dispatch => {
     return UsersApiUtil.fetchUser(id)
-    .then(user => dispatch(receiveUser(user)));
+    .then(payload => dispatch(receiveUser(payload)));
   };
 };
 
-export const receiveUser = (user) => {
+export const receiveUser = ({user, tracks}) => {
+  debugger
   return ({
     type: RECEIVE_USER,
-    user
+    user,
+    tracks
   });
 };

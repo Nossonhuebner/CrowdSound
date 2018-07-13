@@ -19,12 +19,6 @@ export const logOut = () => {
 };
 
 
-
-export const reciveUser = (user) => ({
-  type: RECEIVE_USER,
-  user
-});
-
 export const logOutUser = () => ({
   type: LOGOUT_USER
 
