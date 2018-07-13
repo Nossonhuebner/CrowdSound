@@ -18,6 +18,21 @@ const trackItem = ({track, deleteTrack, currentUserId}) => {
   ) ;
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const mapStateToProps = state => ({
   currentUserId: state.session.id
 });
