@@ -9,6 +9,7 @@ export default (props) => {
               <div>
                 <h2 className="welcome">{`${props.currentUser.username}`}</h2>
                 <Link className="upload-link" to="/upload">Upload</Link>
+                <Link className="upload-link" to="/you">You</Link>
                 <button className="login-button" onClick={props.logOut}>Sign Out</button>
               </div>
 

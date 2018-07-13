@@ -1,6 +1,7 @@
 import React from 'react';
 import { uploadTrack } from '../actions/track_actions';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
 
 class UploadTrack extends React.Component {
@@ -56,7 +57,7 @@ class UploadTrack extends React.Component {
           placeholder="Description (Optional)" value={this.state.description}
           onChange={this.updateDescription.bind(this)}></textarea>
         <button className="button">
-          <input type="file" onChange={this.handleFile.bind(this)}/>
+          <input type="file" accept="audio/mpeg3" onChange={this.handleFile.bind(this)}/>
         </button>
 
         <input className="upload-submit" type="submit" value="Upload"

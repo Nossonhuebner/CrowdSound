@@ -75,4 +75,5 @@
   margin: 4px;
   transition-property: border-color, color;
   transition-duration: .4s;
+  cursor: default;
 }
