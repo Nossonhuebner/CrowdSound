@@ -15,6 +15,8 @@
 
 class Track < ApplicationRecord
 
+  scope :with_eager_loaded_file, -> { eager_load(file_attachment: :blob) }
+
   belongs_to :artist,
   foreign_key: :artist_id,
   class_name: :User
