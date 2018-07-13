@@ -21,7 +21,6 @@ export const fetchUser = (id) => {
 };
 
 export const receiveUser = ({user, tracks}) => {
-  debugger
   return ({
     type: RECEIVE_USER,
     user,
