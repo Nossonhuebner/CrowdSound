@@ -16,6 +16,7 @@
 class Track < ApplicationRecord
 
   scope :with_eager_loaded_file, -> { eager_load(file_attachment: :blob) }
+  scope :with_eager_loaded_artwork, -> { eager_load(artwork_attachment: :blob) }
 
   belongs_to :artist,
   foreign_key: :artist_id,
@@ -30,5 +31,6 @@ class Track < ApplicationRecord
   has_many :reposts
 
   has_one_attached :file
+  has_one_attached :artwork
 
 end

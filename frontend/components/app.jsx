@@ -8,6 +8,7 @@ import Modal from './modal';
 import Upload from './upload';
 import PersonlShow from './user/current_user_show_container';
 import ShowUser from './user/user_show_container';
+import PlaybackBar from './playback_bar/playback_bar';
 
 const splash = () => (
   <div className="greeting-container"></div>
@@ -28,6 +29,7 @@ export default () => {
         <Route exact path="/users/:userId" component={ShowUser}/>
         <AuthRoute path = "/" component={splash}/>
       </Switch>
+      <PlaybackBar />
     </div>
   );
 };

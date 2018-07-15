@@ -10,6 +10,7 @@ class UploadTrack extends React.Component {
     this.state = {
       title: "",
       trackFile: null,
+      trackArtwork: null,
       trackUrl: null
     };
   }
@@ -23,6 +24,19 @@ class UploadTrack extends React.Component {
     };
     if (file) {
       fileReader.readAsDataURL(file);
+    }
+  }
+
+  handleArtwork(e) {
+    const artwork = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+
+      this.setState({trackArtwork: artwork, trackUrl: fileReader.result});
+    };
+    debugger
+    if (artwork) {
+      fileReader.readAsDataURL(artwork);
     }
   }
 
@@ -43,6 +57,9 @@ class UploadTrack extends React.Component {
     if (this.state.trackFile) {
       formData.append('track[file]', this.state.trackFile);
     }
+    if (this.state.trackArtwork) {
+      formData.append('track[artwork]', this.state.trackArtwork);
+    }
     this.props.uploadTrack(formData);
   }
 
@@ -56,8 +73,17 @@ class UploadTrack extends React.Component {
         <textarea className="upload-description"
           placeholder="Description (Optional)" value={this.state.description}
           onChange={this.updateDescription.bind(this)}></textarea>
+
         <button className="button">
-          <input type="file" accept="audio/mpeg3" onChange={this.handleFile.bind(this)}/>
+          <label>Track
+            <input type="file" accept="audio/mpeg3" onChange={this.handleFile.bind(this)}/>
+          </label>
+        </button>
+
+        <button className="button">
+          <label>Artwork (optional)
+            <input type="file" accept="image/*" onChange={this.handleArtwork.bind(this)}/>
+          </label>
         </button>
 
         <input className="upload-submit" type="submit" value="Upload"

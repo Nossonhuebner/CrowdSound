@@ -1,8 +1,7 @@
 class Api::TracksController < ApplicationController
 
   def show
-    @track = Track.find(params[:id])
-
+    @track = Track.includes(:artist).find(params[:id])
   end
 
   def create
@@ -21,11 +20,15 @@ class Api::TracksController < ApplicationController
     track.destroy if track
     render json: {}
   end
+  #
+  # def update
+  #   @track =
+  # end
 
   private
 
   def track_params
-    params.require(:track).permit(:title, :file, :description)
+    params.require(:track).permit(:title, :file, :artwork, :description)
   end
 
 end
