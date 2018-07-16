@@ -10,8 +10,12 @@ export default (props) => {
     ));
 
     return (
-      <div>
-        <h1 className="test">{props.user.username}</h1>
+      <div className="show-user-container">
+        <div className="user-banner">
+          <h1 className="show-username">{props.user.username}</h1>
+          <img className="show-profile-pic"/>
+        </div>
+        
         <ul>
           {tracks}
         </ul>

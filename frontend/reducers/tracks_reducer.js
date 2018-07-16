@@ -9,7 +9,7 @@ export default (state = {}, action) => {
     case RECEIVE_TRACK:
       return merge({}, state, {[action.track.id]: action.track});
     case RECEIVE_USER:
-      return merge(newState, action.tracks);
+    case LOG_IN_USER:
     case RECEIVE_TRACKS:
       return merge(newState, action.tracks);
     case REMOVE_TRACK:

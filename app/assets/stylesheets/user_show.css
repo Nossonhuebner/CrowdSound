@@ -1,0 +1,31 @@
+.show-user-container {
+  width: 92%;
+  padding-left: 4%;
+}
+
+.show-profile-pic {
+  height: 0;
+  width: 0px;
+  padding: 90px;
+  margin: 15px;
+  border-radius: 120px;
+  background: linear-gradient(126deg, rgb(137, 106, 121), rgb(124, 174, 178));
+}
+
+.user-banner {
+  display: flex;
+  margin-top: 80px;
+  height: 260px;
+  background: linear-gradient(-30deg, rgb(137, 106, 121), rgb(126, 158, 164));
+}
+
+.show-username{
+  order: 1;
+  background: black;
+  height: 50px;
+  color: white;
+  height: fit-content;
+  padding: 10px;
+  font-size: 22px;
+  margin: 22px;
+}

@@ -9,6 +9,7 @@ import Upload from './upload';
 import PersonlShow from './user/current_user_show_container';
 import ShowUser from './user/user_show_container';
 import PlaybackBar from './playback_bar/playback_bar';
+import SearchBar from './search';
 
 const splash = () => (
   <div className="greeting-container"></div>
@@ -18,16 +19,16 @@ const splash = () => (
 export default () => {
   return (
 
-    <div>
+    <div className="app">
       <ProtectedRoute exact path="/upload" component={Upload}/>
       <ProtectedRoute path="/you" component={PersonlShow}/>
 
       <Greeting />
       <Modal />
-
+      <SearchBar />
       <Switch>
         <Route exact path="/users/:userId" component={ShowUser}/>
-        <AuthRoute path = "/" component={splash}/>
+        <Route exact path = "/" component={splash}/>
       </Switch>
       <PlaybackBar />
     </div>
