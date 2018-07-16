@@ -11,7 +11,7 @@
 #
 
 class User < ApplicationRecord
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_profile_pic
 
   validates :username, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
@@ -67,6 +67,10 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
+  end
+
+  def ensure_profile_pic
+    
   end
 
 end
