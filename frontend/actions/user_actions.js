@@ -12,6 +12,14 @@ export const createUser = (user) => {
   };
 };
 
+export const updateUser = (user) => {
+  debugger
+  return dispatch => {
+    return UsersApiUtil.updateUser(user)
+    .then(user => dispatch(receiveUser(user)), (errors => dispatch(receiveErrors(errors))));
+  };
+}
+
 
 
 export const fetchUser = (id) => {

@@ -10,6 +10,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = currentUser
+
+    if @user.update(user_params)
+      render '/api/users/show'
+    else
+      render json: @user.errors.full_messages, status: 404
+    end
+  end
+
   def show
     @user = User.includes(tracks: [:genre]).find(params[:id])
   end
@@ -17,7 +27,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password, :profile_pic)
   end
 
 end

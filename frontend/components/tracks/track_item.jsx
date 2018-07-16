@@ -9,6 +9,7 @@ const trackItem = (props) => {
 
   return(
     <li  className="single-track">
+      <img className="track-artwork" src={props.track.artworkUrl}/>
       <button onClick={() => props.openPlaybackBar(props.track)}>{props.track.title}</button>
       {button}
     </li>

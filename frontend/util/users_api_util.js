@@ -14,3 +14,12 @@ export const fetchUser = (id) => {
     url: `/api/users/${id}`
   });
 };
+
+export const updateUser = (user) => {
+  debugger
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/users/1`,
+    data: user
+  });
+};

@@ -49,7 +49,6 @@ class UploadTrack extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append('track[title]', this.state.title);
 
@@ -73,17 +72,13 @@ class UploadTrack extends React.Component {
           placeholder="Description (Optional)" value={this.state.description}
           onChange={this.updateDescription.bind(this)}></textarea>
 
-        <button className="button">
           <label>Track
             <input type="file" accept="audio/mpeg3" onChange={this.handleFile.bind(this)}/>
           </label>
-        </button>
 
-        <button className="button">
           <label>Artwork (optional)
             <input type="file" accept="image/*" onChange={this.handleArtwork.bind(this)}/>
           </label>
-        </button>
 
         <input className="upload-submit" type="submit" value="Upload"
           disabled={!Boolean(this.state.title && this.state.trackFile)}/>

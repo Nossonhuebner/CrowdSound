@@ -1,7 +1,7 @@
 import React from 'react';
 import TrackItem from '../tracks/track_item';
 import { fetchUser } from '../../actions/user_actions';
-
+import UserDetail from './user_detail';
 
 
 export default (props) => {
@@ -11,11 +11,7 @@ export default (props) => {
 
     return (
       <div className="show-user-container">
-        <div className="user-banner">
-          <h1 className="show-username">{props.user.username}</h1>
-          <img className="show-profile-pic"/>
-        </div>
-
+        <UserDetail user={props.user}/>
         <ul>
           {tracks}
         </ul>

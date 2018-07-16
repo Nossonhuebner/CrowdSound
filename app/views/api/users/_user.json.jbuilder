@@ -14,6 +14,7 @@ json.user do
   json.extract! user, :id, :username
   json.trackIds user.track_ids
   if user.profile_pic.attachment.present?
+    debugger
     json.profilePicUrl url_for(user.profile_pic)
   end
 end
