@@ -2,7 +2,6 @@ import { OPEN_PLAYBACK_BAR } from '../actions/playback_actions';
 import { merge } from 'lodash';
 
 export default (state = null, action) => {
-  debugger
   switch (action.type) {
     case OPEN_PLAYBACK_BAR:
       return merge({}, action.track);

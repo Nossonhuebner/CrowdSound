@@ -5,7 +5,6 @@ import { openPlaybackBar } from '../../actions/playback_actions';
 
 class PlaybackBar extends React.Component {
   render () {
-    debugger
     const track = this.props.playback;
     const display = () => {
       if (!this.props.playback) {
@@ -31,7 +30,6 @@ class PlaybackBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  debugger
   return { playback: state.ui.playback_bar};
 };
 

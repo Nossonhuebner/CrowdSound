@@ -34,7 +34,6 @@ class UploadTrack extends React.Component {
 
       this.setState({trackArtwork: artwork, trackUrl: fileReader.result});
     };
-    debugger
     if (artwork) {
       fileReader.readAsDataURL(artwork);
     }
