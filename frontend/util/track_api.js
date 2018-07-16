@@ -9,9 +9,9 @@ export const createUpload = (track) => {
   });
 };
 
-export const deleteTrack = (id) => {
+export const deleteTrack = (track) => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/tracks/${id}`
+    url: `/api/tracks/${track.id}`
   });
 };

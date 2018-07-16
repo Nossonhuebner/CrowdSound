@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Greeting from './greeting_container';
+import NavBar from './nav_bar_container';
 import Login from './login_form_container';
 import SignUp from './sign_up_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
@@ -12,7 +12,10 @@ import PlaybackBar from './playback_bar/playback_bar';
 import SearchBar from './search';
 
 const splash = () => (
-  <div className="greeting-container"></div>
+    <div>
+      <div className="greeting-container"></div>
+      <SearchBar />
+    </div>
 );
 // <Route path="/:userId/:trackId" to={ShowUserTrack}/>
 
@@ -23,9 +26,8 @@ export default () => {
       <ProtectedRoute exact path="/upload" component={Upload}/>
       <ProtectedRoute path="/you" component={PersonlShow}/>
 
-      <Greeting />
+      <NavBar />
       <Modal />
-      <SearchBar />
       <Switch>
         <Route exact path="/users/:userId" component={ShowUser}/>
         <Route exact path = "/" component={splash}/>

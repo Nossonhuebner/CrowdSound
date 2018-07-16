@@ -1,6 +1,4 @@
 .single-track {
     display: flex;
-    position: absolute;
-    top: 50%;
     justify-content: space-evenly;
 }

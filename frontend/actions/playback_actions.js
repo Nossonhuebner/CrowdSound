@@ -4,5 +4,5 @@ export const openPlaybackBar = (track) => {
   return {
     type: OPEN_PLAYBACK_BAR,
     track
-  }
-}
+  };
+};

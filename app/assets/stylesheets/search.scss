@@ -1,0 +1,32 @@
+.search {
+  position: sticky;
+  width: 35%;
+}
+
+.search-form {
+  min-width: 375px;
+  max-width: 503px;
+}
+
+.search-submit {
+  position: absolute;
+  right: 5px;
+  top: 9px;
+  opacity: 0.6;
+}
+
+.search-input{
+  width: 100%;
+  font-family: ubuntu;
+  border: 1px solid #929292;
+  border-radius: 6px;
+  font-size: 20px;
+  margin: 3px;
+  background-color: #525252;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+.search-input:focus{
+  background-color: rgb(209, 209, 209)
+}

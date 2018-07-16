@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {openModal} from '../actions/modal_actions';
 import { logIn } from '../actions/session_actions';
 import Upload from './upload';
+import SearchBar from './search';
 
 export default (props) => {
   const personal = props.currentUser ?
@@ -32,7 +33,7 @@ export default (props) => {
     <div>
       <header className='greeting-bar'>
         <h1>Logo</h1>
-
+        <SearchBar />
           {personal}
       </header>
     </div>

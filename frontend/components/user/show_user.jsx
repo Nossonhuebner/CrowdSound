@@ -15,7 +15,7 @@ export default (props) => {
           <h1 className="show-username">{props.user.username}</h1>
           <img className="show-profile-pic"/>
         </div>
-        
+
         <ul>
           {tracks}
         </ul>

@@ -29,3 +29,8 @@
   font-size: 22px;
   margin: 22px;
 }
+
+.show-user-container ul {
+  position: absolute;
+    top: 50%;
+}

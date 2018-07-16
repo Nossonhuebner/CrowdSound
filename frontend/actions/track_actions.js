@@ -21,9 +21,9 @@ export const deleteTrack = (id) => dispatch => {
 
 
 
-export const removeTrack = (id) => ({
-  type: removeTrack,
-  id
+export const removeTrack = (track) => ({
+  type: REMOVE_TRACK,
+  track
 });
 
 export const receiveTrack = (track) => {

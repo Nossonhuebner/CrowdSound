@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     preloadedState = {
       entities: {
-        users: { [window.currentUser.id]: window.currentUser},
-        tracks: window.currentUserTracks
+        tracks: window.currentUserTracks,
+        users: {[window.currentUser.id]: window.currentUser}
       },
       session: {id: window.currentUser.id}
     };

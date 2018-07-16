@@ -5,7 +5,7 @@ import { openPlaybackBar } from '../../actions/playback_actions';
 
 const trackItem = (props) => {
   const button = (props.track.artist_id === props.currentUserId) ?
-    <button onClick={() => deleteTrack(props.track.id)}>Delete Track</button> : null;
+    <button onClick={() => props.deleteTrack(props.track)}>Delete Track</button> : null;
 
   return(
     <li  className="single-track">
@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return {deleteTrack: id => dispatch(deleteTrack(id)),
+  return {deleteTrack: track => dispatch(deleteTrack(track)),
   openPlaybackBar: track => dispatch(openPlaybackBar(track))};
 };
 

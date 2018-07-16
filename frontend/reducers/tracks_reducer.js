@@ -13,7 +13,7 @@ export default (state = {}, action) => {
     case RECEIVE_TRACKS:
       return merge(newState, action.tracks);
     case REMOVE_TRACK:
-      delete newState[action.id];
+      delete newState[action.track.id];
       return newState;
     default:
       return state;
