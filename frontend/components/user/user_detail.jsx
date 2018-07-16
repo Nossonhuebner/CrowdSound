@@ -54,7 +54,6 @@ class UserDetail extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => {
-  debugger
   return {updateProfilePic: pic => dispatch(updateUser(pic))};
 };
 
