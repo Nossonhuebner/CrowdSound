@@ -70,7 +70,9 @@ class User < ApplicationRecord
   end
 
   def ensure_profile_pic
-    
+    unless profile_pic.attached?
+      
+    end
   end
 
 end

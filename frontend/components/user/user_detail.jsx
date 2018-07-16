@@ -38,11 +38,9 @@ class UserDetail extends React.Component {
         <img src={this.props.user.profilePicUrl} className="show-profile-pic"/>
 
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <button className="button">
             <label>Update profile pic
               <input type="file" accept="image/*" onChange={this.handleProfilePic.bind(this)}/>
             </label>
-          </button>
 
           <input className="profile-submit" type="submit" value="Upload"
             disabled={!Boolean(this.state.profilePic)}/>

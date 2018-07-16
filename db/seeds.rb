@@ -6,5 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+guest = User.find_by(username: 'Guest')
+guest.destroy!
 
 User.create!(username: 'Guest', password: 'hunter12')
