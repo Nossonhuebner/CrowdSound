@@ -14,6 +14,7 @@
 #
 
 class Track < ApplicationRecord
+  after_initialize :ensure_artwork
 
   scope :with_eager_loaded_file, -> { eager_load(file_attachment: :blob) }
   scope :with_eager_loaded_artwork, -> { eager_load(artwork_attachment: :blob) }
@@ -27,10 +28,22 @@ class Track < ApplicationRecord
   class_name: :Genre,
   optional: true
 
+  belongs_to :album,
+  optional: true
+
   has_many :likes
   has_many :reposts
 
   has_one_attached :file
   has_one_attached :artwork
+
+  private
+
+  def ensure_artwork
+    unless self.artwork.attached?
+      self.artwork.attach(io: File.open('app/assets/images/default.jpeg'),
+       filename: 'default.jpeg')
+    end
+  end
 
 end

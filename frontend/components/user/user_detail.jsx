@@ -29,6 +29,7 @@ class UserDetail extends React.Component {
       formData.append('user[profile_pic]', this.state.profilePic);
     }
     this.props.updateProfilePic(formData);
+    this.setState({profilePic: null});
   }
 
   render () {

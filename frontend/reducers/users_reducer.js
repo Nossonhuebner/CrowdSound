@@ -1,6 +1,7 @@
 import {RECEIVE_USER} from '../actions/user_actions';
 import { RECEIVE_TRACK, REMOVE_TRACK } from '../actions/track_actions';
 import { LOG_IN_USER } from '../actions/session_actions';
+import { RECEIVE_ALBUMS } from '../actions/album_actions';
 import { merge } from 'lodash';
 
 const usersReducer = (state = {}, action) => {

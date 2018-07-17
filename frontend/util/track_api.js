@@ -15,3 +15,11 @@ export const deleteTrack = (track) => {
     url: `/api/tracks/${track.id}`
   });
 };
+
+export const addToAlbum = (trackId, albumId) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/tracks/${trackId}`,
+    data: {album_id: albumId},
+  });
+};

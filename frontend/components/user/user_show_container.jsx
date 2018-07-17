@@ -31,7 +31,12 @@ const mapStateToProps = (state, ownProps) => {
   for (let i = 0; i < user.trackIds.length; i++) {
     userTracks.push(state.entities.tracks[user.trackIds[i]]);
   }
-  return { user, userTracks };
+
+  let userAlbums = [];
+  for (let i = 0; i < user.albumIds.length; i++) {
+    userAlbums.push(state.entities.albums[user.albumIds[i]]);
+  }
+  return { user, userTracks, userAlbums };
 };
 
 const mapDispatchToProps = dispatch => {

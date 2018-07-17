@@ -15,6 +15,15 @@ class Api::TracksController < ApplicationController
     end
   end
 
+  def update
+    @track = Track.find(params[:id])
+    if @track.update(album_id: @album.id)
+      render '/api/tracks/show'
+    else
+      render json: @track.errors.full_messages, status: 404
+    end
+  end
+
   def destroy
     track = Track.find(params[:id])
     track.destroy if track

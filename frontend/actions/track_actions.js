@@ -19,6 +19,11 @@ export const deleteTrack = (id) => dispatch => {
 //   .then(tracks => dispatch(receiveTracks(tracks)));
 // };
 
+export const addToAlbum = (trackId, albumId) => {
+  return TracksApiUtil.addToAlbum(trackId, albumId)
+  .then(track => dispatch(receiveTrack(track)), errors => dispatch(receiveErrors(errors)));
+};
+
 
 
 export const removeTrack = (track) => ({

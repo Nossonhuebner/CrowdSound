@@ -6,7 +6,7 @@ class sessionForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {username: '', password: '', forgot: 'forgot password?'};
+    this.state = {username: '', password: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.forgotPassword = this.forgotPassword.bind(this);
@@ -37,7 +37,6 @@ class sessionForm extends React.Component {
 
             <button className="modal-submit">{this.props.formType}</button>
         </form>
-        <Link className="forgot" to="/" onClick={this.forgotPassword} >{this.state.forgot}</Link>
       </div>
     );
   }
@@ -50,8 +49,10 @@ class sessionForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const user = { user: Object.assign({}, this.state) };
-    this.props.processForm(user);
+    const user =  Object.assign({}, this.state);
+    this.props.processForm(user).then(() => {
+      return this.props.history.push('/you');
+    });
     // this.setState(this.state = {username: '', password: '', forgot: 'Forgot password?'});
   }
 

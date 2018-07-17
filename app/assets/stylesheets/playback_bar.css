@@ -11,7 +11,7 @@
   background-color: rgb(241, 243, 244);
 }
 
-.track-artwork {
+.playback-track-artwork {
   height: inherit;
   padding: 5px;
 }
@@ -24,4 +24,6 @@
 .playback-link {
   padding-right: 15%;
   align-self: flex-start;
+  text-decoration: none;
+  color: #171717;
 }

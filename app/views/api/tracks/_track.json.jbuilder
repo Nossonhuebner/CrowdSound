@@ -1,5 +1,3 @@
-json.extract! track, :id, :title, :artist_id, :description
+json.extract! track, :id, :title, :artist_id, :description, :album_id
 json.fileUrl url_for(track.file)
-if track.artwork.attachment.present?
-  json.artworkUrl url_for(track.artwork)
-end
+json.artworkUrl url_for(track.artwork)

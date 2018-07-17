@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :username, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
+  attr_reader :password
 
   has_one_attached :profile_pic
 
@@ -27,14 +28,17 @@ class User < ApplicationRecord
   foreign_key: :followee_id,
   class_name: :Follows
 
-  has_many :likes
-  has_many :reposts
-
   has_many :tracks,
   foreign_key: :artist_id,
   class_name: :Track
 
-  attr_reader :password
+  has_many :albums,
+  foreign_key: :artist_id,
+  class_name: :Album
+
+  has_many :likes
+  has_many :reposts
+
 
   def self.find_by_credentials(username, password)
     user = self.find_by_username(username)

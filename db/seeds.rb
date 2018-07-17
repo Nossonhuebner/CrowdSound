@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 guest = User.find_by(username: 'Guest')
-guest.destroy!
+if guest
+  guest.destroy!
+end 
 
 User.create!(username: 'Guest', password: 'hunter12')

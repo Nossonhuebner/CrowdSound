@@ -29,8 +29,8 @@ export default () => {
       <NavBar />
       <Modal />
       <Switch>
-        <Route exact path="/users/:userId" component={ShowUser}/>
         <Route exact path = "/" component={splash}/>
+        <Route exact path="/users/:userId" component={ShowUser}/>
       </Switch>
       <PlaybackBar />
     </div>
