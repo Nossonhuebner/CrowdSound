@@ -1,3 +1,4 @@
+export const RECEIVE_NEW_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 export const REMOVE_TRACK = "REMOVE_TRACK";
@@ -6,6 +7,11 @@ import { receiveErrors } from './error_actions';
 
 export const uploadTrack = (track) => dispatch => {
   return TracksApiUtil.createUpload(track)
+  .then(track => dispatch(receiveNewTrack(track)), errors => dispatch(receiveErrors(errors)));
+};
+
+export const fetchTrack = id => dispatch => {
+  return TracksApiUtil.fetchTrack(id)
   .then(track => dispatch(receiveTrack(track)), errors => dispatch(receiveErrors(errors)));
 };
 
@@ -30,6 +36,10 @@ export const removeTrack = (track) => ({
   type: REMOVE_TRACK,
   track
 });
+
+export const receiveNewTrack = (track) => {
+  return {type: RECEIVE_TRACK, track};
+};
 
 export const receiveTrack = (track) => {
   return {type: RECEIVE_TRACK, track};

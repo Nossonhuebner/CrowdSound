@@ -38,7 +38,7 @@ class ShowUser extends React.Component {
       <div className="show-user-container">
 
         <UserDetail user={this.props.user}/>
-        <ul style={{width: "62%" , "paddingLeft": "1%"}} className="user-show-list">
+        <ul style={{width: "830px", "paddingLeft": "1%"}} className="user-show-list">
           {tracks}
         </ul>
       </div>

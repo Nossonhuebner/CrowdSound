@@ -9,6 +9,13 @@ export const createUpload = (track) => {
   });
 };
 
+export const fetchTrack = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/tracks/${id}`
+  });
+};
+
 export const deleteTrack = (track) => {
   return $.ajax({
     method: 'DELETE',
@@ -16,10 +23,10 @@ export const deleteTrack = (track) => {
   });
 };
 
-export const addToAlbum = (trackId, albumId) => {
-  return $.ajax({
-    method: 'PATCH',
-    url: `/api/tracks/${trackId}`,
-    data: {album_id: albumId},
-  });
-};
+// export const addToAlbum = (trackId, albumId) => {
+//   return $.ajax({
+//     method: 'PATCH',
+//     url: `/api/tracks/${trackId}`,
+//     data: {album_id: albumId},
+//   });
+// };

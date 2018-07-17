@@ -11,13 +11,15 @@ import ShowUser from './user/user_show_container';
 import PlaybackBar from './playback_bar/playback_bar';
 import SearchBar from './search';
 
+
 const splash = () => (
     <div>
       <div className="greeting-container"></div>
-      <SearchBar />
     </div>
 );
-// <Route path="/:userId/:trackId" to={ShowUserTrack}/>
+
+// <SearchBar />
+
 
 export default () => {
   return (
@@ -29,6 +31,7 @@ export default () => {
       <NavBar />
       <Modal />
       <Switch>
+        <Route path="/users/:userId/:trackId" component={splash}/>
         <Route exact path = "/" component={splash}/>
         <Route exact path="/users/:userId" component={ShowUser}/>
       </Switch>

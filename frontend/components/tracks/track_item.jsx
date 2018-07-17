@@ -41,10 +41,10 @@ class TrackItem extends React.Component {
         <img className="track-artwork" src={this.props.track.artworkUrl}/>
         <button className="track-item-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
         {button}
-        <button className="track-item-like"><i class="fa fa-heart"></i></button>
+        <button className="track-item-like"><i className="fa fa-heart"></i></button>
         <div className="track-item-date">date</div>
-        <div className="track-plays"><i class="fa fa-play"></i> 0</div>
-        <div className="track-li-playback">so much empty space</div>
+        <div className="track-plays"><i className="fa fa-play"></i>  0</div>
+        <div className="track-li-playback">so much emptiness</div>
         <Link className="track-item-artist-link" to={`/users/${this.props.track.artist_id}`}>{this.props.artistName}</Link>
         <Link className="track-item-track-link" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>{this.props.track.title}</Link>
       </li>
@@ -58,8 +58,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
+  // addToAlbum: (id, albumName) => dispatch(addToAlbum(id, albumName)),
   return {
-  addToAlbum: (id, albumName) => dispatch(addToAlbum(id, albumName)),
   deleteTrack: track => dispatch(deleteTrack(track)),
   openPlaybackBar: track => dispatch(openPlaybackBar(track))
 };

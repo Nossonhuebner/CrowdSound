@@ -27,8 +27,8 @@
   position: absolute;
   padding-top: 15px;
   padding-left: 1%;
-  width: 65%;
-}
+  width: 830px;
+  }
 
 .track-delete-edit {
   grid-area: 4 / 3;
@@ -58,9 +58,14 @@
 .track-item-date{
   grid-area: 1/ 6;
   color: #808080;
+  align-self: end;
 }
 .track-li-playback{
   grid-area: 3/ 2 / 3/ 6;
+  align-self: center;
+  justify-self: center;
+  font-size: 59px;
+  color: #d6d6d6;
 }
 .track-item-artist-link{
   grid-area: 1/ 3;

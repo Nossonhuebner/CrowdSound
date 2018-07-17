@@ -21,9 +21,27 @@
   padding-left: 20px;
 }
 
-.playback-link {
+.playback-links {
   padding-right: 15%;
   align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-right: 8%;
   text-decoration: none;
-  color: #171717;
+}
+.playback-link-artist {
+  font-size: 13px;
+  text-decoration: none;
+  color: grey;
+}
+
+.playback-link-track {
+  font-size: 13px;
+  text-decoration: none;
+  color: grey;
+  margin-top: 10px;
+}
+
+.playback-link-track:hover, .playback-link-artist:hover {
+  color: black
 }

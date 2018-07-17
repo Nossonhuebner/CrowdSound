@@ -33,6 +33,7 @@ class Track < ApplicationRecord
 
   has_many :likes
   has_many :reposts
+  has_many :comments
 
   has_one_attached :file
   has_one_attached :artwork

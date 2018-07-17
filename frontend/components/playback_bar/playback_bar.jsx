@@ -19,7 +19,11 @@ class PlaybackBar extends React.Component {
             <img className="playback-track-artwork" style={{height: "inherit"}} src={track.artworkUrl}/>
             <audio autoPlay="true" src={track.fileUrl} className="audio-element" controls>
             </audio>
-            <Link className="playback-link" to={`/users/${track.artist_id}`}>{artist.username}</Link>
+
+            <div className="playback-links">
+              <Link className="playback-link-artist" to={`/users/${track.artist_id}`}>{artist.username}</Link>
+              <Link className="playback-link-track" to={`/users/${track.artist_id}/${track.id}`}>{track.title}</Link>
+            </div>
           </div>
         );
       }
@@ -34,7 +38,10 @@ class PlaybackBar extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { playback: state.ui.playback_bar, users: state.entities.users};
+  return {
+    playback: state.ui.playback_bar,
+    users: state.entities.users
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
