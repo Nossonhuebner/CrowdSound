@@ -1,21 +1,23 @@
 .show-user-container {
   width: 92%;
   padding-left: 4%;
+  position: absolute;
+  top: -35px;
+  z-index: -1;
 }
 
 .show-profile-pic {
-  height: 0;
-  width: 0px;
-  padding: 90px;
+  height: 200px;
+  width: 200px;
   margin: 15px;
-  border-radius: 120px;
+  border-radius: 50%;
   background: linear-gradient(126deg, rgb(137, 106, 121), rgb(124, 174, 178));
 }
 
 .user-banner {
   display: flex;
   margin-top: 80px;
-  height: 260px;
+  height: 265px;
   background: linear-gradient(-30deg, rgb(137, 106, 121), rgb(126, 158, 164));
 }
 
@@ -28,9 +30,43 @@
   padding: 10px;
   font-size: 22px;
   margin: 22px;
+  position: absolute;
+  top: 80px;
+  right: left;
+  left: 275px;
 }
 
 .show-user-container ul {
   position: absolute;
-    top: 50%;
+  width: 92%;
+  padding-left: 4%;
+  z-index: -1;
+}
+
+.profile-pic-update input[type="file"] {
+    display: none;
+}
+
+.profile-pic-file-input {
+  display: inline-block;
+  cursor: pointer;
+  background-color: #ffffff9e;
+  height: 15px;
+  font-size: 13px;
+  border: 1px solid grey;
+  border-radius: 2px;
+  padding: 7px;
+  transition-property: background-color;
+  transition-duration: .1s;
+}
+.profile-pic-file-input:hover{
+  background-color: #fffffff0;
+}
+
+
+.profile-pic-update{
+  height: 30px;
+  position: relative;
+  top: 73%;
+  left: -120px;
 }

@@ -17,8 +17,7 @@ class PlaybackBar extends React.Component {
         return (
           <div className="playback-container">
             <img className="track-artwork" style={{height: "inherit"}} src={track.artworkUrl}/>
-            <audio autoPlay="true" className="audio-element" controls>
-              <source src={track.fileUrl} type="audio/mpeg"/>
+            <audio autoPlay="true" src={track.fileUrl} className="audio-element" controls>
             </audio>
             <Link className="playback-link" to={`/users/${track.artist_id}`}>{artist.username}</Link>
           </div>

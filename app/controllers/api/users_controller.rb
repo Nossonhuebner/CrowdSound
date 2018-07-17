@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = currentUser
+    @user = current_user
 
     if @user.update(user_params)
       render '/api/users/show'

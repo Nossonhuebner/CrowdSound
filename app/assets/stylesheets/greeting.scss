@@ -3,10 +3,17 @@
   justify-content: space-between;
   top: 5%;
 } */
+.bar-outer-container {
+  background: #333333;
+  color: white;
+  height: fit-content;
+  font-size: 22px;
+  padding: 0 4%;
+}
+
 
 
 .welcome {
-
   position: absolute;
   top: 1px;
   left: 1px;
@@ -20,11 +27,13 @@
   display: flex;
   justify-content: space-between;
   background-color: #333333;
-  position: absolute;
-  width: 100%;
-  top: 0;
+  max-width: 1350px;
   height: 45px;
   align-items: center;
+  margin: 0px auto;
+  padding-right: 5px;
+  padding-left: 5px;
+  box-sizing: border-box;
 }
 
 

@@ -70,8 +70,9 @@ class User < ApplicationRecord
   end
 
   def ensure_profile_pic
-    unless profile_pic.attached?
-      
+    unless self.profile_pic.attached?
+      self.profile_pic.attach(io: File.open('app/assets/images/default.jpeg'),
+       filename: 'default.jpeg')
     end
   end
 

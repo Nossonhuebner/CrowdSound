@@ -30,9 +30,9 @@ export default (props) => {
               </div>;
 
   return (
-    <div>
+    <div className="bar-outer-container">
       <header className='greeting-bar'>
-        <h1>Logo</h1>
+        <h1 className="logo">logo</h1>
         <SearchBar />
           {personal}
       </header>

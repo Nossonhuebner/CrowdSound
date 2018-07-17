@@ -1,7 +1,7 @@
 import React from 'react';
 import { uploadTrack } from '../actions/track_actions';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 
 class UploadTrack extends React.Component {
@@ -58,7 +58,9 @@ class UploadTrack extends React.Component {
     if (this.state.trackArtwork) {
       formData.append('track[artwork]', this.state.trackArtwork);
     }
-    this.props.uploadTrack(formData);
+    this.props.uploadTrack(formData).then(() => {
+      return this.props.history.push('/');
+    });
   }
 
   render() {
@@ -72,24 +74,30 @@ class UploadTrack extends React.Component {
           placeholder="Description (Optional)" value={this.state.description}
           onChange={this.updateDescription.bind(this)}></textarea>
 
-          <label>Track
+        <label className="audio-upload">Track
             <input type="file" accept="audio/mpeg3" onChange={this.handleFile.bind(this)}/>
           </label>
 
-          <label>Artwork (optional)
+          <label className="artwork-upload"><i className="fa fa-camera"></i>  Artwork (optional)
             <input type="file" accept="image/*" onChange={this.handleArtwork.bind(this)}/>
           </label>
 
         <input className="upload-submit" type="submit" value="Upload"
           disabled={!Boolean(this.state.title && this.state.trackFile)}/>
-
       </form>
     );
   }
 }
 
+
+
+
+
+
+
+
 const mapDispatchToProps = (dispatch) => ({
   uploadTrack: track => dispatch(uploadTrack(track))
 });
 
-export default connect(null, mapDispatchToProps)(UploadTrack);
+export default connect(null, mapDispatchToProps)(withRouter(UploadTrack));

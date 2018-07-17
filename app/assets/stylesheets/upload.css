@@ -17,9 +17,9 @@
 }
 
 .upload-form {
-  position: fixed;
-  left: 50%;
-  top: 50%;
+  position: absolute;
+  left: 37%;
+  top: 40%;
   width: 300px;
   height: 300px;
   border: 1px solid #e2dede;
@@ -50,6 +50,7 @@
   background-color: rgb(255, 80, 0);
   color: white;;
   border: none;
+  height: 80px;
   border-radius: 4px;
   padding: 7px 15px;
   font-size: 15px;
@@ -76,4 +77,27 @@
   transition-property: border-color, color;
   transition-duration: .4s;
   cursor: default;
+}
+
+
+.upload-form  input[type="file"] {
+    display: none;
+}
+
+.audio-upload, .artwork-upload {
+  width: 80%;
+  margin: 2px auto;  padding: 10px;
+  border-radius: 6px;
+  color: #868686;
+  display: inline-block;
+  cursor: pointer;
+  background-color: #ffffff9e;
+  height: 15px;
+  font-size: 13px;
+  border: 1px solid grey;
+  transition-property: background-color;
+  transition-duration: .1s;
+}
+.upload-form label:hover{
+  background-color: #fffffff0;
 }

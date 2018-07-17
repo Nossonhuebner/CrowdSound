@@ -11,6 +11,12 @@ class RandomUser extends React.Component {
     this.props.fetchUser(this.props.match.params.userId);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (newProps.match.params.userId !== this.props.match.params.userId) {
+      this.props.fetchUser(newProps.match.params.userId);
+    }
+  }
+
   render() {
     return (
       <ShowUser user={this.props.user} userTracks={this.props.userTracks} isCurrentUser={false} />
