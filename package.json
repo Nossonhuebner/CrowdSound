@@ -44,6 +44,6 @@
   },
   "homepage": "https://github.com/Nossonhuebner/CrowdSound#readme",
   "devDependencies": {
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.1.0"
   }
 }

@@ -1,11 +1,11 @@
-class CommentsController < ApplicationController
+class Api::CommentsController < ApplicationController
 
-  def created
+  def create
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.track = params[:track_id]
+    @comment.track_id = params[:track_id].to_i
     if @comment.save
-      render json: {}
+      render '/api/comments/show'
     else
       render json: @comment.errors.full_messages
     end
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      render json: {}
+      render '/api/comments/show'
     else
       render json: {}
     end
@@ -22,9 +22,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-
     if @comment
       @comment.destroy!
+      render json: {};
     end
   end
 

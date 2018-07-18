@@ -11,6 +11,7 @@ json.tracks do
       json.extract! track, :id, :title, :album_id, :artist_id
       json.fileUrl url_for(track.file)
       json.artworkUrl url_for(track.artwork)
+      json.commentIds track.comment_ids
     end
   end
 end

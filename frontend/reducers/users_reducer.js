@@ -13,7 +13,7 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_NEW_TRACK:
       const user = state[action.track.artist_id];
       user.trackIds.push(action.track.id);
-      return merge({}, state, {[user.id]: user});
+      return merge(newState, {[user.id]: user});
     case RECEIVE_TRACK:
       return merge(newState, {[action.user.id]: action.user});
     case REMOVE_TRACK:

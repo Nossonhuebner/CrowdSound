@@ -4,7 +4,7 @@ export const createUser = (user) => {
   return $.ajax({
     method: 'POST',
     url: '/api/users',
-    data: user
+    data: {user}
   });
 };
 
@@ -19,7 +19,7 @@ export const updateUser = (user) => {
     return $.ajax({
     method: 'PATCH',
     url: `/api/users/1`,
-    data: user,
+    data: {user},
     processData: false,
     contentType: false
   });

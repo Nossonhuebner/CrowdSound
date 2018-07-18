@@ -17,7 +17,7 @@ class Api::TracksController < ApplicationController
   end
 
   def update
-    @track = Track.find(params[:id])
+    @track = Track.includes(:artist, :comments).find(params[:id])
     if @track.update(album_id: @album.id)
       render '/api/tracks/show'
     else

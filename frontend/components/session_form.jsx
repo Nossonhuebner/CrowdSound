@@ -9,7 +9,6 @@ class sessionForm extends React.Component {
     this.state = {username: '', password: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.forgotPassword = this.forgotPassword.bind(this);
   }
 
   render() {

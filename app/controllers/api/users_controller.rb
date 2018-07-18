@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:albums, tracks: [:genre]).find(params[:id])
+    @user = User.includes(:albums, tracks: [:genre, :comments]).find(params[:id])
   end
 
   private
