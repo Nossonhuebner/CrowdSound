@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
+import { openModal } from '../../actions/modal_actions';
 
 
 class CommentForm extends React.Component {
@@ -16,7 +17,12 @@ class CommentForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createComment(this.props.trackId, this.state);
+    if (this.props.currentUser) {
+      this.props.createComment(this.props.trackId, this.state);
+    } else {
+      this.props.openModal('login');
+      this.setState({body: ""});
+    }
   }
 
   render() {
@@ -30,10 +36,14 @@ class CommentForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  currentUser: state.session.id
+});
 
 
 const mapDistpatchToProps = dispatch => ({
-  createComment: (trackId, comment) => dispatch(createComment(trackId, comment))
+  createComment: (trackId, comment) => dispatch(createComment(trackId, comment)),
+  openModal: action => dispatch(openModal(action))
 });
 
-export default connect(null, mapDistpatchToProps)(CommentForm);
+export default connect(mapStateToProps, mapDistpatchToProps)(CommentForm);

@@ -15,9 +15,9 @@ export const editComment = (trackId, comment) => {
   });
 };
 
-export const deleteComment = (trackId, comment) => {
+export const deleteComment = (trackId, commentId) => {
   return $.ajax({
-    method: 'DESTROY',
-    url: `/api/tracks/${trackId}/comments/${comment.id}`,
+    method: 'DELETE',
+    url: `/api/tracks/${trackId}/comments/${commentId}`,
   });
 };

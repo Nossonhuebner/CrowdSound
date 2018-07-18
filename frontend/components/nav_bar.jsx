@@ -23,7 +23,7 @@ export default (props) => {
                   Create account
                 </button>
 
-                <button className="signup-button" onClick={() => dispatch(logIn({user:{username: 'Guest', password: 'hunter12'}}))}>
+                <button className="signup-button" onClick={() => dispatch(logIn({username: 'Guest', password: 'hunter12'}))}>
                   Demo
                 </button>
 

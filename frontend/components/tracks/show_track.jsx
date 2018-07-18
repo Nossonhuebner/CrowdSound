@@ -13,6 +13,7 @@ class ShowTrack extends React.Component {
   }
 
   render() {
+    debugger
     const artist = this.props.users[this.props.track.artist_id];
     const banner =
     (<div className="track-show-banner">
@@ -36,7 +37,7 @@ class ShowTrack extends React.Component {
         commentItems = (<h2 className="empty-comments">Seems a little quiet over here</h2>);
       } else {
         commentItems =  comments.map(comment => {
-          return <CommentItem trackId={this.props.track.id} comment={comment} author={this.props.users[comment.userId]}/> ;
+          return <CommentItem key={comment.id} trackId={this.props.track.id} comment={comment} author={this.props.users[comment.userId]}/> ;
         });
       }
 
@@ -44,14 +45,13 @@ class ShowTrack extends React.Component {
     return (
       <div className="track-show-container">
         {banner}
-
+        <div className="comments-container">
         <CommentForm trackId={this.props.track.id}/>
 
-        <ul>
+        <ul className="comments=list">
           {commentItems}
         </ul>
-
-
+        </div>
       </div>
     );
   }
