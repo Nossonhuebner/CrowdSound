@@ -10,7 +10,7 @@ import PersonlShow from './user/current_user_show_container';
 import ShowUser from './user/user_show_container';
 import PlaybackBar from './playback_bar/playback_bar';
 import SearchBar from './search';
-
+import ShowTrack from './tracks/show_track';
 
 const splash = () => (
     <div>
@@ -31,7 +31,7 @@ export default () => {
       <NavBar />
       <Modal />
       <Switch>
-        <Route path="/users/:userId/:trackId" component={splash}/>
+        <Route path="/users/:userId/:trackId" component={ShowTrack}/>
         <Route exact path = "/" component={splash}/>
         <Route exact path="/users/:userId" component={ShowUser}/>
       </Switch>

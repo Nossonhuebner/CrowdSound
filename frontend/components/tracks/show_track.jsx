@@ -1,5 +1,7 @@
 import React from 'react';
-import { fetchTrack } from ''
+import { fetchTrack } from '../../actions/track_actions';
+import { openPlaybackBar } from '../../actions/playback_actions';
+import { connect } from 'react-redux';
 
 
 class ShowTrack extends React.Component {
@@ -9,18 +11,20 @@ class ShowTrack extends React.Component {
   }
 
   render() {
+    const artist = this.props.users[this.props.track.artist_id];
     const banner =
     <div className="track-show-banner">
       <div className="track-banner-title">{this.props.track.title}</div>
-      <div className="track-banner-artist">{this.props.artist.username}</div>
+      <div className="track-banner-artist">{artist.username}</div>
+      <img className="track-show-artwork" src={this.props.track.artworkUrl}/>
       <button className="track-banner-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
       <div className="track-banner-date">date</div>
     </div>;
 
-    const comments = {};
+    const comments = <h3>comments</h3>;
 
     return (
-      <div>
+      <div className="track-show-container">
         {banner}
 
         <ul>
@@ -29,15 +33,23 @@ class ShowTrack extends React.Component {
 
 
       </div>
-    )
+    );
   }
 
 
 }
 
+const mapStateToProps = (state, ownProps) => {
+  const track = state.entities.tracks[ownProps.match.params.trackId];
+  const users = state.entities.users;
+
+  return {track: track, users: users};
+};
 
 
 const mapDistpatchToProps = (dispatch) => ({
   fetchTrack: id => dispatch(fetchTrack(id)),
   openPlaybackBar: track => dispatch(openPlaybackBar(track))
 });
+
+export default connect(mapStateToProps, mapDistpatchToProps)(ShowTrack);
