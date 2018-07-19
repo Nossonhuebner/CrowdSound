@@ -1,0 +1,93 @@
+.comments-container {
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.comment-form-container {
+  display: flex;
+  background: #ececec;
+  border: 1px solid #efefef;
+  border-radius: 2px;
+  margin: 23px;
+}
+
+.comment-form {
+  width: 100%;
+  align-self: center;
+  padding: 4px;
+  border-radius: 19px;
+}
+
+.commentor-profile-pic{
+  height: 40px;
+}
+.comment-form-input {
+  width: 97%;
+  padding: 5px;
+  margin-left: 2px;
+  border-radius: 4px;
+  border: 1px solid #dadada;
+  font-size: 16px;
+  font-family: ubuntu;
+}
+
+.under-comment_form {
+  display: flex;
+}
+
+
+.artist-box {
+  margin: 0 35px;
+}
+.comments-artist-pic {
+  border-radius: 50%;
+  height: 130px;
+}
+
+
+
+
+
+.comments-list {
+  width: 100%;
+}
+
+.comment-item {
+  width: 100%;
+  display: flex;
+}
+
+.comment-profile-pic {
+  border-radius: 50%;
+  height: 40px;
+}
+
+.comment-date {
+
+}
+
+.comment-center {
+
+}
+
+.comment-author {
+  padding-left: 11px;
+  color: #b1b1b1;
+  font-size: 14px;
+}
+
+.comment-body {
+  padding-left: 11px;
+  padding-top: 6px;
+  font-size: 14px;
+}
+
+
+
+.empty-comments {
+  font-size: 33px;
+  color: #adadad;
+}

@@ -1,4 +1,4 @@
-export const RECEIVE_NEW_TRACK = "RECEIVE_TRACK";
+export const RECEIVE_NEW_TRACK = "RECEIVE_NEW_TRACK";
 export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 export const REMOVE_TRACK = "REMOVE_TRACK";
@@ -38,7 +38,7 @@ export const removeTrack = (track) => ({
 });
 
 export const receiveNewTrack = (track) => {
-  return {type: RECEIVE_TRACK, track};
+  return {type: RECEIVE_NEW_TRACK, track};
 };
 
 export const receiveTrack = ({track, user, comments}) => {

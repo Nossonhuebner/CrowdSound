@@ -6,9 +6,9 @@ json.track do
 end
 
 json.user do
-  json.set! track.artist.id do
     json.extract! track.artist, :id, :username
-  end
+    json.trackIds track.artist.track_ids
+    json.profilePicUrl url_for(track.artist.profile_pic)
 end
 
 json.comments do

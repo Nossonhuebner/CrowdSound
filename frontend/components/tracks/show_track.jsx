@@ -13,8 +13,7 @@ class ShowTrack extends React.Component {
   }
 
   render() {
-    debugger
-    const artist = this.props.users[this.props.track.artist_id];
+    const artist = this.props.users[this.props.track.artist_id] || {};
     const banner =
     (<div className="track-show-banner">
       <div className="track-banner-title">{this.props.track.title}</div>
@@ -36,6 +35,7 @@ class ShowTrack extends React.Component {
       if (comments.length < 1) {
         commentItems = (<h2 className="empty-comments">Seems a little quiet over here</h2>);
       } else {
+        console.log(this.props.users);
         commentItems =  comments.map(comment => {
           return <CommentItem key={comment.id} trackId={this.props.track.id} comment={comment} author={this.props.users[comment.userId]}/> ;
         });
@@ -46,11 +46,16 @@ class ShowTrack extends React.Component {
       <div className="track-show-container">
         {banner}
         <div className="comments-container">
-        <CommentForm trackId={this.props.track.id}/>
-
-        <ul className="comments=list">
-          {commentItems}
-        </ul>
+          <CommentForm trackId={this.props.track.id}/>
+          <div className="under-comment_form">
+            <div className="artist-box">
+              <img className="comments-artist-pic" src={artist.profilePicUrl}/>
+              <div>{artist.username}</div>
+            </div>
+          <ul className="comments-list">
+            {commentItems}
+          </ul>
+          </div>
         </div>
       </div>
     );
@@ -60,7 +65,7 @@ class ShowTrack extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const track = state.entities.tracks[ownProps.match.params.trackId];
+  const track = state.entities.tracks[ownProps.match.params.trackId] || {commentIds: []};
   const users = state.entities.users;
   const comments = state.entities.comments;
 

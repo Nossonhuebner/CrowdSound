@@ -6,15 +6,18 @@ class CommentItem extends React.Component {
 
   render() {
     const button = this.props.author.id === this.props.currentUserId ?
-    <button onClick={() => this.props.deleteComment(this.props.trackId, this.props.comment.id)}>Remove Comment
+    <button onClick={() => this.props.deleteComment(this.props.trackId, this.props.comment.id)}><i className="fa fa-trash"></i>
     </button>
     : null ;
 
     return (
       <li className="comment-item">
         <img className="comment-profile-pic" src={this.props.author.profilePicUrl}/>
-        <div className="comment-author">{this.props.author.username}</div>
-        <div className="comment-body">{this.props.comment.body}</div>
+        <div className="comment-center">
+          <div className="comment-author">{this.props.author.username}</div>
+          <div className="comment-body">{this.props.comment.body}</div>
+        </div>
+        <div className="comment-date">date</div>
         {button}
       </li>
     );

@@ -26,18 +26,22 @@ class CommentForm extends React.Component {
   }
 
   render() {
-
+    const image = this.props.currentUser ?
+    <img className="commentor-profile-pic" src={this.props.currentUser.profilePicUrl}/>
+    : <img className="commentor-profile-pic" src={window.default_pic}/>;
     return (
-      <form className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
-        <input type="text" onChange={this.handleChange.bind(this)} value={this.state.body}/>
-        <input type="submit" value="Comment"/>
-      </form>
+      <div className="comment-form-container">
+        {image}
+        <form className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
+          <input className="comment-form-input" placeholder="Write a comment" type="text" onChange={this.handleChange.bind(this)} value={this.state.body}/>
+        </form>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.session.id
+  currentUser: state.entities.users[state.session.id]
 });
 
 
