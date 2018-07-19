@@ -3,7 +3,9 @@ import { fetchTrack } from '../../actions/track_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { connect } from 'react-redux';
 import CommentForm from './comment_form';
-import CommentItem from './comment_item';
+import CommentItem from './comment_item'
+import { Link } from 'react-router-dom';
+import { dateFormatter } from '../../util/date_util';
 
 
 class ShowTrack extends React.Component {
@@ -13,14 +15,14 @@ class ShowTrack extends React.Component {
   }
 
   render() {
-    const artist = this.props.users[this.props.track.artist_id] || {};
+    const artist = this.props.users[this.props.match.params.userId] || {};
     const banner =
     (<div className="track-show-banner">
       <div className="track-banner-title">{this.props.track.title}</div>
       <div className="track-banner-artist">{artist.username}</div>
       <img className="track-show-artwork" src={this.props.track.artworkUrl}/>
       <button className="track-banner-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
-      <div className="track-banner-date">date</div>
+      <div className="track-banner-date">{dateFormatter(this.props.track.created_at)}</div>
     </div>);
 
     let comments = [];
@@ -49,8 +51,11 @@ class ShowTrack extends React.Component {
           <CommentForm trackId={this.props.track.id}/>
           <div className="under-comment_form">
             <div className="artist-box">
+              <Link to={`/users/${artist.id}`}>
               <img className="comments-artist-pic" src={artist.profilePicUrl}/>
-              <div>{artist.username}</div>
+              </Link>
+
+              <Link className="comments-artist-name" to={`/users/${artist.id}`}>{artist.username}</Link>
             </div>
           <ul className="comments-list">
             {commentItems}

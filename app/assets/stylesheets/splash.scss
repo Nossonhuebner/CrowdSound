@@ -11,6 +11,21 @@
   height: 400px;
 }
 
+.splash-body {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 92%;
+  height: 100%;
+  background-color: #bdbdbd;
+}
+
 .logo {
   background-image: image_url('logo.jpg');
+  width: 59px;
+  height: 94px;
+  margin-top: 0px;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }

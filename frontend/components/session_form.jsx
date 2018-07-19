@@ -49,9 +49,7 @@ class sessionForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const user =  Object.assign({}, this.state);
-    this.props.processForm(user).then(() => {
-      return this.props.history.push('/you');
-    });
+    this.props.processForm(user).then
     // this.setState(this.state = {username: '', password: '', forgot: 'Forgot password?'});
   }
 

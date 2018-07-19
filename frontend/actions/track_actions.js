@@ -20,6 +20,12 @@ export const deleteTrack = (id) => dispatch => {
   .then(() => dispatch(removeTrack(id)), errors => dispatch(receiveErrors(errors)));
 };
 
+export const incrementPlays = (id) => dispatch => {
+  return TracksApiUtil.incrementPlays(id)
+  .then(() => dispatch(receiveTrack(track)), errors => dispatch(receiveErrors(errors)));
+};
+
+
 // export const fetchTracks = (userId) => dispatch => {
 //   return TracksApiUtil.fetchTracks(userId)
 //   .then(tracks => dispatch(receiveTracks(tracks)));
@@ -37,8 +43,8 @@ export const removeTrack = (track) => ({
   track
 });
 
-export const receiveNewTrack = (track) => {
-  return {type: RECEIVE_NEW_TRACK, track};
+export const receiveNewTrack = ({track, user, comments}) => {
+  return {type: RECEIVE_NEW_TRACK, track, user, comments};
 };
 
 export const receiveTrack = ({track, user, comments}) => {

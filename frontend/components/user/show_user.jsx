@@ -2,8 +2,9 @@ import React from 'react';
 import TrackItem from '../tracks/track_item';
 import { fetchUser } from '../../actions/user_actions';
 import UserDetail from './user_detail';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 
 
 
@@ -15,7 +16,11 @@ class ShowUser extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.user.id);
+    if (this.props.match.path === "/you") {
+      this.props.fetchUser(this.props.currentUserId)
+    } else {
+      this.props.fetchUser(this.props.match.params.userId);
+    }
   }
 
 
@@ -45,8 +50,13 @@ class ShowUser extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  currentUserId: state.session.id
+});
+
 const mapDispatchToProps = (dispatch) => ({
   fetchUser: id => dispatch(fetchUser(id))
 });
 
-export default connect(null, mapDispatchToProps)(ShowUser);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ShowUser));

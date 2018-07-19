@@ -8,7 +8,7 @@ end
 json.tracks do
   user.tracks.each do |track|
     json.set! track.id do
-      json.extract! track, :id, :title, :album_id, :artist_id
+      json.extract! track, :id, :title, :album_id, :artist_id, :plays, :created_at
       json.fileUrl url_for(track.file)
       json.artworkUrl url_for(track.artwork)
       json.commentIds track.comment_ids

@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ShowUser from './show_user';
 import { fetchUser } from '../../actions/user_actions';
@@ -49,4 +49,4 @@ const mapDispatchToProps = dispatch => {
   return {fetchUser: id => dispatch(fetchUser(id))};
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RandomUser));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(RandomUser));

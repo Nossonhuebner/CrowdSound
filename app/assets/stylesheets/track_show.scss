@@ -14,7 +14,7 @@
 
   display: grid;
   grid-template-rows: 1fr 1fr 4fr;
-  grid-template-columns: 1fr 1fr 3fr 1fr 3fr;
+  grid-template-columns: 1fr 3fr 1fr 1fr 3fr;
 }
 
 .track-banner-title{
@@ -57,7 +57,7 @@
 .track-banner-date{
   grid-area: 1 / 4;
   align-self: end;
-  justify-self: end;
+  justify-self: start;
   color: white;
 }
 

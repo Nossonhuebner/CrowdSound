@@ -7,7 +7,7 @@ import SearchBar from './search';
 
 export default (props) => {
   const personal = props.currentUser ?
-              <div>
+              <div className="nav-buttons">
                 <h2 className="welcome">{`${props.currentUser.username}`}</h2>
                 <Link className="upload-link" to="/upload">Upload</Link>
                 <Link className="upload-link" to="/you">You</Link>
@@ -32,7 +32,7 @@ export default (props) => {
   return (
     <div className="bar-outer-container">
       <header className='greeting-bar'>
-        <h1 className="logo">logo</h1>
+        <div className="logo"></div>
         <SearchBar />
           {personal}
       </header>

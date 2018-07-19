@@ -5,8 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Genre.destroy_all
+Track.destroy_all
 
 User.create!(username: 'Guest', password: 'hunter12')
+
+Genre.create!(name: "Classical")
+Genre.create!(name: "Electronic")
+Genre.create!(name: "Funk / Soul")
+Genre.create!(name: "Hip Hop")
+Genre.create!(name: "Jazz")
+Genre.create!(name: "Latin")
+Genre.create!(name: "Other")
+Genre.create!(name: "Pop")
+Genre.create!(name: "R&B")
+Genre.create!(name: "Reggae")
+Genre.create!(name: "Rock")
+Genre.create!(name: "Speech")
+Genre.create!(name: "Stage & Screen")
+Genre.create!(name: "World")
 
 # ARTISTS
 
@@ -21,8 +39,8 @@ mIllowitz.profile_pic.attach(io: file, filename: 'mIllowitz.jpeg')
 mIllowitz.save!
 
 msteinmetz = User.new(username: 'Motty Steinmetz', password: 'seedfile')
-file = EzDownload.open('https://s3.amazonaws.com/crowd-sound-prod/albums/Motty+Steinmetz+-+Haneshama+Bekirbi+%40JMusic/msteinmetz.jpeg')
-msteinmetz.profile_pic.attach(io: file, filename: 'msteinmetz.jpeg')
+file = EzDownload.open('https://s3.amazonaws.com/crowd-sound-prod/albums/Motty+Steinmetz+-+Haneshama+Bekirbi+%40JMusic/download.jpg')
+msteinmetz.profile_pic.attach(io: file, filename: 'download.jpg')
 msteinmetz.save!
 
 

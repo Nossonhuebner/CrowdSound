@@ -13,7 +13,7 @@ import SearchBar from './search';
 import ShowTrack from './tracks/show_track';
 
 const splash = () => (
-    <div>
+    <div className="splash-body">
       <div className="greeting-container"></div>
     </div>
 );

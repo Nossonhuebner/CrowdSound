@@ -19,9 +19,9 @@ class CommentForm extends React.Component {
     e.preventDefault();
     if (this.props.currentUser) {
       this.props.createComment(this.props.trackId, this.state);
+      this.setState({body: ""});
     } else {
       this.props.openModal('login');
-      this.setState({body: ""});
     }
   }
 

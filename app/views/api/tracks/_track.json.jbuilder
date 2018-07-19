@@ -1,5 +1,5 @@
 json.track do
-  json.extract! track, :id, :title, :artist_id, :description, :album_id
+  json.extract! track, :id, :title, :artist_id, :description, :album_id, :plays, :created_at
   json.fileUrl url_for(track.file)
   json.artworkUrl url_for(track.artwork)
   json.commentIds track.comment_ids
@@ -14,6 +14,7 @@ end
 json.comments do
   track.comments.each do |comment|
     json.set! comment.id do
+      json.created_at comment.created_at
       json.id comment.id
       json.trackId track.id
       json.body comment.body

@@ -11,7 +11,7 @@
 .search-submit {
   position: absolute;
   right: 5px;
-  top: 5px;
+  top: 8px;
   opacity: 0.6;
 }
 
@@ -24,7 +24,8 @@
   margin: 3px;
   background-color: #525252;
   transition-property: background-color;
-  transition-duration: .3s;
+  transition-duration: .2s;
+  padding: 4px;
 }
 
 .search-input:focus{

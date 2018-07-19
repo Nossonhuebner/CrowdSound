@@ -81,3 +81,8 @@ button{
 #root {
   font-family: 'Ubuntu', sans-serif;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+}

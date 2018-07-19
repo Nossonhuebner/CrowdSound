@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteTrack, addToAlbum } from '../../actions/track_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
+import { dateFormatter } from '../../util/date_util';
 
 class TrackItem extends React.Component {
   // constructor(props) {
@@ -42,7 +43,7 @@ class TrackItem extends React.Component {
         <button className="track-item-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
         {button}
         <button className="track-item-like"><i className="fa fa-heart"></i></button>
-        <div className="track-item-date">date</div>
+        <div className="track-item-date">{dateFormatter(this.props.track.created_at)}</div>
         <div className="track-plays"><i className="fa fa-play"></i>  0</div>
         <div className="track-li-playback">so much emptiness</div>
         <Link className="track-item-artist-link" to={`/users/${this.props.track.artist_id}`}>{this.props.artistName}</Link>

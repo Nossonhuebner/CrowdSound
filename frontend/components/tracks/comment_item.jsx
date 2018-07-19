@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editComment, deleteComment } from '../../actions/comment_actions';
+import { Link } from 'react-router-dom';
+import { dateFormatter } from '../../util/date_util';
 
 class CommentItem extends React.Component {
 
@@ -12,12 +14,12 @@ class CommentItem extends React.Component {
 
     return (
       <li className="comment-item">
-        <img className="comment-profile-pic" src={this.props.author.profilePicUrl}/>
+        <Link to={`/users/${this.props.author.id}`}><img className="comment-profile-pic" src={this.props.author.profilePicUrl}/></Link>
         <div className="comment-center">
-          <div className="comment-author">{this.props.author.username}</div>
+          <Link to={`/users/${this.props.author.id}`} className="comment-author">{this.props.author.username}</Link>
           <div className="comment-body">{this.props.comment.body}</div>
         </div>
-        <div className="comment-date">date</div>
+        <div className="comment-date">{dateFormatter(this.props.comment.created_at)}</div>
         {button}
       </li>
     );
