@@ -6,7 +6,11 @@
   grid-template-rows: 1fr 1fr 2fr 0fr;
   border-right: 1px solid #f1efef;
   padding-bottom: 35px;
-  // background-image: image_url('wave_background.jpeg');
+  background-image: image_url('wave_background.jpeg');
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-size: 600px;
+  background-position-x: right;
 }
 
 
@@ -69,7 +73,7 @@
   justify-self: center;
   font-size: 59px;
   color: #d6d6d6;
-
+  visibility: hidden;
 }
 .track-item-artist-link{
   grid-area: 1/ 3/ 1/5;

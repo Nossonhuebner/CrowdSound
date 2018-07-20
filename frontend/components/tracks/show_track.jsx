@@ -29,7 +29,7 @@ class ShowTrack extends React.Component {
     for (var i = 0; i < this.props.track.commentIds.length; i++) {
       const comment  = this.props.comments[this.props.track.commentIds[i]];
       if (comment) {
-        comments.push(comment);
+        comments.unshift(comment);
       }
     }
 
