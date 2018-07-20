@@ -78,9 +78,8 @@ class User < ApplicationRecord
 
   def ensure_profile_pic
     unless self.profile_pic.attached?
-      self.profile_pic.attach(io: File.open('app/assets/images/default.jpeg'),
-       filename: 'default.jpeg')
+      self.profile_pic.attach(io: EzDownload.open('https://s3.us-east-2.amazonaws.com/crowdsound-prod/albums/default.png'),
+      filename: 'default.png')
     end
   end
-
 end
