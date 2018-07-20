@@ -14,7 +14,7 @@ export default (props) => {
                 <button className="login-button" onClick={props.logOut}>Sign Out</button>
               </div>
 
-              : <div>
+              : <div className="nav-buttons">
                 <button className="login-button" onClick={() => dispatch(openModal('login'))}>
                   Sign in
                 </button>
@@ -23,7 +23,7 @@ export default (props) => {
                   Create account
                 </button>
 
-                <button className="signup-button" onClick={() => dispatch(logIn({username: 'Guest', password: 'hunter12'}))}>
+                <button className="demo-button" onClick={() => dispatch(logIn({username: 'Guest', password: 'hunter12'}))}>
                   Demo
                 </button>
 
