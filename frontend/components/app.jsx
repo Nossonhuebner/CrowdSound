@@ -21,11 +21,11 @@ export default () => {
   return (
 
     <div className="app">
-      <ProtectedRoute exact path="/upload" component={Upload}/>
       <ProtectedRoute path="/you" component={PersonlShow}/>
 
       <NavBar />
       <Modal />
+      <ProtectedRoute exact path="/upload" component={Upload}/>
       <Route exact path = "/" component={Splash}/>
       <Switch>
         <Route path="/users/:userId/:trackId" component={ShowTrack}/>

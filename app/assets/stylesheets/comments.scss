@@ -6,6 +6,13 @@
 
 }
 
+.signed-out-commentor{
+  background-image: image_url('default.png');
+  width: 40px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: 1px solid #dadada;
+}
 
 
 .comment-form-container {

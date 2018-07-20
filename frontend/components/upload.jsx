@@ -67,34 +67,40 @@ class UploadTrack extends React.Component {
   }
 
   render() {
-    let src;
+    let img;
     if (this.state.artworkUrl) {
-    src = this.state.artworkUrl
+    img = <img className="upload-preview" src={this.state.artworkUrl}/>;
   } else {
-    src = ""
+    img = <div className="upload-preview"></div>;
   }
     return (
-      <form className="upload-form" onSubmit={this.handleSubmit.bind(this)}>
-        <img src={src}/>
-
-        <input className="upload-title" placeholder="Track Name"
-          type="text" value={this.state.title} onChange={this.updateTitle.bind(this)}/>
-
-        <textarea className="upload-description"
-          placeholder="Description (Optional)" value={this.state.description}
-          onChange={this.updateDescription.bind(this)}></textarea>
-
-        <label className="audio-upload">Track
-            <input type="file" accept="audio/mpeg3" onChange={this.handleFile.bind(this)}/>
+      <div className="upload-container">
+        <div className="preview">
+          {img}
+          <label className="artwork-upload-label"><i className="fa fa-camera"></i>  Artwork (optional)
+            <input className="artwork-upload-input" type="file" accept="image/*"
+              hidden={!Boolean(this.state.trackArtwork)}
+               onChange={this.handleArtwork.bind(this)}/>
           </label>
+        </div>
+        <form className="upload-form" onSubmit={this.handleSubmit.bind(this)}>
 
-          <label className="artwork-upload"><i className="fa fa-camera"></i>  Artwork (optional)
-            <input type="file" accept="image/*" onChange={this.handleArtwork.bind(this)}/>
-          </label>
+          <input className="upload-title" placeholder="Track Name"
+            type="text" value={this.state.title} onChange={this.updateTitle.bind(this)}/>
 
-        <input className="upload-submit" type="submit" value="Upload"
-          disabled={!Boolean(this.state.title && this.state.trackFile)}/>
-      </form>
+          <textarea className="upload-description"
+            placeholder="Description (Optional)" value={this.state.description}
+            onChange={this.updateDescription.bind(this)}></textarea>
+
+          <label className="audio-upload">Track
+              <input type="file" accept="audio/mpeg3" onChange={this.handleFile.bind(this)}/>
+            </label>
+
+
+          <input className="upload-submit" type="submit" value="Upload"
+            disabled={!Boolean(this.state.title && this.state.trackFile)}/>
+        </form>
+      </div>
     );
   }
 }

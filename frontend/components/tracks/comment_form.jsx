@@ -26,7 +26,9 @@ class CommentForm extends React.Component {
   }
 
   render() {
-    const image = <img className="commentor-profile-pic" src={this.props.currentUser.profilePicUrl}/>
+    const image = this.props.currentUser ?
+    <img className="commentor-profile-pic" src={this.props.currentUser.profilePicUrl}/>
+    : <div className="signed-out-commentor"></div>;
     return (
       <div className="comment-form-container">
         {image}
