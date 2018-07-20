@@ -1,7 +1,10 @@
 
 
 
-.upload-link:hover{
+.upload-link:hover {
+  background-color: rgb(255, 119, 57);
+}
+.you-link:hover {
   background-color: rgb(255, 119, 57);
 }
 

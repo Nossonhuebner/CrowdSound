@@ -44,6 +44,7 @@ class Track < ApplicationRecord
     unless self.artwork.attached?
       self.artwork.attach(io: EzDownload.open('https://s3.us-east-2.amazonaws.com/crowdsound-prod/albums/default.png'),
       filename: 'default.png')
+    end
   end
 
 end
