@@ -23,11 +23,12 @@
 .logo {
   background-image: image_url('logo.jpg');
   width: 59px;
-  height: 94px;
+  height: 45px;
   margin-top: 0px;
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
+  grid-area: 1/ 1;
 }
 
 .top-tracks{
@@ -40,6 +41,7 @@
   width: 155px;
   border: 1px solid #f1f1f1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 3px;
 }
 
 .top-track-item{

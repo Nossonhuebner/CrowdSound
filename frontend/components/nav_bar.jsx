@@ -10,7 +10,7 @@ export default (props) => {
               <div className="nav-buttons">
                 <h2 className="welcome">{`${props.currentUser.username}`}</h2>
                 <Link className="upload-link" to="/upload">Upload</Link>
-                <Link className="upload-link" to="/you">You</Link>
+                <Link className="you-link" to="/you">You</Link>
                 <button className="login-button" onClick={props.logOut}>Sign Out</button>
               </div>
 
@@ -32,7 +32,7 @@ export default (props) => {
   return (
     <div className="bar-outer-container">
       <header className='greeting-bar'>
-        <div className="logo"></div>
+        <Link className="logo" to="/"></Link>
         <SearchBar />
           {personal}
       </header>
