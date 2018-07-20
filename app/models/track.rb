@@ -42,9 +42,8 @@ class Track < ApplicationRecord
 
   def ensure_artwork
     unless self.artwork.attached?
-      self.artwork.attach(io: File.open('app/assets/images/default.jpeg'),
-       filename: 'default.jpeg')
-    end
+      self.artwork.attach(io: EzDownload.open('https://s3.us-east-2.amazonaws.com/crowdsound-prod/albums/default.png'),
+      filename: 'default.png')
   end
 
 end
