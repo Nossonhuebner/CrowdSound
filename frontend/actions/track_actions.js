@@ -26,15 +26,17 @@ export const incrementPlays = (id) => dispatch => {
 };
 
 
-// export const fetchTracks = (userId) => dispatch => {
-//   return TracksApiUtil.fetchTracks(userId)
-//   .then(tracks => dispatch(receiveTracks(tracks)));
+export const fetchTracks = () => dispatch => {
+  return TracksApiUtil.fetchTracks()
+  .then(tracks => dispatch(receiveTracks(tracks)));
+};
+
+// export const addToAlbum = (trackId, albumId) => {
+//   return TracksApiUtil.addToAlbum(trackId, albumId)
+//   .then(track => dispatch(receiveTrack(track)), errors => dispatch(receiveErrors(errors)));
 // };
 
-export const addToAlbum = (trackId, albumId) => {
-  return TracksApiUtil.addToAlbum(trackId, albumId)
-  .then(track => dispatch(receiveTrack(track)), errors => dispatch(receiveErrors(errors)));
-};
+
 
 
 
@@ -47,10 +49,10 @@ export const receiveNewTrack = ({track, user, comments}) => {
   return {type: RECEIVE_NEW_TRACK, track, user, comments};
 };
 
-export const receiveTrack = ({track, user, comments}) => {
-  return {type: RECEIVE_TRACK, track, user, comments};
+export const receiveTrack = ({track, user, comments, commentUsers}) => {
+  return {type: RECEIVE_TRACK, track, user, comments, commentUsers};
 };
 
-export const receiveTracks = (tracks) => {
-  return {type: RECEIVE_TRACK, tracks};
+export const receiveTracks = ({tracks, users}) => {
+  return {type: RECEIVE_TRACKS, tracks, users};
 };

@@ -142,7 +142,7 @@ song.file.attach(io: fille, filename: "ZUSHA++Dov+Ber++Joshua+Tree+Part+II.mp3")
 song.artwork.attach(io: art, filename: 'zusha.jpeg')
 song.save!
 
-song = Track.new(title: "Dovber" , artist_id: zusha.id )
+song = Track.new(title: "Shuva" , artist_id: zusha.id )
 fille = EzDownload.open("https://s3.amazonaws.com/crowd-sound-prod/albums/zusha+shtetl/Shuva.mp3")
 art = EzDownload.open('https://s3.amazonaws.com/crowd-sound-prod/albums/zusha+shtetl/zusha+kavana.jpeg')
 song.file.attach(io: fille, filename: "Shuva.mp3")

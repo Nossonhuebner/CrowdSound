@@ -34,15 +34,15 @@ const mapStateToProps = (state, ownProps) => {
       userTracks.push(track);
     }
   }
-
-  let userAlbums = [];
-  for (let i = 0; i < user.albumIds.length; i++) {
-    const album = state.entities.albums[user.albumIds[i]];
-    if (album) {
-      userAlbums.push(album);
-    }
-  }
-  return { user, userTracks, userAlbums };
+  //
+  // let userAlbums = [];
+  // for (let i = 0; i < user.albumIds.length; i++) {
+  //   const album = state.entities.albums[user.albumIds[i]];
+  //   if (album) {
+  //     userAlbums.push(album);
+  //   }
+  // }
+  return { user, userTracks };
 };
 
 const mapDispatchToProps = dispatch => {

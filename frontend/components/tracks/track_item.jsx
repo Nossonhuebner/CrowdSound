@@ -34,8 +34,12 @@ class TrackItem extends React.Component {
     //   <input type="submit"/>
     // </form>;
     const button = (this.props.track.artist_id === this.props.currentUserId) ?
-      <button className="track-delete-edit" onClick={() => this.props.deleteTrack(this.props.track)}>Delete Track</button>
+      <button className="track-delete-edit" onClick={() => this.props.deleteTrack(this.props.track)}><i className="fa fa-trash"></i></button>
     : null;
+
+
+
+
 
     return (
       <li  className="single-track">
@@ -43,6 +47,12 @@ class TrackItem extends React.Component {
         <button className="track-item-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
         {button}
         <button className="track-item-like"><i className="fa fa-heart"></i></button>
+        <button className="track-item-repost"><i className="fa fa-retweet"></i></button>
+        <button className="track-item-share"><i className="fa fa-share"></i></button>
+        <Link className="track-item-comment" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>
+          <button ><i className="fa fa-comment"></i><div className="comment-count">{this.props.track.commentIds.length}</div>
+          </button>
+        </Link>
         <div className="track-item-date">{dateFormatter(this.props.track.created_at)}</div>
         <div className="track-plays"><i className="fa fa-play"></i>  0</div>
         <div className="track-li-playback">so much emptiness</div>

@@ -11,6 +11,16 @@ json.user do
     json.profilePicUrl url_for(track.artist.profile_pic)
 end
 
+json.commentUsers do
+  track.comments.each do |comment|
+    json.set! comment.user.id do
+      json.extract! comment.user, :id, :username
+      json.trackIds comment.user.track_ids
+      json.profilePicUrl url_for(comment.user.profile_pic)
+    end
+  end
+end
+
 json.comments do
   track.comments.each do |comment|
     json.set! comment.id do

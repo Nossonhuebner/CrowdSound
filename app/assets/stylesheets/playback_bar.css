@@ -22,26 +22,32 @@
 }
 
 .playback-links {
-  padding-right: 15%;
+  width: 10%;
   align-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-right: 8%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   text-decoration: none;
 }
 .playback-link-artist {
   font-size: 13px;
   text-decoration: none;
   color: grey;
+  align-self: center;
 }
 
 .playback-link-track {
   font-size: 13px;
   text-decoration: none;
+  grid-area: 2/ 1;
   color: grey;
-  margin-top: 10px;
+  margin-top: 7px;
 }
 
 .playback-link-track:hover, .playback-link-artist:hover {
   color: black
+}
+
+.playback-like {
+  padding-right: 10%;
 }

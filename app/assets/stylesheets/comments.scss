@@ -2,7 +2,8 @@
   min-width: 600px;
   display: flex;
   flex-direction: column;
-  width: 55%;
+  width: 70%;
+
 }
 
 
@@ -42,6 +43,7 @@
 
 .artist-box {
   margin: 0 35px;
+  padding-top: 10px;
 }
 .comments-artist-pic {
   border-radius: 50%;
@@ -65,18 +67,24 @@
 }
 
 .comment-item {
-  width: 100%;
-  display: flex;
+  width: 600px;
+  display: grid;
   margin-bottom: 20px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 7fr 3fr;
 }
 
 .comment-profile-pic {
   border-radius: 50%;
   height: 40px;
+  grid-area: 1/1;
 }
 
 .comment-date {
-  font-size: 14px;
+  font-size: 11px;
+  color: #999;
+  grid-area: 1/3;
+  justify-self: end;
 }
 
 .comment-center {
@@ -84,21 +92,40 @@
 }
 
 .comment-author {
-  padding-left: 11px;
-  color: #b1b1b1;
+  color: #999;
   font-size: 14px;
   text-decoration: none;
+  grid-area: 1/ 2;
+  justify-self: self-start;
+  padding-left: 5px;
 }
 
 .comment-body {
-  padding-left: 11px;
-  padding-top: 6px;
+  padding-top: 19px;
   font-size: 14px;
+  word-wrap: break-word;
+  grid-area: 1/ 2 / -1 / 2;
+  width: 450px;
+  padding-right: 25px;
+  align-self: start;
+  padding-left: 5px;
 }
-
 
 
 .empty-comments {
   font-size: 33px;
   color: #adadad;
+}
+
+.show-comment-count {
+  padding-left: 220px;
+  padding-bottom: 10px;
+  margin-left: 5px;
+  color: #999;
+}
+
+.delete-comment {
+  grid-area: 2/ 3;
+  color: #999;
+  align-self: start;
 }

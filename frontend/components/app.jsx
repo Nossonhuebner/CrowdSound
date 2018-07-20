@@ -11,12 +11,8 @@ import ShowUser from './user/user_show_container';
 import PlaybackBar from './playback_bar/playback_bar';
 import SearchBar from './search';
 import ShowTrack from './tracks/show_track';
+import Splash from './splash';
 
-const splash = () => (
-    <div className="splash-body">
-      <div className="greeting-container"></div>
-    </div>
-);
 
 // <SearchBar />
 
@@ -30,9 +26,9 @@ export default () => {
 
       <NavBar />
       <Modal />
+      <Route exact path = "/" component={Splash}/>
       <Switch>
         <Route path="/users/:userId/:trackId" component={ShowTrack}/>
-        <Route exact path = "/" component={splash}/>
         <Route exact path="/users/:userId" component={ShowUser}/>
       </Switch>
       <PlaybackBar />

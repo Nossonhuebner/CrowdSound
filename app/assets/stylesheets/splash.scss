@@ -17,7 +17,7 @@
   align-self: center;
   width: 92%;
   height: 100%;
-  background-color: #bdbdbd;
+  background-color: #f5f5f5;
 }
 
 .logo {
@@ -28,4 +28,64 @@
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+.top-tracks{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px
+}
+
+.popular-track{
+  width: 155px;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.top-track-item{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.top-track-link{
+  text-decoration: none;
+  color: black;
+  padding-top: 10px;
+  width: 155px;
+}
+
+.top-artist-link {
+  text-decoration: none;
+  color: #999;
+  font-size: 14px;
+  padding-top: 4px;
+}
+
+.trending-title{
+  margin: 0 auto;
+  padding: 65px;
+  font-size: 25px;
+}
+
+.explore{
+  background-color: rgb(255, 80, 0);
+  color: #ffffffe8;
+  border: none;
+  border-radius: 4px;
+  padding: 15px 17px;
+  font-size: 15px;
+  margin-left: 44%;
+  margin-top: 100px;
+  margin-bottom: 150px;
+  transition-property: background-color;
+  transition-duration: .2s;
+  text-decoration-line: none;
+  width: 161px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.explore:hover{
+  background-color: rgb(255, 119, 57);
 }

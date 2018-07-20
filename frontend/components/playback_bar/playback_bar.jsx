@@ -24,6 +24,7 @@ class PlaybackBar extends React.Component {
               <Link className="playback-link-artist" to={`/users/${track.artist_id}`}>{artist.username}</Link>
               <Link className="playback-link-track" to={`/users/${track.artist_id}/${track.id}`}>{track.title}</Link>
             </div>
+            <button className="playback-like"><i className="fa fa-heart"></i></button>
           </div>
         );
       }

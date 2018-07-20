@@ -10,8 +10,9 @@ class UploadTrack extends React.Component {
     this.state = {
       title: "",
       trackFile: null,
+      trackUrl: null,
       trackArtwork: null,
-      trackUrl: null
+      artworkUrl: ""
     };
   }
 
@@ -32,10 +33,12 @@ class UploadTrack extends React.Component {
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
 
-      this.setState({trackArtwork: artwork, trackUrl: fileReader.result});
+      this.setState({trackArtwork: artwork, artworkUrl: fileReader.result});
     };
     if (artwork) {
       fileReader.readAsDataURL(artwork);
+    } else {
+    this.setState({ artworkUrl: "", trackArtwork: null });
     }
   }
 
@@ -64,8 +67,15 @@ class UploadTrack extends React.Component {
   }
 
   render() {
+    let src;
+    if (this.state.artworkUrl) {
+    src = this.state.artworkUrl
+  } else {
+    src = ""
+  }
     return (
       <form className="upload-form" onSubmit={this.handleSubmit.bind(this)}>
+        <img src={src}/>
 
         <input className="upload-title" placeholder="Track Name"
           type="text" value={this.state.title} onChange={this.updateTitle.bind(this)}/>

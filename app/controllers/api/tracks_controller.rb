@@ -1,7 +1,11 @@
 class Api::TracksController < ApplicationController
 
+  def index
+    @tracks = Track.includes(:artist).limit(12)
+  end
+
   def show
-    @track = Track.includes(:genre, :comments, artist: [:tracks]).find(params[:id])
+    @track = Track.includes(:genre, artist: [:tracks], comments: [:user]).find(params[:id])
     render '/api/tracks/show'
   end
 

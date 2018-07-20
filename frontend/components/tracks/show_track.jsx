@@ -37,24 +37,28 @@ class ShowTrack extends React.Component {
       if (comments.length < 1) {
         commentItems = (<h2 className="empty-comments">Seems a little quiet over here</h2>);
       } else {
-        console.log(this.props.users);
         commentItems =  comments.map(comment => {
           return <CommentItem key={comment.id} trackId={this.props.track.id} comment={comment} author={this.props.users[comment.userId]}/> ;
         });
       }
 
+      const count = (
+        <div className="show-comment-count"><i className="fa fa-comment"></i>
+        {comments.length === 1 ? "  1 comment" : `  ${comments.length} comments`}
+        </div>
+      );
 
     return (
       <div className="track-show-container">
         {banner}
         <div className="comments-container">
           <CommentForm trackId={this.props.track.id}/>
+          {count}
           <div className="under-comment_form">
             <div className="artist-box">
               <Link to={`/users/${artist.id}`}>
               <img className="comments-artist-pic" src={artist.profilePicUrl}/>
               </Link>
-
               <Link className="comments-artist-name" to={`/users/${artist.id}`}>{artist.username}</Link>
             </div>
           <ul className="comments-list">
