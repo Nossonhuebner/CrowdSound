@@ -40,10 +40,9 @@ class TrackItem extends React.Component {
         this.props.likeTrack(this.props.track.id);
         liked = true;
       };
-
     }
-    const heartColor = liked ? "red" : "black";
 
+    const heartColor = liked ? "red" : "black";
 
     return (
       <li  className="single-track">

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { createLike, destroyLike } from '../../actions/like_actions';
 import { openModal } from '../../actions/modal_actions';
+import AudioPlayer from './audio_player';
 
 
 class PlaybackBar extends React.Component {
@@ -45,9 +46,7 @@ class PlaybackBar extends React.Component {
         return (
           <div className="playback-container">
             <img className="playback-track-artwork" style={{height: "inherit"}} src={track.artworkUrl}/>
-            <audio autoPlay="true" src={track.fileUrl} className="audio-element" controls controlsList="nodownload">
-            </audio>
-
+            <AudioPlayer source={track.fileUrl}/>
             <div className="playback-links">
               <Link className="playback-link-artist" to={`/users/${track.artist_id}`}>{artist.username}</Link>
               <Link className="playback-link-track" to={`/users/${track.artist_id}/${track.id}`}>{track.title}</Link>
