@@ -6,6 +6,8 @@ import CommentForm from './comment_form';
 import CommentItem from './comment_item';
 import { Link } from 'react-router-dom';
 import { dateFormatter } from '../../util/date_util';
+import { createLike, destroyLike } from '../../actions/like_actions';
+import { openModal } from '../../actions/modal_actions';
 
 
 class ShowTrack extends React.Component {
@@ -15,6 +17,31 @@ class ShowTrack extends React.Component {
   }
 
   render() {
+    let liked;
+    if (this.props.currentUserId && this.props.track.likerIds.includes(this.props.currentUserId)) {
+      liked = true;
+    } else {
+      liked = false;
+    }
+
+    let likeButtonCallback;
+    if (!this.props.currentUserId) {
+      likeButtonCallback = () => this.props.openModal('login');
+    } else if (liked) {
+      likeButtonCallback = (id) => {
+        this.props.destroyLike(this.props.track.id);
+        liked = false;
+      };
+    } else {
+      likeButtonCallback = (id) => {
+        this.props.likeTrack(this.props.track.id);
+        liked = true;
+      };
+
+    }
+    const heartColor = liked ? "red" : "black";
+
+
     const artist = this.props.users[this.props.match.params.userId] || {};
     const banner =
     (<div className="track-show-banner">
@@ -42,18 +69,36 @@ class ShowTrack extends React.Component {
         });
       }
 
-      const count = (
+      const commentCount = (
         <div className="show-comment-count"><i className="fa fa-comment"></i>
         {comments.length === 1 ? "  1 comment" : `  ${comments.length} comments`}
+        </div>
+      );
+
+      const likesCount = (
+        <div className="show-like-count"><i className="fa fa-heart"></i>
+        {`   ${this.props.track.likerIds.length}`}
         </div>
       );
 
     return (
       <div className="track-show-container">
         {banner}
+
         <div className="comments-container">
+          <div className ="track-show-stat-container">
           <CommentForm trackId={this.props.track.id}/>
-          {count}
+          <div className="track-show-options">
+            <div className="track-show-buttons">
+              <button onClick={() => likeButtonCallback()} className="track-show-button"><i className="fa fa-heart" style={{color: heartColor}}></i>   Like</button>
+              <button className="track-show-button"><i className="fa fa-retweet"></i>   Repost</button>
+              <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
+            </div>
+            <div className="track-show-stats">
+              {likesCount}
+            </div>
+          </div>
+        </div>
           <div className="under-comment_form">
             <div className="artist-box">
               <Link to={`/users/${artist.id}`}>
@@ -61,9 +106,12 @@ class ShowTrack extends React.Component {
               </Link>
               <Link className="comments-artist-name" to={`/users/${artist.id}`}>{artist.username}</Link>
             </div>
-          <ul className="comments-list">
-            {commentItems}
-          </ul>
+            <div className="comments-box">
+                {commentCount}
+              <ul className="comments-list">
+                {commentItems}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -74,15 +122,18 @@ class ShowTrack extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const track = state.entities.tracks[ownProps.match.params.trackId] || {commentIds: []};
+  const track = state.entities.tracks[ownProps.match.params.trackId] || {commentIds: [], likerIds: []};
   const users = state.entities.users;
   const comments = state.entities.comments;
-
-  return {track: track, users: users, comments};
+  const currentUserId = state.session.id;
+  return {track: track, users: users, comments, currentUserId};
 };
 
 
 const mapDistpatchToProps = (dispatch) => ({
+  openModal: () => dispatch(openModal('login')),
+  likeTrack: (trackId) => dispatch(createLike(trackId)),
+  destroyLike: (trackId) => dispatch(destroyLike(trackId)),
   fetchTrack: id => dispatch(fetchTrack(id)),
   openPlaybackBar: track => dispatch(openPlaybackBar(track))
 });

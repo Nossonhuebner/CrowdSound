@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteTrack, addToAlbum } from '../../actions/track_actions';
 import { createLike, destroyLike } from '../../actions/like_actions';
+import { openModal } from '../../actions/modal_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { dateFormatter } from '../../util/date_util';
-import { openModal } from '../../actions/modal_actions';
 
 class TrackItem extends React.Component {
 
