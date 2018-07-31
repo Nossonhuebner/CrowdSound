@@ -2,43 +2,47 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteTrack, addToAlbum } from '../../actions/track_actions';
+import { createLike, destroyLike } from '../../actions/like_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { dateFormatter } from '../../util/date_util';
+import { openModal } from '../../actions/modal_actions';
 
 class TrackItem extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {albumName: null};
-  // }
-  //
-  //
-  // updateAlbumName(e) {
-  //   this.setState({albumName: e.currentTarget.value});
-  // }
-  //
-  // handleSubmit(e) {
-  //   e.preventDefault();
-  //
-  //   this.props.addToAlbum(this.props.track.id, this.state.albumName).then(() => {
-  //     return this.props.history.push('/');
-  //     this.setState({albumName: null});
-  //   });
-  // }
-
 
 
   render () {
+    const button = (this.props.track.artist_id === this.props.currentUserId) ?
+    <button className="track-delete-edit" onClick={() => this.props.deleteTrack(this.props.track)}><i className="fa fa-trash"></i></button>
+    : null;
+
     // const form =
     // <form onSubmit={this.handleSubmit.bind(this)}>
     //   <input onChange={this.updateAlbumName.bind(this)} type="text" placeholder="add to album" value={this.state.albumName}/>
     //   <input type="submit"/>
     // </form>;
-    const button = (this.props.track.artist_id === this.props.currentUserId) ?
-      <button className="track-delete-edit" onClick={() => this.props.deleteTrack(this.props.track)}><i className="fa fa-trash"></i></button>
-    : null;
+    let liked;
+    if (this.props.currentUserId && this.props.track.likerIds.includes(this.props.currentUserId)) {
+      liked = true;
+    } else {
+      liked = false;
+    }
 
+    let likeButtonCallback;
+    if (!this.props.currentUserId) {
+      likeButtonCallback = () => this.props.openModal('login');
+    } else if (liked) {
+      likeButtonCallback = (id) => {
+        this.props.destroyLike(this.props.track.id);
+        liked = false;
+      };
+    } else {
+      likeButtonCallback = (id) => {
+        this.props.likeTrack(this.props.track.id);
+        liked = true;
+      };
 
-
+    }
+    const heartColor = liked ? "red" : "black";
 
 
     return (
@@ -46,7 +50,7 @@ class TrackItem extends React.Component {
         <img className="track-artwork" src={this.props.track.artworkUrl}/>
         <button className="track-item-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
         {button}
-        <button className="track-item-like"><i className="fa fa-heart"></i></button>
+        <button onClick={() => likeButtonCallback()} className="track-item-like"><i className="fa fa-heart" style={{color: heartColor}}></i></button>
         <button className="track-item-repost"><i className="fa fa-retweet"></i></button>
         <button className="track-item-share"><i className="fa fa-share"></i></button>
         <Link className="track-item-comment" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>
@@ -71,6 +75,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   // addToAlbum: (id, albumName) => dispatch(addToAlbum(id, albumName)),
   return {
+  likeTrack: trackId => dispatch(createLike(trackId)),
+  destroyLike: trackId => dispatch(destroyLike(trackId)),
+  openModal: action => dispatch(openModal(action)),
   deleteTrack: track => dispatch(deleteTrack(track)),
   openPlaybackBar: track => dispatch(openPlaybackBar(track))
 };

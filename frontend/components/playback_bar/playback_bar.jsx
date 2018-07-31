@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { openPlaybackBar } from '../../actions/playback_actions';
+import { createLike, destroyLike } from '../../actions/like_actions';
+import { openModal } from '../../actions/modal_actions';
+
 
 class PlaybackBar extends React.Component {
 
@@ -14,6 +17,31 @@ class PlaybackBar extends React.Component {
         const track = this.props.playback;
         const artist = this.props.users[this.props.playback.artist_id];
 
+        let liked;
+        if (this.props.currentUserId && this.props.playback.likerIds.includes(this.props.currentUserId)) {
+          liked = true;
+        } else {
+          liked = false;
+        }
+
+        let likeButtonCallback;
+        if (!this.props.currentUserId) {
+          likeButtonCallback = () => this.props.openModal('login');
+        } else if (liked) {
+          likeButtonCallback = (id) => {
+            this.props.destroyLike(this.props.playback.id);
+            liked = false;
+          };
+        } else {
+          likeButtonCallback = (id) => {
+            this.props.likeTrack(this.props.playback.id);
+            liked = true;
+          };
+
+        }
+        const heartColor = liked ? "red" : "black";
+
+
         return (
           <div className="playback-container">
             <img className="playback-track-artwork" style={{height: "inherit"}} src={track.artworkUrl}/>
@@ -24,7 +52,7 @@ class PlaybackBar extends React.Component {
               <Link className="playback-link-artist" to={`/users/${track.artist_id}`}>{artist.username}</Link>
               <Link className="playback-link-track" to={`/users/${track.artist_id}/${track.id}`}>{track.title}</Link>
             </div>
-            <button className="playback-like"><i className="fa fa-heart"></i></button>
+            <button onClick={() => likeButtonCallback()} className="playback-like"><i className="fa fa-heart" style={{color: heartColor}}></i></button>
           </div>
         );
       }
@@ -40,13 +68,19 @@ class PlaybackBar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    currentUserId: state.session.id,
     playback: state.ui.playback_bar,
     users: state.entities.users
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return { openPlaybackBar: (track) => dispatch(openPlaybackBar(track))}
+  return {
+    likeTrack: trackId => dispatch(createLike(trackId)),
+    destroyLike: trackId => dispatch(destroyLike(trackId)),
+    openModal: action => dispatch(openModal(action)),
+    openPlaybackBar: (track) => dispatch(openPlaybackBar(track))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybackBar);

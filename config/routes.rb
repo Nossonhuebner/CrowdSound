@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     resources :tracks do
       resources :comments, only: [:create, :update, :destroy]
+      resources :likes, only: [:create, :destroy]
     end
     resources :albums, only: [:create, :show, :destroy]
     resource :session, only: [:create, :destroy]

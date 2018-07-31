@@ -12,6 +12,7 @@ json.tracks do
       json.fileUrl url_for(track.file)
       json.artworkUrl url_for(track.artwork)
       json.commentIds track.comment_ids
+      json.likerIds track.likers.ids
     end
   end
 end

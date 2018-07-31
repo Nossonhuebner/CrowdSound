@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:albums, tracks: [:genre, :comments]).find(params[:id])
+    @user = User.with_attached_profile_pic.includes(:albums, tracks: [:genre, :comments, :likers]).find(params[:id])
   end
 
   private

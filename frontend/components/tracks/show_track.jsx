@@ -3,7 +3,7 @@ import { fetchTrack } from '../../actions/track_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { connect } from 'react-redux';
 import CommentForm from './comment_form';
-import CommentItem from './comment_item'
+import CommentItem from './comment_item';
 import { Link } from 'react-router-dom';
 import { dateFormatter } from '../../util/date_util';
 

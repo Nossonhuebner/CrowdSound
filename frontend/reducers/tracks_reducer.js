@@ -8,7 +8,8 @@ export default (state = {}, action) => {
   const newState = merge({}, state);
   switch (action.type) {
     case RECEIVE_TRACK:
-      return merge({}, state, {[action.track.id]: action.track});
+      delete newState[action.track.id];
+      return merge({}, newState, {[action.track.id]: action.track});
     case RECEIVE_USER:
     case LOG_IN_USER:
     case RECEIVE_TRACKS:

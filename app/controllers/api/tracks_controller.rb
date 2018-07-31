@@ -5,7 +5,7 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    @track = Track.includes(:genre, artist: [:tracks], comments: [:user]).find(params[:id])
+    @track = Track.includes(:genre, :likers, artist: [:tracks], comments: [:user]).find(params[:id])
     render '/api/tracks/show'
   end
 
