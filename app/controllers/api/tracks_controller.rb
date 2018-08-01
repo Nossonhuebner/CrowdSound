@@ -1,7 +1,7 @@
 class Api::TracksController < ApplicationController
 
   def index
-    @tracks = Track.includes(:artist).limit(12)
+    @tracks = Track.includes(:artist, :likes).limit(12)
   end
 
   def show

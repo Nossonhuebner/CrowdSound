@@ -7,19 +7,19 @@ export const dateFormatter = (date) => {
   const months = Math.floor(days / 30.42);
   const years = Math.floor(months / 12);
   if (years) {
-    return  years === 1 ? "1 year ago" : `${years} years ago`
+    return  years === 1 ? "1 year ago" : `${years} years ago`;
   } else if (months) {
-    return  months === 1 ? "1 month ago" : `${months} months ago`
+    return  months === 1 ? "1 month ago" : `${months} months ago`;
   } else if (days) {
-    return  days === 1 ? "1 day ago" : `${days} days ago`
+    return  days === 1 ? "1 day ago" : `${days} days ago`;
   } else if (hours) {
-    return  hours === 1 ? "1 hour ago" : `${hours} hours ago`
+    return  hours === 1 ? "1 hour ago" : `${hours} hours ago`;
   } else if (minutes) {
-    return  minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`
+    return  minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
   } else if (ellapsed) {
-    return "less than a minute ago"
+    return "less than a minute ago";
   } else {
-    return ""
+    return "";
   }
 
 };
