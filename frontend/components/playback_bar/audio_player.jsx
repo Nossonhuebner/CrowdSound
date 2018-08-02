@@ -85,6 +85,10 @@ class AudioPlayer extends React.Component {
   }
 
   render() {
+    // const volume = <div className="volume-wrapper">
+    //   <input onChange={this.handleVolume.bind(this)} type="range" min="0.0" max="1.0" value={this.state.volume} step="any"/>
+    // </div>;
+
       return (
         <div className="audio-player-container">
           <button className="rewind" onClick={() => this.rewind()}><i className="fa fa-step-backward"></i></button>
@@ -99,9 +103,6 @@ class AudioPlayer extends React.Component {
           <div className="duration">{this.audioRef.current ?
               this.durationFormat(this.audioRef.current.duration || 0)
                : "0:00"}
-          </div>
-          <div className="volume-wrapper">
-            <input onChange={this.handleVolume.bind(this)} type="range" min="0.0" max="1.0" value={this.state.volume} step="any"/>
           </div>
         </div>
 
