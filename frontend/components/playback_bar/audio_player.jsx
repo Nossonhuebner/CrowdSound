@@ -6,7 +6,7 @@ class AudioPlayer extends React.Component {
     super(props);
     this.audioRef = React.createRef();
 
-    this.state = {playButton: <i className="fa fa-pause"></i>, elapsed: 0, progress: 0, duration: 0};
+    this.state = {playButton: <i className="fa fa-pause"></i>, ellapsed: 0, progress: ""};
   }
 
 
@@ -24,12 +24,11 @@ class AudioPlayer extends React.Component {
   }
 
   progress(e) {
-     this.setState({elapsed: this.durationFormat(e.currentTarget.currentTime),
+     this.setState({ellapsed: this.durationFormat(e.currentTarget.currentTime),
         progress: this.durationPercentage(e.currentTarget.currentTime)});
   }
 
   durationFormat(secs) {
-    debugger
     let minutes = Math.floor(secs / 60);
     let hours = Math.floor(minutes / 60);
     let formattedMinutes = minutes < 60 ? minutes : 0;
@@ -62,17 +61,40 @@ class AudioPlayer extends React.Component {
     this.setState({duration: e.currentTarget.duration});
   }
 
+  clickSeek(e) {
+    let element = e.currentTarget;
+    let offsetX = 0;
+    let mouseX;
+
+    while (element.offsetParent) {
+      offsetX += element.offsetLeft;
+      element = element.offsetParent;
+    }
+    // offsetX += this.stylePaddingLeft + this.styleBorderLeft + this.htmlLeft;
+    mouseX = e.pageX - offsetX;
+
+    const newPercentage = mouseX / e.currentTarget.offsetWidth;
+    const duration = this.audioRef.current.duration;
+    this.audioRef.current.currentTime = duration * newPercentage;
+
+  }
+
   render() {
       return (
         <div className="audio-player-container">
           <button className="rewind" onClick={() => this.rewind()}><i className="fa fa-step-backward"></i></button>
           <button onClick={() => this.togglePlay()}>{this.state.playButton}</button>
-          <audio onLoadedData={this.getDuration.bind(this)} onTimeUpdate={this.progress.bind(this)} ref={this.audioRef} id="audio-el" autoPlay="true" src={this.props.source} className="audio-element" controlsList="nodownload"></audio>
-          <div className="ellapsed-time">{this.state.elapsed}</div>
-          <div className="audio-progress">
-            <div className="audio-full-length" style={{width: `${this.state.progress}%`}}></div>
+          <audio onTimeUpdate={this.progress.bind(this)} ref={this.audioRef} id="audio-el" autoPlay="true" src={this.props.source} className="audio-element" controlsList="nodownload"></audio>
+          <div className="ellapsed-time">{this.state.ellapsed}</div>
+          <div onClick={this.clickSeek.bind(this)} className="full-length-body">
+            <div className="audio-full-length"></div>
+            <div className="audio-progress" style={{width: `${this.state.progress}%`}}></div>
+            <div className="progress-ball"style={{left: `${this.state.progress}%`}}></div>
           </div>
-          <div className="duration">{this.durationFormat(this.state.duration)}</div>
+          <div className="duration">{this.audioRef.current ?
+              this.durationFormat(this.audioRef.current.duration || 0)
+               : "0:00"}
+          </div>
         </div>
 
     );

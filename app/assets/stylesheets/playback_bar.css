@@ -55,21 +55,30 @@
   padding-right: 10%;
 }
 
-.audio-full-length{
+.audio-progress{
   background-color: #ff5000;
   height: 1px;
   position: absolute;
-  top: 0px;
+  top: 10px;
 }
 
-.audio-progress{
-  width: 500px;
-  height: 1px;
-  background-color: #c3c3c3;
+.full-length-body{
   position: relative;
   grid-area: 1/ 7;
   align-self: center;
+  padding: 10px 0 10px 0;
 }
+
+.audio-full-length{
+  width: 500px;
+  height: 1px;
+  background-color: #c3c3c3;
+}
+
+.full-length-body:hover > .progress-ball{
+  opacity: 1;
+}
+
 
 .audio-player-container{
   padding-left: 19px;
@@ -94,5 +103,20 @@
   grid-area: 1/8;
   padding-left: 5px;
   font-size: 14px;
-  color: #ff5000;
+}
+
+.progress-ball{
+  width: 7px;
+  height: 7px;
+  background-color: #ff5000;
+  position: absolute;
+  border-radius: 50%;
+  top: -3px;
+  opacity: 0;
+  transition: 0.2s;
+  top: 7px;
+}
+
+.progress-ball:hover{
+  opacity: 1;
 }
