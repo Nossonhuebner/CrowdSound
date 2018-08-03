@@ -39,7 +39,9 @@ class ShowTrack extends React.Component {
       };
 
     }
-    const heartColor = liked ? "red" : "black";
+    const heartColor = liked ? "#ff5000" : "black";
+    const borderColor = liked ? "#ff5000" : "inherit";
+    const likeText = liked ? "Liked" : "Like"
 
 
     const artist = this.props.users[this.props.match.params.userId] || {};
@@ -90,7 +92,7 @@ class ShowTrack extends React.Component {
           <CommentForm trackId={this.props.track.id}/>
           <div className="track-show-options">
             <div className="track-show-buttons">
-              <button onClick={() => likeButtonCallback()} className="track-show-button"><i className="fa fa-heart" style={{color: heartColor}}></i>   Like</button>
+              <button onClick={() => likeButtonCallback()} className="track-show-button"style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
               <button className="track-show-button"><i className="fa fa-retweet"></i>   Repost</button>
               <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
             </div>

@@ -42,7 +42,7 @@ class TrackItem extends React.Component {
       };
     }
 
-    const heartColor = liked ? "red" : "black";
+    const heartColor = liked ? "#ff5000" : "black";
 
     return (
       <li  className="single-track">

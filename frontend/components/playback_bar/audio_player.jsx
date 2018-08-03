@@ -6,7 +6,7 @@ class AudioPlayer extends React.Component {
     super(props);
     this.audioRef = React.createRef();
 
-    this.state = {playButton: <i className="fa fa-pause"></i>, ellapsed: 0, progress: "", volume: 0.5};
+    this.state = {playButton: <i className="fa fa-pause"></i>, ellapsed: 0, progress: "", volume: 0.5, mute: false};
   }
 
 
@@ -81,18 +81,34 @@ class AudioPlayer extends React.Component {
   handleVolume(e) {
     const volume = e.currentTarget.value;
     this.audioRef.current.volume = volume;
-    this.setState({volume: volume});
+    this.setState({mute: false, volume: volume});
+  }
+
+  toggleMute() {
+    if (this.state.mute) {
+      this.setState({mute: false});
+      this.audioRef.current.volume = this.state.volume;
+    } else {
+      this.setState({mute: true});
+      this.audioRef.current.volume = 0;
+    }
   }
 
   render() {
-    // const volume = <div className="volume-wrapper">
-    //   <input onChange={this.handleVolume.bind(this)} type="range" min="0.0" max="1.0" value={this.state.volume} step="any"/>
-    // </div>;
+      let volumeIcon;
+      if (this.state.volume == 0 || this.state.mute){
+         volumeIcon = <i className="fa fa-volume-off"></i>;
+      } else if (this.state.volume > 0 && this.state.volume < 0.5) {
+        volumeIcon = <i className="fa fa-volume-down"></i>;
+      } else {
+        volumeIcon = <i className="fa fa-volume-up"></i>;
+      }
 
       return (
         <div className="audio-player-container">
           <button className="rewind" onClick={() => this.rewind()}><i className="fa fa-step-backward"></i></button>
           <button onClick={() => this.togglePlay()}>{this.state.playButton}</button>
+          <button className="next"><i className="fa fa-step-forward"></i></button>
           <audio onTimeUpdate={this.progress.bind(this)} ref={this.audioRef} id="audio-el" autoPlay="true" src={this.props.source} className="audio-element" controlsList="nodownload"></audio>
           <div className="ellapsed-time">{this.state.ellapsed}</div>
           <div onClick={this.clickSeek.bind(this)} className="full-length-body">
@@ -101,8 +117,12 @@ class AudioPlayer extends React.Component {
             <div className="progress-ball"style={{left: `${this.state.progress}%`}}></div>
           </div>
           <div className="duration">{this.audioRef.current ?
-              this.durationFormat(this.audioRef.current.duration || 0)
+              this.durationFormat(this.audioRef.current.duration)
                : "0:00"}
+          </div>
+          <button className="volume-button" onClick={this.toggleMute.bind(this)}>{volumeIcon}</button>
+          <div className="volume-wrapper">
+            <input onChange={this.handleVolume.bind(this)} type="range" min="0.0" max="1.0" value={this.state.mute ? 0 : this.state.volume} step="any"/>
           </div>
         </div>
 
