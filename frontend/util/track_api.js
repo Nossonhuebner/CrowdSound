@@ -24,6 +24,13 @@ export const fetchTracks = () => {
   });
 };
 
+export const incrementPlays = (id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/trackplays/${id}`
+  });
+};
+
 export const deleteTrack = (track) => {
   return $.ajax({
     method: 'DELETE',

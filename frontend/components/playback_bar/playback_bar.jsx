@@ -10,6 +10,7 @@ import AudioPlayer from './audio_player';
 class PlaybackBar extends React.Component {
 
   render () {
+
     const display = () => {
       if (!this.props.playback) {
         return "";

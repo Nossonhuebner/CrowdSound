@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchTracks } from '../actions/track_actions'
-import { openPlaybackBar } from '../actions/playback_actions';
+import { fetchTracks } from '../actions/track_actions';
+import { incrementPlays } from '../actions/track_actions';
 import { Link } from 'react-router-dom';
 
 class Splash extends React.Component {
@@ -9,14 +9,14 @@ class Splash extends React.Component {
 
 
   componentDidMount() {
-    this.props.fetchTracks()
+    this.props.fetchTracks();
   }
 
   render() {
     const tracks = this.props.topTracks.map(track => {
       return (
         <div className="top-track-item" key={track.id}>
-          <button onClick={() => this.props.openPlaybackBar(track)}><img className="popular-track" src={track.artworkUrl}/></button>
+          <button onClick={() => this.props.incrementPlays(track.id)}><img className="popular-track" src={track.artworkUrl}/></button>
           <Link className="top-track-link" to={`/users/${track.artist_id}/${track.id}`}>{track.title}</Link>
           <Link className="top-artist-link" to={`/users/${track.artist_id}`}>{track.artistName}</Link>
         </div>
@@ -32,7 +32,7 @@ class Splash extends React.Component {
           </div>
         <a className="explore">Explore our top 50</a>
       </div>
-    )
+    );
   }
 }
 
@@ -41,9 +41,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  openPlaybackBar: track => dispatch(openPlaybackBar(track)),
+  incrementPlays: trackId => dispatch(incrementPlays(trackId)),
   fetchTracks: () => dispatch(fetchTracks())
-})
+});
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Splash)
+export default connect(mapStateToProps, mapDispatchToProps)(Splash);

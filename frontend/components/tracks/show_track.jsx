@@ -8,12 +8,20 @@ import { Link } from 'react-router-dom';
 import { dateFormatter } from '../../util/date_util';
 import { createLike, destroyLike } from '../../actions/like_actions';
 import { openModal } from '../../actions/modal_actions';
-
+import { incrementPlays } from '../../actions/track_actions';
 
 class ShowTrack extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId);
+  }
+
+  handlePlay(e){
+
+    if (this.props.track.id !== this.props.currentlyPlayingId) {
+      // this.props.openPlaybackBar(this.props.track);
+      this.props.incrementPlays(this.props.track.id);
+    }
   }
 
   render() {
@@ -40,8 +48,8 @@ class ShowTrack extends React.Component {
 
     }
     const heartColor = liked ? "#ff5000" : "black";
-    const borderColor = liked ? "#ff5000" : "inherit";
-    const likeText = liked ? "Liked" : "Like"
+    const borderColor = liked ? "#ff5000" : "#e2e2e2";
+    const likeText = liked ? "Liked" : "Like";
 
 
     const artist = this.props.users[this.props.match.params.userId] || {};
@@ -50,7 +58,7 @@ class ShowTrack extends React.Component {
       <div className="track-banner-title">{this.props.track.title}</div>
       <div className="track-banner-artist">{artist.username}</div>
       <img className="track-show-artwork" src={this.props.track.artworkUrl}/>
-      <button className="track-banner-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
+      <button className="track-banner-play" onClick={this.handlePlay.bind(this)}></button>
       <div className="track-banner-date">{dateFormatter(this.props.track.created_at)}</div>
     </div>);
 
@@ -77,9 +85,14 @@ class ShowTrack extends React.Component {
         </div>
       );
 
-      const likesCount = (
+      const likesCount = this.props.track.likerIds.length === 0 ? "" : (
         <div className="show-like-count"><i className="fa fa-heart"></i>
         {`   ${this.props.track.likerIds.length}`}
+        </div>
+      );
+      const playsCount = this.props.track.plays === 0 ? "" : (
+        <div className="show-like-count"><i className="fa fa-play"></i>
+        {`   ${this.props.track.plays}`}
         </div>
       );
 
@@ -97,6 +110,7 @@ class ShowTrack extends React.Component {
               <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
             </div>
             <div className="track-show-stats">
+              {playsCount}
               {likesCount}
             </div>
           </div>
@@ -128,11 +142,16 @@ const mapStateToProps = (state, ownProps) => {
   const users = state.entities.users;
   const comments = state.entities.comments;
   const currentUserId = state.session.id;
-  return {track: track, users: users, comments, currentUserId};
+  let currentlyPlayingId = null;
+  if (state.ui.playback_bar){
+    currentlyPlayingId = state.ui.playback_bar.id;
+  }
+  return {track, users, comments, currentUserId, currentlyPlayingId};
 };
 
 
 const mapDistpatchToProps = (dispatch) => ({
+  incrementPlays: (id) => dispatch(incrementPlays(id)),
   openModal: () => dispatch(openModal('login')),
   likeTrack: (trackId) => dispatch(createLike(trackId)),
   destroyLike: (trackId) => dispatch(destroyLike(trackId)),

@@ -34,10 +34,15 @@ class Api::TracksController < ApplicationController
     track.destroy if track
     render json: {}
   end
-  #
-  # def update
-  #   @track =
-  # end
+
+  def increment_plays
+    @track = @track = Track.includes(:genre, :likers, artist: [:tracks], comments: [:user]).find(params[:id])
+    if @track.update(plays: @track.plays + 1)
+      render '/api/tracks/show'
+    else
+      render json: @track.errors.full_messages, status: 404
+    end
+  end
 
   private
 

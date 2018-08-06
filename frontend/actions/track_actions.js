@@ -3,6 +3,7 @@ export const RECEIVE_TRACK = "RECEIVE_TRACK";
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
 export const REMOVE_TRACK = "REMOVE_TRACK";
 import * as TracksApiUtil from '../util/track_api';
+import { openPlaybackBar } from './playback_actions'
 import { receiveErrors } from './error_actions';
 
 export const uploadTrack = (track) => dispatch => {
@@ -22,7 +23,7 @@ export const deleteTrack = (id) => dispatch => {
 
 export const incrementPlays = (id) => dispatch => {
   return TracksApiUtil.incrementPlays(id)
-  .then(() => dispatch(receiveTrack(track)), errors => dispatch(receiveErrors(errors)));
+  .then((track) => dispatch(openPlaybackBar(track)), errors => dispatch(receiveErrors(errors)));
 };
 
 

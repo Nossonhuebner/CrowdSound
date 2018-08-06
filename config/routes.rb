@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :albums, only: [:create, :show, :destroy]
     resource :session, only: [:create, :destroy]
   end
+  patch '/api/trackplays/:id', to: 'api/tracks#increment_plays'
 end
