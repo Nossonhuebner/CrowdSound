@@ -20,19 +20,15 @@ const Modal = ({ modal, closeModal }) => {
 
   return (
 
-    <ReactCSSTransitionGroup
-      transitionName="modal"
-      transitionAppear={true}
-      transitionAppearTimeout={500}
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={300}>
+
       <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           { component }
-        </div>
+        <p className="legal">We may use your email and devices for updates and tips on CrowdSound's
+           products and services, and for activities notifications. You can
+           unsubscribe for free at any time in your notification settings.</p>
+       </div>
       </div>
-  </ReactCSSTransitionGroup>
-
   );
 };
 

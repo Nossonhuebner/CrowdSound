@@ -31,6 +31,12 @@ class Splash extends React.Component {
             {tracks}
           </div>
         <a className="explore">Explore our top 50</a>
+        <div className="never-stop"></div>
+          <div className="calling-creators"><h3>Calling all creators</h3>
+            <p>Get on CrowdSound to connect with fans, share your sounds,
+              and grow your audience. What are you waiting for?
+            </p>
+          </div>
       </div>
     );
   }

@@ -13,6 +13,7 @@
 .search-submit {
   opacity: 0.6;
   grid-area: 1/2;
+  color: #757575;
 }
 
 .search-input{
@@ -22,7 +23,7 @@
   border-radius: 6px;
   font-size: 20px;
   margin: 5px;
-  background-color: #525252;
+  background-color: #b9b9b9;
   transition-property: background-color;
   transition-duration: .2s;
   padding: 4px;

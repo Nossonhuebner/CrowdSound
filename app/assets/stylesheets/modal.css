@@ -3,6 +3,11 @@ button:hover{
   cursor: pointer;
 }
 
+.modal-content {
+
+}
+
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -13,27 +18,29 @@ button:hover{
   z-index: 10;
 }
 
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 200px; opacity: 1}
+}
 .modal-child {
-  border-radius: 5px;
   width: 325px;
   height: 325px;
-  background-color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  box-shadow: 2px 4px 5px 0px grey;
+  top: 200px;
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
 }
 
 .form-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin: 10px;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -60,8 +67,8 @@ button:hover{
 
 .modal-input {
   border-radius: 4px;
-  padding: 10px;
-  margin: 2px;
+  padding: 10px 5px 10px 6px;
+  margin: 5px 0 8px 0;
   font-size: 16px;
   border: 1px solid grey;
   font-family: 'Ubuntu', sans-serif;
@@ -71,11 +78,11 @@ button:hover{
   background-color: rgb(255, 80, 0);
   color: white;
   border-radius: 4px;
-  padding: 15px;
+  padding: 10px 5px 10px 6px;
+  margin: 5px 0 8px 0;
   font-size: 18px;
   transition-property: background-color;
   transition-duration: .4s;
-  margin: 5px;
 }
 
 .modal-submit:hover{
@@ -91,15 +98,15 @@ button:hover{
   transition: opacity .3s ease-in;
 }
 
-.forgot {
-  margin: 99px;
-}
-
 .alt-form:hover{
   color: rgb(255, 80, 0);
 }
 
-
+.legal{
+  color: #d0d0d0;
+  font-size: 12px;
+  padding: 10px 16px 5px 15px;
+}
 /*
 
 

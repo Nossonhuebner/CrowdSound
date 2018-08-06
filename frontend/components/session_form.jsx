@@ -22,8 +22,6 @@ class sessionForm extends React.Component {
 
         <div className="form-header">
           <div className="form-type">{this.props.formType}</div>
-
-          <div className="alt-form">or {this.props.otherForm}</div>
         </div>
 
           <ul className="modal-errors">
@@ -49,7 +47,7 @@ class sessionForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const user =  Object.assign({}, this.state);
-    this.props.processForm(user).then
+    this.props.processForm(user);
     // this.setState(this.state = {username: '', password: '', forgot: 'Forgot password?'});
   }
 

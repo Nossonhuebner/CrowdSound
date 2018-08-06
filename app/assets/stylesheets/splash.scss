@@ -17,7 +17,7 @@
   align-self: center;
   width: 92%;
   height: 100%;
-  background-color: #f5f5f5;
+  background-color: #f2f2f2;
 }
 
 .logo {
@@ -90,4 +90,38 @@
 
 .explore:hover{
   background-color: rgb(255, 119, 57);
+}
+
+.never-stop{
+  width: 100%;
+  margin-left: 14%;
+  height: 391px;
+  background-image: url(https://a-v2.sndcdn.com/assets/images/front/never_stop_listening@1x-9c5264f.jpg);
+  background-repeat: no-repeat;
+}
+
+.calling-creators{
+  background-image: url(https://a-v2.sndcdn.com/assets/images/home/hp_creator_image-e08dee4.jpg);
+  height: 350px;
+  color: #fff;
+  background-size: auto;
+  background-repeat: no-repeat;
+  width: -webkit-fill-available;
+  align-self: unset;
+  margin: 0 auto;
+  margin-left: 7.5%;
+}
+
+.calling-creators p {
+  font-size: 24px;
+  display: block;
+  width: 400px;
+  padding: 17px 0 0 170px;
+
+}
+
+.calling-creators h3 {
+  font-size: 37px;
+  display: block;
+  padding: 51px 0 0 170px;
 }
