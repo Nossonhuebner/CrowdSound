@@ -14,7 +14,7 @@
 #
 
 class Track < ApplicationRecord
-  after_initialize :ensure_artwork
+  before_save :ensure_artwork
 
   scope :with_eager_loaded_file, -> { eager_load(file_attachment: :blob) }
   scope :with_eager_loaded_artwork, -> { eager_load(artwork_attachment: :blob) }
@@ -32,7 +32,7 @@ class Track < ApplicationRecord
   optional: true
 
   has_many :likes
-  
+
   has_many :likers,
   through: :likes,
   source: :user

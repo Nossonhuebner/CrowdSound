@@ -141,6 +141,7 @@ song.save!
 
 song = Track.new(title: "Feeling Good" , artist_id: michealbuble.id )
 fille = EzDownload.open('https://s3.amazonaws.com/crowdsound-dev/albums/micheal+buble+-+feeling+good/Michael+Bubl%C3%A9+-+Feeling+Good+%5BOfficial+Music+Video%5D.mp3')
+fille = EzDownload.open('https://s3.amazonaws.com/crowdsound-dev/albums/micheal+buble+-+feeling+good/Michael+Buble%CC%81+-+Feeling+Good+%5BOfficial+Music+Video%5D.mp3')
 art = EzDownload.open('https://s3.amazonaws.com/crowdsound-dev/albums/micheal+buble+-+feeling+good/micheal+buble.jpeg')
 song.file.attach(io: fille, filename: 'Michael+Bubl%C3%A9+-+Feeling+Good+%5BOfficial+Music+Video%5D.mp3')
 song.artwork.attach(io: art, filename: 'micheal+buble.jpeg')
