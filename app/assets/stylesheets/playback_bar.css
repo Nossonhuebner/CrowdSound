@@ -124,10 +124,10 @@
 }
 
 .volume-wrapper{
+  margin-left: -57px;
   visibility:  hidden;
   transform: rotateZ(270deg);
   position: fixed;
-  left: 72.5%;
   bottom: 106px;
   background: #f1f3f400;
   border-radius: 4px;
@@ -150,13 +150,15 @@
 }
 
 .volume-button{
+  position: relative;
   width: 40px;
   height: 17px;
   align-self: start;
   justify-self: center;
   grid-area: 1/9;
 }
-.volume-button:hover + .volume-wrapper, .volume-wrapper:hover{
+.volume-button:hover ~ .volume-wrapper, .volume-wrapper:hover{
+  display: inherit;
   visibility: inherit;
 }
 
@@ -232,4 +234,11 @@ input[type=range]::-ms-thumb {
 }
 input[type=range]:focus::-ms-fill-lower {
   background: #ff5000;
+}
+
+.volume-container{
+  position: relative;
+  align-self: start;
+  justify-self: center;
+  grid-area: 1/9;
 }

@@ -21,14 +21,26 @@
 }
 
 .logo {
-  background-image: image_url('logo.jpg');
-  width: 59px;
+  width: max-content;
+  color: white;
+  background: linear-gradient(#f70,#f30);
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  padding: 0 7px 0 5px;
   height: 45px;
   margin-top: 0px;
-  background-position: center;
-  background-size: 100%;
-  background-repeat: no-repeat;
   grid-area: 1/ 1;
+}
+
+.logo div{
+  font-size: 15px;
+  margin-left: 8px;
+}
+
+.logo .fa {
+  font-size: 38px;
+  padding-bottom: 5px;
 }
 
 .top-tracks{

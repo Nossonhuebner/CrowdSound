@@ -32,7 +32,7 @@ export default (props) => {
   return (
     <div className="bar-outer-container">
       <header className='greeting-bar'>
-        <Link className="logo" to="/"></Link>
+        <Link className="logo" to="/"><i className="fa fa-soundcloud"></i> <div>C R O W D S O U N D</div></Link>
         <SearchBar />
           {personal}
       </header>

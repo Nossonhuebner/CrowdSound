@@ -44,13 +44,17 @@ class TrackItem extends React.Component {
     }
 
     const heartColor = liked ? "#ff5000" : "black";
+    const likeBorder = liked ? "#ff5000" : "";
 
     return (
       <li  className="single-track">
         <img className="track-artwork" src={this.props.track.artworkUrl}/>
         <button className="track-item-play" onClick={() => this.props.incrementPlays(this.props.track.id)}></button>
         {button}
-        <button onClick={() => likeButtonCallback()} className="track-item-like"><i className="fa fa-heart" style={{color: heartColor}}></i></button>
+        <button style={{borderColor: likeBorder}} onClick={() => likeButtonCallback()} className="track-item-like">
+          <i className="fa fa-heart" style={{color: heartColor}}></i>
+          <div className="like-count" style={{color: heartColor}}>{this.props.track.likerIds.length}</div>
+        </button>
         <button className="track-item-repost"><i className="fa fa-retweet"></i></button>
         <button className="track-item-share"><i className="fa fa-share"></i></button>
         <Link className="track-item-comment" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>

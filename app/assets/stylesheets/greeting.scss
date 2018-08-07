@@ -39,7 +39,7 @@
 }
 
 .welcome {
-  color: #ffebdaab;
+  color: #eddacb;;
   font-size: 19px;
   align-self: center;
   font-weight: 500;
@@ -51,7 +51,8 @@
   background-color: #333333;
   height: 45px;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 8fr 7fr 3fr;
+  grid-template-columns: 1fr 6fr 7fr 3fr;
+  min-width: 1200px;
   margin: 0px auto;
   padding-right: 5px;
 }

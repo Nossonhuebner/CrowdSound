@@ -120,9 +120,11 @@ class AudioPlayer extends React.Component {
               this.durationFormat(this.audioRef.current.duration)
                : "0:00"}
           </div>
-          <button className="volume-button" onClick={this.toggleMute.bind(this)}>{volumeIcon}</button>
-          <div className="volume-wrapper">
-            <input onChange={this.handleVolume.bind(this)} type="range" min="0.0" max="1.0" value={this.state.mute ? 0 : this.state.volume} step="any"/>
+          <div className="volume-container">
+            <button className="volume-button" onClick={this.toggleMute.bind(this)}>{volumeIcon}</button>
+            <div className="volume-wrapper">
+              <input onChange={this.handleVolume.bind(this)} type="range" min="0.0" max="1.0" value={this.state.mute ? 0 : this.state.volume} step="any"/>
+            </div>
           </div>
         </div>
 
