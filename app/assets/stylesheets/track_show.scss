@@ -7,11 +7,9 @@
 }
 
 .track-show-banner{
-  // display: flex;
   margin-top: 80px;
   height: 380px;
   background: linear-gradient(-30deg, rgb(137, 106, 121), rgb(126, 158, 164));
-
   display: grid;
   grid-template-rows: 1fr 1fr 4fr;
   grid-template-columns: 1fr 3fr 1fr 1fr 3fr;
@@ -25,7 +23,6 @@
   padding: 10px;
   font-size: 23px;
   width: fit-content;
-
 }
 
 .track-banner-artist{
@@ -82,8 +79,9 @@
   font-size: 14px;
   margin-right: 5px;
 }
-.track-show-button:hover{
-  border: 1px solid #b7b7b7;;;
+
+.track-show-button:hover {
+  border: 1px solid #b7b7b7;
 }
 
 

@@ -129,8 +129,7 @@
   bottom: 106px;
   background: #f1f3f400;
   border-radius: 4px;
-  transition: visibility 1s ease-out
-  /* transition-delay: 2s; */
+  transition: visibility 1s ease-out;
 }
 .volume-wrapper:hover{
   display: inline;
@@ -144,8 +143,6 @@
   box-shadow: 0 1px 9px 0 rgba(132, 132, 132, 0.39), 0 1px 0px 0 rgb(220, 220, 220);
 }
 
-
-}
 .volume-wrapper input:hover {
   cursor: pointer;
 }
@@ -159,7 +156,6 @@
 }
 .volume-button:hover + .volume-wrapper, .volume-wrapper:hover{
   visibility: inherit;
-  /* transition: height 2s ease-out 2s, display 2s ease-out 0s;; */
 }
 
 
@@ -176,13 +172,11 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 1px;
   cursor: pointer;
-  /* box-shadow: 1.2px 1.2px 15px rgba(0, 0, 0, 0.41), 0px 0px 1.2px rgba(13, 13, 13, 0.41); */
   background: #ff7113;
   border-radius: 14.1px;
   border: 0px solid rgba(0, 1, 1, 0);
 }
 input[type=range]::-webkit-slider-thumb {
-  /* box-shadow: 0.3px 0.3px 4.5px #b26c00, 0px 0px 0.3px #cb7b00; */
   border: 0px solid rgba(0, 0, 0, 0);
   height: 7px;
   width: 7px;
@@ -199,13 +193,11 @@ input[type=range]::-moz-range-track {
   width: 100%;
   height: 1px;
   cursor: pointer;
-  /* box-shadow: 1.2px 1.2px 15px rgba(0, 0, 0, 0.41), 0px 0px 1.2px rgba(13, 13, 13, 0.41); */
   background: #ff7113;
   border-radius: 14.1px;
   border: 0px solid rgba(0, 1, 1, 0);
 }
 input[type=range]::-moz-range-thumb {
-  /* box-shadow: 0.3px 0.3px 4.5px #ff5000, 0px 0px 0.3px #ff5000; */
   border: 0px solid rgba(0, 0, 0, 0);
   height: 7px;
   width: 7px;
@@ -225,16 +217,9 @@ input[type=range]::-ms-fill-lower {
   background: #ff7113;
   border: 0px solid #ff5000;
   border-radius: 28.2px;
-  /* box-shadow: 1.2px 1.2px 15px rgba(0, 0, 0, 0.41), 0px 0px 1.2px #ff5000; */
 }
-/* input[type=range]::-ms-fill-upper {
-  background: #ff5000;
-  border: 0px solid rgba(0, 1, 1, 0);
-  border-radius: 28.2px;
-  box-shadow: 1.2px 1.2px 15px rgba(0, 0, 0, 0.41), 0px 0px 1.2px #ff5000;
-} */
+
 input[type=range]::-ms-thumb {
-  /* box-shadow: 0.3px 0.3px 4.5px #b26c00, 0px 0px 0.3px #cb7b00; */
   border: 0px solid rgba(0, 0, 0, 0);
   height: 7px;
   width: 7px;
@@ -246,6 +231,3 @@ input[type=range]::-ms-thumb {
 input[type=range]:focus::-ms-fill-lower {
   background: #ff5000;
 }
-/* input[type=range]:focus::-ms-fill-upper {
-  background: #ff5000;
-} */

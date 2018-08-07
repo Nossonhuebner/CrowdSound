@@ -59,6 +59,7 @@
   transition-property: background-color;
   transition-duration: .1s;
 }
+
 .profile-pic-file-input:hover{
   background-color: #fffffff0;
 }

@@ -95,7 +95,8 @@
 
 .audio-upload, .artwork-upload {
   width: 80%;
-  margin: 2px auto;  padding: 10px;
+  margin: 2px auto;
+  padding: 10px;
   border-radius: 6px;
   color: #868686;
   display: inline-block;
@@ -105,7 +106,7 @@
   font-size: 13px;
   border: 1px solid grey;
   transition-property: background-color;
-  transition-duration: .1s;
+  transition-duration: 0.1s;
 }
 .upload-form label:hover{
   background-color: #fffffff0;
@@ -136,7 +137,7 @@
   border-radius: 2px;
   padding: 7px;
   transition-property: background-color;
-  transition-duration: .1s;
+  transition-duration: 0.1s;
   color: #868686;
   }
 
