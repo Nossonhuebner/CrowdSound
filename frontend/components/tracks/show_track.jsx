@@ -9,6 +9,7 @@ import { dateFormatter } from '../../util/date_util';
 import { createLike, destroyLike } from '../../actions/like_actions';
 import { openModal } from '../../actions/modal_actions';
 import { incrementPlays } from '../../actions/track_actions';
+import { createFollow, destroyFollow } from '../../actions/follow_actions';
 
 class ShowTrack extends React.Component {
 
@@ -25,6 +26,8 @@ class ShowTrack extends React.Component {
   }
 
   render() {
+    const artist = this.props.users[this.props.match.params.userId] || {followerIds: [], trackIds: []};
+
     let liked;
     if (this.props.currentUserId && this.props.track.likerIds.includes(this.props.currentUserId)) {
       liked = true;
@@ -45,14 +48,40 @@ class ShowTrack extends React.Component {
         this.props.likeTrack(this.props.track.id);
         liked = true;
       };
-
     }
+
+
+    let following;
+    if (this.props.currentUserId && artist.followerIds.includes(this.props.currentUserId)) {
+      following = true;
+    } else {
+      following = false;
+    }
+
+    let followButtonCallback;
+    if (!this.props.currentUserId) {
+      followButtonCallback = () => this.props.openModal('login');
+    } else if (following) {
+      followButtonCallback = () => {
+        this.props.destroyFollow(artist.id);
+        following = false;
+      };
+    } else {
+      followButtonCallback = () => {
+        this.props.createFollow(artist.id);
+        following = true;
+      };
+    }
+
     const heartColor = liked ? "#ff5000" : "black";
     const borderColor = liked ? "#ff5000" : "";
     const likeText = liked ? "Liked" : "Like";
 
 
-    const artist = this.props.users[this.props.match.params.userId] || {};
+    const followText = following ? 'Following' : 'Follow';
+    const followColor = following ? "#ff5000" : "";
+    const followFill = following ? "" : "rgb(255, 80, 0)";
+
     const banner =
     (<div className="track-show-banner">
       <div className="track-banner-title">{this.props.track.title}</div>
@@ -97,6 +126,9 @@ class ShowTrack extends React.Component {
       );
 
 
+
+
+
     return (
       <div className="track-show-container">
         {banner}
@@ -106,7 +138,7 @@ class ShowTrack extends React.Component {
             <CommentForm trackId={this.props.track.id}/>
             <div className="track-show-options">
               <div className="track-show-buttons">
-                <button onClick={() => likeButtonCallback()} className="track-show-button"style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
+                <button onClick={() => likeButtonCallback()} className="track-show-button" style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
                 <button className="track-show-button"><i className="fa fa-retweet"></i>   Repost</button>
                 <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
               </div>
@@ -122,6 +154,11 @@ class ShowTrack extends React.Component {
                 <img className="comments-artist-pic" src={artist.profilePicUrl}/>
                 </Link>
                 <Link className="comments-artist-name" to={`/users/${artist.id}`}>{artist.username}</Link>
+                <div className="track-show-user-stats">
+                  <Link className="user-stats-followers" to={`/users/${artist.id}`}><i className="fa fa-users"></i>   {artist.followerIds.length}</Link>
+                  <Link className="user-stats-tracks" to={`/users/${artist.id}`}><i className="fa fa-soundcloud"></i>  {artist.trackIds.length}</Link>
+                </div>
+                <button className="track-show-follow" style={{color: followColor, backgroundColor: followFill}} onClick={() => followButtonCallback()}>{followText}</button>
               </div>
               <div className="comments-box">
                   {commentCount}
@@ -154,6 +191,8 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDistpatchToProps = (dispatch) => ({
+  createFollow: id => dispatch(createFollow(id)),
+  destroyFollow: id => dispatch(destroyFollow(id)),
   incrementPlays: (id) => dispatch(incrementPlays(id)),
   openModal: () => dispatch(openModal('login')),
   likeTrack: (trackId) => dispatch(createLike(trackId)),

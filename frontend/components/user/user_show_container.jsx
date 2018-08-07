@@ -26,7 +26,7 @@ class RandomUser extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  const user = state.entities.users[ownProps.match.params.userId] || { trackIds: [], albumIds: [] };
+  const user = state.entities.users[ownProps.match.params.userId] || { trackIds: [], albumIds: [], followerIds: [] };
   let userTracks = [];
   for (let i = 0; i < user.trackIds.length; i++) {
     const track = state.entities.tracks[user.trackIds[i]];

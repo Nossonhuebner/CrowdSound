@@ -11,7 +11,8 @@
 #
 
 class User < ApplicationRecord
-  after_initialize :ensure_session_token, :ensure_profile_pic
+  before_validation :ensure_session_token
+  before_save :ensure_profile_pic
 
   validates :username, :password_digest, :session_token, presence: true
   validates :username, :session_token, uniqueness: true
@@ -23,13 +24,18 @@ class User < ApplicationRecord
 
   has_one_attached :profile_pic
 
+  has_many :follows,
+  foreign_key: :followee_id,
+  class_name: :Follow
+
   has_many :followers,
+  through: :follows,
+  source: :follower
+
+  has_many :followees,
   foreign_key: :follower_id,
   class_name: :Follow
 
-  has_many :followees,
-  foreign_key: :followee_id,
-  class_name: :Follow
 
   has_many :tracks,
   foreign_key: :artist_id,

@@ -71,3 +71,22 @@
   top: 73%;
   left: -120px;
 }
+
+.user-show-info{
+  margin-top: 10px;
+  height: 60px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #f1efef;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-show-follow{
+  margin-top: 10px;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+  padding: 7px 12px 7px 12px;
+  border: 1px solid;
+}

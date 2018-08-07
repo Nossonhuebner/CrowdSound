@@ -1,4 +1,4 @@
-import * as LikeApiUtil from '../util/like_api';
+import * as LikeApiUtil from '../util/like_api_util';
 import { receiveTrack } from './track_actions';
 import { receiveErrors } from './error_actions';
 

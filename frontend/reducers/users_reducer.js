@@ -9,14 +9,16 @@ const usersReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USER:
     case LOG_IN_USER:
-      return merge({}, state, {[action.user.id]: action.user});
+      delete newState[action.user.id];
+      return merge(newState, {[action.user.id]: action.user});
     case RECEIVE_NEW_TRACK:
       const user = merge({}, action.user);
       user.trackIds.push(action.track.id);
       return merge(newState, {[user.id]: user});
     case RECEIVE_TRACKS:
-    return merge(newState, action.users)
+      return merge(newState, action.users);
     case RECEIVE_TRACK:
+      delete newState[action.user.id];
       return merge(newState, {[action.user.id]: action.user}, action.commentUsers);
     case REMOVE_TRACK:
       const user1 = state[action.track.artist_id];

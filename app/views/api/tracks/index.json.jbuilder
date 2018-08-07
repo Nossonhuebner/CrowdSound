@@ -24,6 +24,7 @@ json.users do
         json.username track.artist.username
         json.trackIds track.artist.track_ids
         json.profilePicUrl url_for(track.artist.profile_pic)
+        json.followerIds track.artist.follower_ids
     end
   end
 end

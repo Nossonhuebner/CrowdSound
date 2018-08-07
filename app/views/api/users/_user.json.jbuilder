@@ -3,6 +3,7 @@ json.user do
   json.trackIds user.track_ids
   json.albumIds user.album_ids
   json.profilePicUrl url_for(user.profile_pic)
+  json.followerIds user.follower_ids
 end
 
 json.tracks do

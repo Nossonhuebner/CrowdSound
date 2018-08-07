@@ -24,11 +24,11 @@
 }
 
 .playback-links {
-  width: 7%;
+  width: 9%;
   align-self: flex-start;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
   text-decoration: none;
 }
 .playback-link-artist {
@@ -36,6 +36,7 @@
   text-decoration: none;
   color: grey;
   align-self: center;
+  justify-self: center;
   grid-area: 2/ 2;
 }
 
@@ -44,6 +45,7 @@
   text-decoration: none;
   grid-area: 1/ 2;
   color: grey;
+  justify-self: center;
   margin-top: 7px;
 }
 
