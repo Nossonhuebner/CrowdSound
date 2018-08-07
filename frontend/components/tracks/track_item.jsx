@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteTrack, addToAlbum } from '../../actions/track_actions';
+import { deleteTrack, addToAlbum, incrementPlays } from '../../actions/track_actions';
 import { createLike, destroyLike } from '../../actions/like_actions';
 import { openModal } from '../../actions/modal_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { dateFormatter } from '../../util/date_util';
+
 
 class TrackItem extends React.Component {
 
@@ -47,7 +48,7 @@ class TrackItem extends React.Component {
     return (
       <li  className="single-track">
         <img className="track-artwork" src={this.props.track.artworkUrl}/>
-        <button className="track-item-play" onClick={() => this.props.openPlaybackBar(this.props.track)}></button>
+        <button className="track-item-play" onClick={() => this.props.incrementPlays(this.props.track.id)}></button>
         {button}
         <button onClick={() => likeButtonCallback()} className="track-item-like"><i className="fa fa-heart" style={{color: heartColor}}></i></button>
         <button className="track-item-repost"><i className="fa fa-retweet"></i></button>
@@ -57,7 +58,7 @@ class TrackItem extends React.Component {
           </button>
         </Link>
         <div className="track-item-date">{dateFormatter(this.props.track.created_at)}</div>
-        <div className="track-plays"><i className="fa fa-play"></i>  0</div>
+        <div className="track-plays"><i className="fa fa-play"></i>  {this.props.track.plays}</div>
         <div className="track-li-playback">so much emptiness</div>
         <Link className="track-item-artist-link" to={`/users/${this.props.track.artist_id}`}>{this.props.artistName}</Link>
         <Link className="track-item-track-link" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>{this.props.track.title}</Link>
@@ -78,7 +79,7 @@ const mapDispatchToProps = dispatch => {
   destroyLike: trackId => dispatch(destroyLike(trackId)),
   openModal: action => dispatch(openModal(action)),
   deleteTrack: track => dispatch(deleteTrack(track)),
-  openPlaybackBar: track => dispatch(openPlaybackBar(track))
+  incrementPlays: id => dispatch(incrementPlays(id))
 };
 };
 

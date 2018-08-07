@@ -48,7 +48,7 @@ class ShowTrack extends React.Component {
 
     }
     const heartColor = liked ? "#ff5000" : "black";
-    const borderColor = liked ? "#ff5000" : "#e2e2e2";
+    const borderColor = liked ? "#ff5000" : "";
     const likeText = liked ? "Liked" : "Like";
 
 
@@ -96,39 +96,42 @@ class ShowTrack extends React.Component {
         </div>
       );
 
+
     return (
       <div className="track-show-container">
         {banner}
-
-        <div className="comments-container">
-          <div className ="track-show-stat-container">
-          <CommentForm trackId={this.props.track.id}/>
-          <div className="track-show-options">
-            <div className="track-show-buttons">
-              <button onClick={() => likeButtonCallback()} className="track-show-button"style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
-              <button className="track-show-button"><i className="fa fa-retweet"></i>   Repost</button>
-              <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
-            </div>
-            <div className="track-show-stats">
-              {playsCount}
-              {likesCount}
-            </div>
-          </div>
-        </div>
-          <div className="under-comment_form">
-            <div className="artist-box">
-              <Link to={`/users/${artist.id}`}>
-              <img className="comments-artist-pic" src={artist.profilePicUrl}/>
-              </Link>
-              <Link className="comments-artist-name" to={`/users/${artist.id}`}>{artist.username}</Link>
-            </div>
-            <div className="comments-box">
-                {commentCount}
-              <ul className="comments-list">
-                {commentItems}
-              </ul>
+        <div className="comments-main">
+          <div className="comments-container">
+            <div className ="track-show-stat-container">
+            <CommentForm trackId={this.props.track.id}/>
+            <div className="track-show-options">
+              <div className="track-show-buttons">
+                <button onClick={() => likeButtonCallback()} className="track-show-button"style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
+                <button className="track-show-button"><i className="fa fa-retweet"></i>   Repost</button>
+                <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
+              </div>
+              <div className="track-show-stats">
+                {playsCount}
+                {likesCount}
+              </div>
             </div>
           </div>
+            <div className="under-comment_form">
+              <div className="artist-box">
+                <Link to={`/users/${artist.id}`}>
+                <img className="comments-artist-pic" src={artist.profilePicUrl}/>
+                </Link>
+                <Link className="comments-artist-name" to={`/users/${artist.id}`}>{artist.username}</Link>
+              </div>
+              <div className="comments-box">
+                  {commentCount}
+                <ul className="comments-list">
+                  {commentItems}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="comments-sidebar"></div>
         </div>
       </div>
     );
