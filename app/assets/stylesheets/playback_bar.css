@@ -124,7 +124,7 @@
 }
 
 .volume-wrapper{
-  margin-left: -57px;
+  margin-left: -61px;
   visibility:  hidden;
   transform: rotateZ(270deg);
   position: fixed;
@@ -166,7 +166,6 @@
 
 input[type=range] {
   -webkit-appearance: none;
-  width: 100%;
   margin: 3px 0;
 }
 input[type=range]:focus {

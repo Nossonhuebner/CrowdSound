@@ -19,7 +19,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
   attr_reader :password
 
-  # scope :with_eager_loaded_profile_pic, -> { eager_load(profile_pic_attachment: :blob) }
+  include PgSearch
+  multisearchable :against => :username
 
 
   has_one_attached :profile_pic

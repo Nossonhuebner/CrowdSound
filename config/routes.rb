@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static_pages#root"
+  get '/api/search/:query', :to => 'api/searchs#index', :as => 'search'
+  patch '/api/trackplays/:id', to: 'api/tracks#increment_plays', :as => 'plays'
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :show, :update] do
@@ -15,5 +17,4 @@ Rails.application.routes.draw do
     resources :albums, only: [:create, :show, :destroy]
     resource :session, only: [:create, :destroy]
   end
-  patch '/api/trackplays/:id', to: 'api/tracks#increment_plays'
 end

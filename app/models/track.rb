@@ -15,7 +15,8 @@
 
 class Track < ApplicationRecord
   before_save :ensure_artwork
-
+  include PgSearch
+  multisearchable :against => :title
   # scope :with_eager_loaded_file, -> { eager_load(file_attachment: :blob) }
   # scope :with_eager_loaded_artwork, -> { eager_load(artwork_attachment: :blob) }
 

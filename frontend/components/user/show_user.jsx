@@ -5,6 +5,7 @@ import UserDetail from './user_detail';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
+import { openModal } from '../../actions/modal_actions';
 
 
 
@@ -90,6 +91,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  openModal: () => dispatch(openModal('login')),
   createFollow: id => dispatch(createFollow(id)),
   destroyFollow: id => dispatch(destroyFollow(id)),
   fetchUser: id => dispatch(fetchUser(id))
