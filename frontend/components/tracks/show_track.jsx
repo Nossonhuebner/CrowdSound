@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { fetchTrack } from '../../actions/track_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
@@ -10,6 +11,7 @@ import { createLike, destroyLike } from '../../actions/like_actions';
 import { openModal } from '../../actions/modal_actions';
 import { incrementPlays } from '../../actions/track_actions';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
+import Waveform from './wavesurfer';
 
 class ShowTrack extends React.Component {
 
@@ -82,10 +84,12 @@ class ShowTrack extends React.Component {
     const followColor = following ? "#ff5000" : "";
     const followFill = following ? "" : "rgb(255, 80, 0)";
 
+    const waveform = <Waveform src={this.props.track.fileUrl}/>;
+
     const banner =
     (<div className="track-show-banner">
       <div className="track-banner-title">{this.props.track.title}</div>
-      <div className="track-banner-artist">{artist.username}</div>
+      <Link to={`/users/${artist.id}`} className="track-banner-artist">{artist.username}</Link>
       <img className="track-show-artwork" src={this.props.track.artworkUrl}/>
       <button className="track-banner-play" onClick={this.handlePlay.bind(this)}></button>
       <div className="track-banner-date">{dateFormatter(this.props.track.created_at)}</div>
@@ -124,10 +128,6 @@ class ShowTrack extends React.Component {
         {`   ${this.props.track.plays}`}
         </div>
       );
-
-
-
-
 
     return (
       <div className="track-show-container">

@@ -26,6 +26,7 @@
 }
 
 .track-banner-artist{
+  text-decoration: none;
   grid-area: 1 / 2;
   background: black;
   color: #b9b9b9;
@@ -35,7 +36,9 @@
   align-self: end;
   width: fit-content;
   margin-bottom: 4px;
-
+}
+.track-banner-artist:hover{
+  color: #f3f3f3;
 }
 
 .track-banner-play{

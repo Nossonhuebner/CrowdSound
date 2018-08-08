@@ -53,7 +53,7 @@ class TrackItem extends React.Component {
         {button}
         <button style={{borderColor: likeBorder}} onClick={() => likeButtonCallback()} className="track-item-like">
           <i className="fa fa-heart" style={{color: heartColor}}></i>
-          <div className="like-count" style={{color: heartColor}}>{this.props.track.likerIds.length}</div>
+          <div className="like-count" style={{color: heartColor}}>{this.props.track.likerIds.length || 'Like'}</div>
         </button>
         <button className="track-item-repost"><i className="fa fa-retweet"></i></button>
         <button className="track-item-share"><i className="fa fa-share"></i></button>

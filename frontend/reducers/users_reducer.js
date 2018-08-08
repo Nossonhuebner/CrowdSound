@@ -10,7 +10,7 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USER:
     case LOG_IN_USER:
       delete newState[action.user.id];
-      return merge(newState, {[action.user.id]: action.user});
+      return merge(newState, {[action.user.id]: action.user}, action.followees);
     case RECEIVE_NEW_TRACK:
       const user = merge({}, action.user);
       user.trackIds.push(action.track.id);

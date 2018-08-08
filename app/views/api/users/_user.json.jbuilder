@@ -4,6 +4,16 @@ json.user do
   json.albumIds user.album_ids
   json.profilePicUrl url_for(user.profile_pic)
   json.followerIds user.follower_ids
+  json.followeeIds user.followee_ids
+end
+
+json.followees do
+  followees.each do |followee|
+    json.set! followee.id do
+      json.extract! followee, :id, :username
+      json.profilePicUrl url_for(followee.profile_pic)
+    end
+  end
 end
 
 json.tracks do
