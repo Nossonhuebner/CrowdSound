@@ -46,7 +46,10 @@
 .top-tracks{
   display: flex;
   flex-wrap: wrap;
-  padding: 10px
+  padding: 10px;
+  max-width: 1372px;
+  margin: 0 auto;
+  padding-left: 170px;
 }
 
 .popular-track{
