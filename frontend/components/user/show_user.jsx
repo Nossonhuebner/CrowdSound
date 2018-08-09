@@ -68,19 +68,23 @@ class ShowUser extends React.Component {
     // <Route exact path="/users/:userId/albums" component={albums}/>
     return (
 
-
       <div className="show-user-container">
-
-        <UserDetail user={this.props.user}/>
-        <div className="user-show-info">
-          <div></div>
-          <div>
-            <button className="user-show-follow" style={{color: followColor, backgroundColor: followFill}} onClick={() => followButtonCallback()}>{followText}</button>
+        <div >
+          <UserDetail user={this.props.user}/>
+          <div className="user-show-info">
+            <div></div>
+            <div>
+              <button className="user-show-follow" style={{color: followColor, backgroundColor: followFill}} onClick={() => followButtonCallback()}>{followText}</button>
+            </div>
           </div>
         </div>
-        <ul style={{width: "830px", "paddingLeft": "1%"}} className="user-show-list">
-          {tracks}
-        </ul>
+
+        <div className="user-show-bottom">
+          <div className="user-show-side"></div>
+          <ul style={{width: "830px", "paddingLeft": "1%"}} className="user-show-list">
+            {tracks}
+          </ul>
+        </div>
       </div>
     );
   }
