@@ -2,7 +2,7 @@ class Api::TracksController < ApplicationController
 
   def index
     @tracks = Track.all.with_attached_artwork.with_attached_file
-    .includes(:comments, :likers, artist: [:tracks, :followers, :followees, profile_pic_attachment: :blob]).limit(12)
+    .includes(:comments, :likers, artist: [:tracks, profile_pic_attachment: :blob]).first(12)
   end
 
   def show
