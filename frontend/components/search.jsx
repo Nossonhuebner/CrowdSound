@@ -19,38 +19,57 @@ class SearchBar extends React.Component {
   }
 
   clearField (e) {
-    this.setState({params: ""});
-    this.props.wipeState();
+    setTimeout(() => {
+            this.setState({params: ""});
+            this.props.wipeState();
+    }, 100);
   }
 
   render () {
-    let results = this.props.results.map((r, id) => {
-      return <li id={id} className="search-result-item">
-        <Link to={r.artist_id ? `/users/${r.artist_id}/${r.id}` : `/users/${r.id}`}>
-          <img className="search-results-image" src={r.profilePicUrl ? r.profilePicUrl : r.artworkUrl}/>
-          {r.title ? r.title : r.username}
-      </Link>
-      </li>;
+    let results = this.props.results.map(r => {
+
+      if (r.artist_id) {
+        return (
+        <li key={r.id} className="search-result-item">
+          <Link to={`/users/${r.artist_id}/${r.id}`}>
+            <div>
+              <img className="search-results-image" src={r.artworkUrl}/>
+              <div>{r.title}</div>
+            </div>
+            <div className="results-artist-name">by {r.artistName}</div>
+          </Link>
+        </li>);
+      } else {
+        return (
+        <li key={r.id} className="search-result-item">
+          <Link to={r.artist_id ? `/users/${r.artist_id}/${r.id}` : `/users/${r.id}`}>
+            <div>
+              <img className="search-results-image" src={r.profilePicUrl} style={{borderRadius: "50%"}}/>
+              <div>{r.username}</div>
+            </div>
+          </Link>
+        </li>);
+      }
     });
 
     if (this.props.results.length < 1) {
-      results = <li className="search-result-item">No results</li>;
+      results = <li className="search-result-item"><div>No results</div></li>;
     }
 
     return (
-      <div className="search-container" onBlur={this.clearField.bind(this)}>
-        <div className="search">
-          <form className="search-form" onSubmit={() => this.props.search(this.state.params)}>
+      <div className="search-container">
+        <div className="search" onBlur={this.clearField.bind(this)}>
+          <form className="search-form"  onSubmit={() => this.props.search(this.state.params)}>
           <input className="search-input"  onChange={this.handleChange.bind(this)}
             type="text" placeholder="Search for artists or tracks" value={this.state.params}/>
           <button className="search-submit">
             <i className="fa fa-search"></i>
           </button>
           </form>
+          <ul hidden={!this.state.params}>
+            {results}
+          </ul>
         </div>
-      <ul hidden={!this.state.params}>
-        {results}
-      </ul>
     </div>
     );
   }

@@ -1,7 +1,7 @@
 class Api::SearchsController < ApplicationController
 
   def index
-    @tracks = Track.with_attached_artwork.where(title: params[:query])
+    @tracks = Track.with_attached_artwork.includes(:artist).where(title: params[:query])
     @users = User.with_attached_profile_pic.where(username: params[:query])
     if @tracks || @users
       render 'api/searchs/index'

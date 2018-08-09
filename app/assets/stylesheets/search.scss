@@ -42,14 +42,38 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+  width: 103%;
+  height: 52px;
+  border: 1px solid #444242;
+  border-radius: 3px;
 }
 
 .search-result-item a {
   text-decoration: none;
   color: white;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-result-item div {
+  padding-left: 9px;
+}
+
+.search-result-item a div{
+  display: flex;
+  align-items: center;
 }
 
 .search-results-image{
-  width: 50px;
+  width: 40px;
+  margin-left: 4px;
+  padding: 5px;
+  margin-right: 19px;
+}
 
+.results-artist-name{
+  color: #828282;
+  font-size: 16px;
+  padding-right: 20px;
 }
