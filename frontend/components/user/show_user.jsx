@@ -6,6 +6,7 @@ import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
 import { openModal } from '../../actions/modal_actions';
+import UserSide from './user_side';
 
 
 
@@ -27,7 +28,7 @@ class ShowUser extends React.Component {
 
 
   render () {
-    const artist = this.props.user || {followerIds: [], trackIds: []};
+    const artist = this.props.user || {followerIds: [], trackIds: [], followeeIds: []};
     const tracks = this.props.userTracks.map(track => (
       <TrackItem key={track.id} artistName={this.props.user.username} track={track}/>
     ));
@@ -80,10 +81,10 @@ class ShowUser extends React.Component {
         </div>
 
         <div className="user-show-bottom">
-          <div className="user-show-side"></div>
-          <ul style={{width: "830px", "paddingLeft": "1%"}} className="user-show-list">
+          <ul style={{"paddingLeft": "1%"}} className="user-show-list">
             {tracks}
           </ul>
+          <UserSide user={artist}></UserSide>
         </div>
       </div>
     );

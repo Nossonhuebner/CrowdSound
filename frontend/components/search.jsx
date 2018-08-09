@@ -26,7 +26,8 @@ class SearchBar extends React.Component {
   }
 
   render () {
-    let results = this.props.results.map(r => {
+    let results = "";
+    results = this.props.results.map(r => {
 
       if (r.artist_id) {
         return (
@@ -52,7 +53,7 @@ class SearchBar extends React.Component {
       }
     });
 
-    if (this.props.results.length < 1) {
+    if (this.props.results.length < 1 && this.props.errors.length > 0) {
       results = <li className="search-result-item"><div>No results</div></li>;
     }
 
@@ -66,7 +67,7 @@ class SearchBar extends React.Component {
             <i className="fa fa-search"></i>
           </button>
           </form>
-          <ul hidden={!this.state.params}>
+          <ul className="results-list" hidden={!this.state.params}>
             {results}
           </ul>
         </div>
@@ -93,6 +94,7 @@ const mapStateToProps = state => {
   }
 
   return {
+    errors: state.errors,
     results: results
   };
 };

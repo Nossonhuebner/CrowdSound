@@ -24,12 +24,12 @@
 }
 
 .playback-links {
-  width: 9%;
   align-self: flex-start;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 3fr;
   text-decoration: none;
+  width: 200px;
 }
 .playback-link-artist {
   font-size: 13px;

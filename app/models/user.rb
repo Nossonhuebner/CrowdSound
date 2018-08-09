@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
   attr_reader :password
-  
+
   include PgSearch
   multisearchable :against => :username
 
@@ -33,9 +33,13 @@ class User < ApplicationRecord
   through: :follows,
   source: :follower
 
-  has_many :followees,
+  has_many :followings,
   foreign_key: :follower_id,
   class_name: :Follow
+
+  has_many :followees,
+  through: :followings,
+  source: :followee
 
 
   has_many :tracks,

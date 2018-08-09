@@ -28,10 +28,11 @@
 }
 
 .user-show-list {
-  position: absolute;
   padding-top: 15px;
   padding-left: 1%;
-  width: 810px;
+  width: 65%;
+  min-width: 800px;
+  margin-bottom: 100px;
 }
 
 .track-delete-edit {

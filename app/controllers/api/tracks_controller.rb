@@ -7,7 +7,7 @@ class Api::TracksController < ApplicationController
 
   def show
     @track = Track.with_attached_file.with_attached_artwork
-    .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]]).find(params[:id])
+    .includes(:genre, :likes, :likers, artist: [:tracks, :followers, :followees, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]]).find(params[:id])
     render '/api/tracks/show'
   end
 
@@ -16,7 +16,7 @@ class Api::TracksController < ApplicationController
     @track.artist_id = current_user.id
     if @track.save
       @track = Track.with_attached_file.with_attached_artwork
-      .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]]).find(@track.id)
+      .includes(:genre, :likes, :likers, artist: [:tracks, :followers, :followees, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]]).find(@track.id)
       render '/api/tracks/show'
     else
       render json: @track.errors.full_messages, status: 404
@@ -25,7 +25,7 @@ class Api::TracksController < ApplicationController
 
   def update
     @track = Track.with_attached_file.with_attached_artwork
-    .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [:followers, profile_pic_attachment: :blob]]).find(params[:id])
+    .includes(:genre, :likes, :likers, artist: [:tracks, :followers, :followees, :albums, profile_pic_attachment: :blob], comments: [user: [:followers, profile_pic_attachment: :blob]]).find(params[:id])
     if @track.update(album_id: @album.id)
       render '/api/tracks/show'
     else

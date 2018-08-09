@@ -37,8 +37,7 @@
 }
 
 .show-user-container ul {
-  position: absolute;
-  width: 92%;
+  width: 65%;
   padding-left: 4%;
   z-index: -1;
 }
@@ -95,10 +94,36 @@
   width: 100%;
   display: flex;
   height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+.user-show-side{
+  width: 100%;
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* .user-show-side{
-  height: 10px;
-width: 10px;
-background: red;
-} */
+.user-side-stats{
+  display: flex;
+}
+.user-side-stats a {
+  text-decoration: none;
+  padding: 15px;
+  color: #888888;
+  font-size: 15px;
+  justify-content: space-evenly;
+}
+.user-side-stats a:hover{
+  color: #3e3e3e;
+}
+
+.user-side-following, .user-side-followers{
+  border-right: 1px solid #e4e4e4;
+
+}
+
+.side-count{
+  font-size: 27px;
+  padding-top: 3px;
+}
