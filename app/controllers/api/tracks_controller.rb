@@ -51,6 +51,14 @@ class Api::TracksController < ApplicationController
     end
   end
 
+  def next_track
+    @track = Track.with_attached_file.with_attached_artwork
+    .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob],
+       comments: [user: [:followers, profile_pic_attachment: :blob]]).sample
+
+    render '/api/tracks/show'
+  end
+
   private
 
   def track_params

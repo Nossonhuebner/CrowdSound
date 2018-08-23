@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "static_pages#root"
   get '/api/search/:query', :to => 'api/searchs#index', :as => 'search'
   patch '/api/trackplays/:id', to: 'api/tracks#increment_plays', :as => 'plays'
+  get '/api/next_track', to: 'api/tracks#next_track', :as => 'next'
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:create, :show, :update] do
