@@ -1,4 +1,6 @@
+import { nextTrack, prevTrack } from '../../actions/playback_actions';
 import React from 'react';
+import { connect } from 'react-redux';
 
 
 class AudioPlayer extends React.Component {
@@ -54,7 +56,11 @@ class AudioPlayer extends React.Component {
   }
 
   rewind() {
-    this.audioRef.current.currentTime = 0;
+    if (this.audioRef.current.currentTime > 2) {
+      this.audioRef.current.currentTime = 0;
+    } else {
+      this.props.prevTrack();
+    }
   }
 
   getDuration(e){
@@ -108,8 +114,8 @@ class AudioPlayer extends React.Component {
         <div className="audio-player-container">
           <button className="rewind" onClick={() => this.rewind()}><i className="fa fa-step-backward"></i></button>
           <button onClick={() => this.togglePlay()}>{this.state.playButton}</button>
-          <button className="next"><i className="fa fa-step-forward"></i></button>
-          <audio onTimeUpdate={this.progress.bind(this)} ref={this.audioRef} id="audio-el" autoPlay="true" src={this.props.source} className="audio-element" controlsList="nodownload"></audio>
+          <button className="next" onClick={() => this.props.nextTrack()}><i className="fa fa-step-forward"></i></button>
+          <audio onTimeUpdate={this.progress.bind(this)} onEnded={this.props.nextTrack} ref={this.audioRef} id="audio-el" autoPlay="true" src={this.props.source} className="audio-element" controlsList="nodownload"></audio>
           <div className="ellapsed-time">{this.state.ellapsed}</div>
           <div onClick={this.clickSeek.bind(this)} className="full-length-body">
             <div className="audio-full-length"></div>
@@ -132,4 +138,9 @@ class AudioPlayer extends React.Component {
   }
 }
 
-export default AudioPlayer;
+const mapDispatchToProps = dispatch => ({
+  nextTrack: () => dispatch(nextTrack()),
+  prevTrack: () => dispatch(prevTrack())
+});
+
+export default connect(null, mapDispatchToProps)(AudioPlayer);
