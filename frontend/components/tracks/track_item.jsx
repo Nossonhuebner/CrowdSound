@@ -77,17 +77,19 @@ class TrackItem extends React.Component {
         <img className="track-artwork" src={this.props.track.artworkUrl}/>
         <button className="track-item-play" onClick={() => this.props.incrementPlays(this.props.track.id)}></button>
         {button}
-        <button style={{borderColor: likeBorder}} onClick={() => likeButtonCallback()} className="track-item-like">
-          <i className="fa fa-heart" style={{color: heartColor}}></i>
-          <div className="like-count" style={{color: heartColor}}>{this.props.track.likerIds.length || 'Like'}</div>
-        </button>
-        <button style={{borderColor: repostBorder}} onClick={() => repostButtonCallback()}className="track-item-repost">
-          <i className="fa fa-retweet" style={{color: repostColor}}></i>
-          <div className="like-count" style={{color: repostColor}}>{this.props.track.reposterIds.length || 'Repost'}</div>
-        </button>
-        <button className="track-item-share">
-          <i className="fa fa-share" ></i>
-        </button>
+        <div className="track-item-buttons">
+          <button style={{borderColor: likeBorder}} onClick={() => likeButtonCallback()} className="track-item-like">
+            <i className="fa fa-heart" style={{color: heartColor}}></i>
+            <div className="like-count" style={{color: heartColor}}>{this.props.track.likerIds.length || 'Like'}</div>
+          </button>
+          <button style={{borderColor: repostBorder}} onClick={() => repostButtonCallback()}className="track-item-repost">
+            <i className="fa fa-retweet" style={{color: repostColor}}></i>
+            <div className="like-count" style={{color: repostColor}}>{this.props.track.reposterIds.length || 'Repost'}</div>
+          </button>
+          <button className="track-item-share">
+            <i className="fa fa-share" ></i>
+          </button>
+        </div>
         <Link className="track-item-comment" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>
           <button ><i className="fa fa-comment"></i><div className="comment-count">{this.props.track.commentIds.length}</div>
           </button>

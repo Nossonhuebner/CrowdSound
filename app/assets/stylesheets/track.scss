@@ -41,6 +41,11 @@
   color: #999;
 }
 
+.track-item-buttons{
+  display: flex;
+  grid-area: 4/2/4/5;
+}
+
 .track-item-play {
   grid-area: 1 / 2 / 3/ 2;
   background-image: image_url('soundcloud_play.jpeg');
@@ -54,14 +59,12 @@
 }
 
 .track-item-like{
-  grid-area: 4/ 2;
   border: 1px solid #e2e2e2;
-  width: fit-content;
   padding: 4px 5px 4px 5px;
   font-size: 12px;
   border-radius: 3px;
   display: flex;
-  justify-self: center;
+  margin: 0 5px 0 5px;
 }
 
 .like-count{
@@ -102,27 +105,22 @@
 }
 
 .track-item-repost{
-  grid-area: 4/ 3;
-  justify-self: self-start;
   align-self: start;
   border: 1px solid #e2e2e2;
-
-  width: fit-content;
   padding: 4px 5px 4px 5px;
   font-size: 12px;
   border-radius: 3px;
   display: flex;
+  margin: 0 5px 0 5px;
 }
 .track-item-share{
-  grid-area: 4/4;
-  justify-self: start;
-  align-self: start;
   border: 1px solid #e2e2e2;
   width: 26px;
   height: 22px;
   font-size: 12px;
   border-radius: 3px;
   justify-self: center;
+  margin: 0 5px 0 5px;
 }
 .track-item-comment button {
   display: flex;
