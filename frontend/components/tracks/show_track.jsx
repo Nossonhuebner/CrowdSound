@@ -11,6 +11,7 @@ import { createLike, destroyLike } from '../../actions/like_actions';
 import { openModal } from '../../actions/modal_actions';
 import { incrementPlays } from '../../actions/track_actions';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
+import { createRepost, destroyRepost } from '../../actions/repost_actions';
 import Waveform from './wavesurfer';
 
 class ShowTrack extends React.Component {
@@ -51,6 +52,28 @@ class ShowTrack extends React.Component {
       };
     }
 
+    let reposted;
+    if (this.props.currentUserId && this.props.track.reposterIds.includes(this.props.currentUserId)) {
+      reposted = true;
+    } else {
+      reposted = false;
+    }
+
+    let repostButtonCallback;
+    if (!this.props.currentUserId) {
+      repostButtonCallback = () => this.props.openModal('login');
+    } else if (reposted) {
+      repostButtonCallback = (id) => {
+        this.props.destroyRepost(this.props.track.id);
+        reposted = false;
+      };
+    } else {
+      repostButtonCallback = (id) => {
+        this.props.createRepost(this.props.track.id);
+        reposted = true;
+      };
+    }
+
 
     let following;
     if (this.props.currentUserId && artist.followerIds.includes(this.props.currentUserId)) {
@@ -77,6 +100,10 @@ class ShowTrack extends React.Component {
     const heartColor = liked ? "#ff5000" : "black";
     const borderColor = liked ? "#ff5000" : "";
     const likeText = liked ? "Liked" : "Like";
+
+    const repostColor = reposted ? "#ff5000" : "black";
+    const repostBorderColor = reposted ? "#ff5000" : "";
+    const repostText = reposted ? "Reposted" : "Repost";
 
 
     const followText = following ? 'Following' : 'Follow';
@@ -128,6 +155,12 @@ class ShowTrack extends React.Component {
         </div>
       );
 
+      const repostsCount = this.props.track.reposterIds.length === 0 ? "" : (
+        <div className="show-like-count"><i className="fa fa-retweet"></i>
+        {`   ${this.props.track.reposterIds.length}`}
+        </div>
+      );
+
     return (
       <div className="track-show-container">
         {banner}
@@ -138,12 +171,13 @@ class ShowTrack extends React.Component {
             <div className="track-show-options">
               <div className="track-show-buttons">
                 <button onClick={() => likeButtonCallback()} className="track-show-button" style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
-                <button className="track-show-button"><i className="fa fa-retweet"></i>   Repost</button>
+                <button onClick={() => repostButtonCallback()} style={{color: repostColor, borderColor: repostBorderColor}} className="track-show-button"><i className="fa fa-retweet"></i>   {repostText}</button>
                 <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
               </div>
               <div className="track-show-stats">
                 {playsCount}
                 {likesCount}
+                {repostsCount}
               </div>
             </div>
           </div>
@@ -177,7 +211,7 @@ class ShowTrack extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const track = state.entities.tracks[ownProps.match.params.trackId] || {commentIds: [], likerIds: []};
+  const track = state.entities.tracks[ownProps.match.params.trackId] || {commentIds: [], likerIds: [], reposterIds: []};
   const users = state.entities.users;
   const comments = state.entities.comments;
   const currentUserId = state.session.id;
@@ -190,6 +224,8 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDistpatchToProps = (dispatch) => ({
+  createRepost: id => dispatch(createRepost(id)),
+  destroyRepost: id => dispatch(destroyRepost(id)),
   createFollow: id => dispatch(createFollow(id)),
   destroyFollow: id => dispatch(destroyFollow(id)),
   incrementPlays: (id) => dispatch(incrementPlays(id)),

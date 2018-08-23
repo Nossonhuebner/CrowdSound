@@ -61,6 +61,7 @@
   font-size: 12px;
   border-radius: 3px;
   display: flex;
+  justify-self: center;
 }
 
 .like-count{
@@ -105,10 +106,12 @@
   justify-self: self-start;
   align-self: start;
   border: 1px solid #e2e2e2;
-  width: 26px;
-  height: 22px;
+
+  width: fit-content;
+  padding: 4px 5px 4px 5px;
   font-size: 12px;
   border-radius: 3px;
+  display: flex;
 }
 .track-item-share{
   grid-area: 4/4;
@@ -119,6 +122,7 @@
   height: 22px;
   font-size: 12px;
   border-radius: 3px;
+  justify-self: center;
 }
 .track-item-comment button {
   display: flex;

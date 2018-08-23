@@ -9,6 +9,6 @@ export const createLike = (trackId) => {
 export const destroyLike = (trackId) => {
   return $.ajax({
     method: 'DELETE',
-    url: `/api/tracks/${trackId}/likes/1`
+    url: `/api/tracks/${trackId}/likes`
   });
 };

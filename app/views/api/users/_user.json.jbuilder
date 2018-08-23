@@ -24,6 +24,7 @@ json.tracks do
       json.artworkUrl url_for(track.artwork)
       json.commentIds track.comment_ids
       json.likerIds track.likers.ids
+      json.reposterIds track.reposter_ids
     end
   end
 end

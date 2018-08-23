@@ -5,6 +5,7 @@ json.track do
   json.commentIds track.comment_ids
   json.artistName track.artist.username
   json.likerIds track.liker_ids
+  json.reposterIds track.reposter_ids
 end
 
 json.user do

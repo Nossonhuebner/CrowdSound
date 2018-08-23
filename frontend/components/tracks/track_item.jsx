@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deleteTrack, addToAlbum, incrementPlays } from '../../actions/track_actions';
 import { createLike, destroyLike } from '../../actions/like_actions';
+import { createRepost, destroyRepost } from '../../actions/repost_actions';
 import { openModal } from '../../actions/modal_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { dateFormatter } from '../../util/date_util';
@@ -43,6 +44,31 @@ class TrackItem extends React.Component {
       };
     }
 
+    let reposted;
+    if (this.props.currentUserId && this.props.track.reposterIds.includes(this.props.currentUserId)) {
+      reposted = true;
+    } else {
+      reposted = false;
+    }
+
+    let repostButtonCallback;
+    if (!this.props.currentUserId) {
+      repostButtonCallback = () => this.props.openModal('login');
+    } else if (reposted) {
+      repostButtonCallback = (id) => {
+        this.props.destroyRepost(this.props.track.id);
+        reposted = false;
+      };
+    } else {
+      repostButtonCallback = (id) => {
+        this.props.createRepost(this.props.track.id);
+        reposted = true;
+      };
+    }
+
+    const repostColor = reposted ? "#ff5000" : "black";
+    const repostBorder = reposted ? "#ff5000" : "";
+
     const heartColor = liked ? "#ff5000" : "black";
     const likeBorder = liked ? "#ff5000" : "";
 
@@ -55,8 +81,13 @@ class TrackItem extends React.Component {
           <i className="fa fa-heart" style={{color: heartColor}}></i>
           <div className="like-count" style={{color: heartColor}}>{this.props.track.likerIds.length || 'Like'}</div>
         </button>
-        <button className="track-item-repost"><i className="fa fa-retweet"></i></button>
-        <button className="track-item-share"><i className="fa fa-share"></i></button>
+        <button style={{borderColor: repostBorder}} onClick={() => repostButtonCallback()}className="track-item-repost">
+          <i className="fa fa-retweet" style={{color: repostColor}}></i>
+          <div className="like-count" style={{color: repostColor}}>{this.props.track.reposterIds.length || 'Repost'}</div>
+        </button>
+        <button className="track-item-share">
+          <i className="fa fa-share" ></i>
+        </button>
         <Link className="track-item-comment" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>
           <button ><i className="fa fa-comment"></i><div className="comment-count">{this.props.track.commentIds.length}</div>
           </button>
@@ -79,6 +110,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   // addToAlbum: (id, albumName) => dispatch(addToAlbum(id, albumName)),
   return {
+  createRepost: id => dispatch(createRepost(id)),
+  destroyRepost: id => dispatch(destroyRepost(id)),
   likeTrack: trackId => dispatch(createLike(trackId)),
   destroyLike: trackId => dispatch(destroyLike(trackId)),
   openModal: action => dispatch(openModal(action)),

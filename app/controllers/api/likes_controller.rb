@@ -4,7 +4,7 @@ class Api::LikesController < ApplicationController
     @like = Like.new(track_id: params[:track_id], user_id: current_user.id)
     if @like.save
       @track = Track.with_attached_file.with_attached_artwork
-      .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]])
+      .includes(:genre,  :reposters, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]])
       .find(params[:track_id])
       render '/api/tracks/show'
     else
@@ -17,7 +17,7 @@ class Api::LikesController < ApplicationController
     if @like[0]
       @like[0].destroy
       @track = Track.with_attached_file.with_attached_artwork
-      .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]])
+      .includes(:genre,  :reposters, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]])
       .find(params[:track_id])
       render '/api/tracks/show'
     else

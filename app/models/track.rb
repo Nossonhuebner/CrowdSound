@@ -39,6 +39,11 @@ class Track < ApplicationRecord
   source: :user
 
   has_many :reposts
+  
+  has_many :reposters,
+  through: :reposts,
+  source: :user
+
   has_many :comments
 
   has_one_attached :file
