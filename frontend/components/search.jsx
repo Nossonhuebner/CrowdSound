@@ -22,7 +22,7 @@ class SearchBar extends React.Component {
     setTimeout(() => {
             this.setState({params: ""});
             this.props.wipeState();
-    }, 100);
+    }, 200);
   }
 
   render () {

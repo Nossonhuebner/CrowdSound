@@ -20,7 +20,6 @@ class ShowTrack extends React.Component {
   }
 
   handlePlay(e){
-
     if (this.props.track.id !== this.props.currentlyPlayingId) {
       // this.props.openPlaybackBar(this.props.track);
       this.props.incrementPlays(this.props.track.id);

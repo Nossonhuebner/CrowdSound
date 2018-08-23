@@ -20,6 +20,9 @@ export default (state = {}, action) => {
       delete newState[action.track.id];
       return newState;
     case RECEIVE_COMMENT:
+      if (!action.comment.trackId) {
+        return state;
+      }
       const track = state[action.comment.trackId];
       track.commentIds.push(action.comment.id);
       return merge(newState, {[track.id]: track});

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { openPlaybackBar } from '../../actions/playback_actions';
+// import { openPlaybackBar } from '../../actions/playback_actions';
 import { createLike, destroyLike } from '../../actions/like_actions';
 import { openModal } from '../../actions/modal_actions';
 import AudioPlayer from './audio_player';
@@ -79,8 +79,8 @@ const mapDispatchToProps = (dispatch) => {
     likeTrack: trackId => dispatch(createLike(trackId)),
     destroyLike: trackId => dispatch(destroyLike(trackId)),
     openModal: action => dispatch(openModal(action)),
-    openPlaybackBar: (track) => dispatch(openPlaybackBar(track))
   };
+  // openPlaybackBar: (track) => dispatch(openPlaybackBar(track))
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybackBar);

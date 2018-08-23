@@ -25,7 +25,8 @@ class Api::TracksController < ApplicationController
 
   def update
     @track = Track.with_attached_file.with_attached_artwork
-    .includes(:genre, :likes, :likers, artist: [:tracks, :followers, :followees, :albums, profile_pic_attachment: :blob], comments: [user: [:followers, profile_pic_attachment: :blob]]).find(params[:id])
+    .includes(:genre, :likes, :likers, artist: [:tracks, :followers, :followees, :albums, profile_pic_attachment: :blob],
+      comments: [user: [:followers, profile_pic_attachment: :blob]]).find(params[:id])
     if @track.update(album_id: @album.id)
       render '/api/tracks/show'
     else
@@ -41,7 +42,8 @@ class Api::TracksController < ApplicationController
 
   def increment_plays
     @track = Track.with_attached_file.with_attached_artwork
-    .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob], comments: [user: [:followers, profile_pic_attachment: :blob]]).find(params[:id])
+    .includes(:genre, :likes, :likers, artist: [:tracks, :albums, profile_pic_attachment: :blob],
+       comments: [user: [:followers, profile_pic_attachment: :blob]]).find(params[:id])
     if @track.update(plays: @track.plays + 1)
       render '/api/tracks/show'
     else
