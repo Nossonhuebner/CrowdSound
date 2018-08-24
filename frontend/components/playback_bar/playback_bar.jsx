@@ -69,7 +69,6 @@ class PlaybackBar extends React.Component {
 const mapStateToProps = (state) => {
   const playback = state.ui.playback_bar.queueIdx !== null ?
   state.entities.tracks[state.ui.playback_bar.playingId] : null;
-  debugger
   return {
     currentUserId: state.session.id,
     playback: playback,

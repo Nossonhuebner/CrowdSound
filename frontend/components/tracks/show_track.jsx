@@ -216,8 +216,8 @@ const mapStateToProps = (state, ownProps) => {
   const comments = state.entities.comments;
   const currentUserId = state.session.id;
   let currentlyPlayingId = null;
-  if (state.ui.playback_bar) {
-    currentlyPlayingId = state.ui.playback_bar.id;
+  if (state.ui.playback_bar.playingId) {
+    currentlyPlayingId = state.ui.playback_bar.playingId;
   }
   return {track, users, comments, currentUserId, currentlyPlayingId};
 };

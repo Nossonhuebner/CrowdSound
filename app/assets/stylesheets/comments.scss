@@ -146,6 +146,10 @@
   grid-area: 2/ 3;
   color: #999;
   align-self: start;
+  border: 1px solid;
+  width: fit-content;
+  padding: 2px 5px;
+  border-radius: 5px;
 }
 
 .comments-main{

@@ -12,6 +12,16 @@ json.followees do
     json.set! followee.id do
       json.extract! followee, :id, :username
       json.profilePicUrl url_for(followee.profile_pic)
+      json.trackIds followee.track_ids
+      json.followerIds followee.follower_ids
+    end
+  end
+end
+
+json.followers do
+  user.followers.each do |follower|
+    json.set! follower.id do
+      json.profilePicUrl url_for(follower.profile_pic)
     end
   end
 end
@@ -27,7 +37,16 @@ json.tracks do
       json.reposterIds track.reposter_ids
     end
   end
+  user.liked_tracks.each do |track|
+    json.set! track.id do
+      json.extract! track, :id, :title, :album_id, :artist_id, :plays, :created_at
+      json.artworkUrl url_for(track.artwork)
+      json.likerIds track.likers.ids
+    end
+  end
 end
+
+
 
 # json.albums do
 #   user.albums.each do |album|
