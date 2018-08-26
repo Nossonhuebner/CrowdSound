@@ -86,9 +86,7 @@ class TrackItem extends React.Component {
             <i className="fa fa-retweet" style={{color: repostColor}}></i>
             <div className="like-count" style={{color: repostColor}}>{this.props.track.reposterIds.length || 'Repost'}</div>
           </button>
-          <button className="track-item-share">
-            <i className="fa fa-share" ></i>
-          </button>
+          <a href={`https://twitter.com/intent/tweet?button_hashtag=CrowdSound&ref_src=twsrc%5Etfw&text=Hey%20check%20out%20this%20awesome%20song%20on%20CrowdSound!&url=${window.location.href}`} className="twitter-hashtag-button track-item-share"><i className="fa fa-share" style={{paddingRight: "6px"}}></i>Share</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
         </div>
         <Link className="track-item-comment" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>
           <button ><i className="fa fa-comment"></i><div className="comment-count">{this.props.track.commentIds.length}</div>

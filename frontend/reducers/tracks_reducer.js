@@ -6,6 +6,7 @@ import { RECEIVE_COMMENT } from '../actions/comment_actions';
 import { OPEN_PLAYBACK_BAR } from '../actions/playback_actions';
 
 export default (state = {}, action) => {
+  
   const newState = merge({}, state);
   switch (action.type) {
     case RECEIVE_TRACK:

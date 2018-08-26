@@ -28,7 +28,7 @@ export default () => {
       <ProtectedRoute exact path="/upload" component={Upload}/>
       <Route exact path = "/" component={Splash}/>
       <Switch>
-        <Route path="/users/:userId/:trackId" component={ShowTrack}/>
+        <Route exact path="/users/:userId/:trackId" component={ShowTrack}/>
         <Route exact path="/users/:userId" component={ShowUser}/>
       </Switch>
       <PlaybackBar />

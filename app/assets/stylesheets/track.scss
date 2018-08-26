@@ -107,7 +107,7 @@
 .track-item-repost{
   align-self: start;
   border: 1px solid #e2e2e2;
-  padding: 4px 5px 4px 5px;
+  padding: 5px 5px 5px 5px;
   font-size: 12px;
   border-radius: 3px;
   display: flex;
@@ -121,6 +121,10 @@
   border-radius: 3px;
   justify-self: center;
   margin: 0 5px 0 5px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0px 5px 0px 5px;
 }
 .track-item-comment button {
   display: flex;

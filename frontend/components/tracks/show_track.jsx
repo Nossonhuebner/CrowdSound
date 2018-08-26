@@ -52,7 +52,7 @@ class ShowTrack extends React.Component {
       };
     }
 
-    let reposted;
+    let reposted = true;
     if (this.props.currentUserId && this.props.track.reposterIds.includes(this.props.currentUserId)) {
       reposted = true;
     } else {
@@ -96,7 +96,6 @@ class ShowTrack extends React.Component {
         following = true;
       };
     }
-
     const heartColor = liked ? "#ff5000" : "black";
     const borderColor = liked ? "#ff5000" : "";
     const likeText = liked ? "Liked" : "Like";
@@ -172,7 +171,7 @@ class ShowTrack extends React.Component {
               <div className="track-show-buttons">
                 <button onClick={() => likeButtonCallback()} className="track-show-button" style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
                 <button onClick={() => repostButtonCallback()} style={{color: repostColor, borderColor: repostBorderColor}} className="track-show-button"><i className="fa fa-retweet"></i>   {repostText}</button>
-                <button className="track-show-button"><i className="fa fa-share"></i>   Share</button>
+                <a href={`https://twitter.com/intent/tweet?button_hashtag=CrowdSound&ref_src=twsrc%5Etfw&text=Hey%20check%20out%20this%20awesome%20song%20on%20CrowdSound!&url=${window.location.href}`} className="twitter-hashtag-button track-show-button"><i className="fa fa-share"></i>   Share</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
               </div>
               <div className="track-show-stats">
                 {playsCount}
