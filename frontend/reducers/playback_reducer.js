@@ -22,7 +22,7 @@ export default (state = {queue: [], queueIdx: null, playingId: null}, action) =>
       let idx;
       let nextId;
 
-      if (state.queueIdx === state.queue.length-1) {
+      if (state.queueIdx >= state.queue.length-1) { // checks that new queue is not shorter than old queue
         idx = 0;
         nextId = state.queue[0];
       } else {
@@ -34,7 +34,7 @@ export default (state = {queue: [], queueIdx: null, playingId: null}, action) =>
       if (state.queueIdx === 0) {
         return state;
       }
-        const prev = state.queue[state.queueIdx-1];
+        const prev = state.queue[state.queueIdx-1] ? state.queue[state.queueIdx-1] : state.queue[state.queueIdx-1]; // checks that current queue length is not less than that of playing track
         return {queueIdx: state.queueIdx-1, queue: state.queue, playingId: prev};
     default:
       return state;
