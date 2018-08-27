@@ -11,7 +11,16 @@ class SearchBar extends React.Component {
   }
 
   handleChange (e) {
+    if (e.currentTarget.value.length < this.state.params.length){
+      this.props.wipeState();
+    }
+
     this.setState({params: e.currentTarget.value});
+
+    if (this.state.params.length !== ""){
+      setTimeout(() => {
+        this.props.search(this.state.params);}, 0);
+    }
   }
 
   componentWillReceiveNewProps() {
@@ -28,7 +37,6 @@ class SearchBar extends React.Component {
   render () {
     let results = "";
     results = this.props.results.map(r => {
-
       if (r.artist_id) {
         return (
         <li key={r.id} className="search-result-item">
@@ -42,8 +50,8 @@ class SearchBar extends React.Component {
         </li>);
       } else {
         return (
-        <li key={r.id} className="search-result-item">
-          <Link to={r.artist_id ? `/users/${r.artist_id}/${r.id}` : `/users/${r.id}`}>
+        <li key={r.username} className="search-result-item">
+          <Link to={`/users/${r.id}`}>
             <div>
               <img className="search-results-image" src={r.profilePicUrl} style={{borderRadius: "50%"}}/>
               <div>{r.username}</div>
@@ -78,18 +86,17 @@ class SearchBar extends React.Component {
 
 const mapStateToProps = state => {
   let results = [];
+  if (state.ui.search.users) {
+    let ids = Object.keys(state.ui.search.users);
+    for (var j = 0; j < ids.length; j++) {
+      results.push(state.ui.search.users[ids[j]]);
+    }
+  }
 
   if (state.ui.search.tracks) {
     let ids = Object.keys(state.ui.search.tracks);
     for (var i = 0; i < ids.length; i++) {
       results.push(state.ui.search.tracks[ids[i]]);
-    }
-  }
-
-  if (state.ui.search.users) {
-    let ids = Object.keys(state.ui.search.users);
-    for (var j = 0; j < ids.length; j++) {
-      results.push(state.ui.search.users[ids[j]]);
     }
   }
 
