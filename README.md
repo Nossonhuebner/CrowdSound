@@ -5,3 +5,4 @@ CrowdSound is a SoundCloud inspired webapp. All logged-in users can upload conte
 
 The backend framework implements Ruby on Rails, with a combination of ActiveStorage and AWS cloud storage to manage user uploads. The frontend uses React.js and Redux to handle state.
 
+![](https://i.imgur.com/SbF5U5y.gifv)
