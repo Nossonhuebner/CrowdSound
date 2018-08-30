@@ -117,6 +117,7 @@ class ShowTrack extends React.Component {
       <Link to={`/users/${artist.id}`} className="track-banner-artist">{artist.username}</Link>
       <img className="track-show-artwork" src={this.props.track.artworkUrl}/>
       <button className="track-banner-play" onClick={this.handlePlay.bind(this)}></button>
+      {waveform}
       <div className="track-banner-date">{dateFormatter(this.props.track.created_at)}</div>
     </div>);
 
@@ -169,9 +170,22 @@ class ShowTrack extends React.Component {
             <CommentForm trackId={this.props.track.id}/>
             <div className="track-show-options">
               <div className="track-show-buttons">
-                <button onClick={() => likeButtonCallback()} className="track-show-button" style={{color: heartColor, borderColor: borderColor}}><i className="fa fa-heart"></i>   {likeText}</button>
-                <button onClick={() => repostButtonCallback()} style={{color: repostColor, borderColor: repostBorderColor}} className="track-show-button"><i className="fa fa-retweet"></i>   {repostText}</button>
-                <a href={`https://twitter.com/intent/tweet?button_hashtag=CrowdSound&ref_src=twsrc%5Etfw&text=Hey%20check%20out%20this%20awesome%20song%20on%20CrowdSound!&url=${window.location.href}`} className="twitter-hashtag-button track-show-button"><i className="fa fa-share"></i>   Share</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+                <button onClick={() => likeButtonCallback()}
+                  className="track-show-button"
+                  style={{color: heartColor, borderColor: borderColor}}>
+                  <i className="fa fa-heart"></i>
+                  {likeText}
+                </button>
+                <button onClick={() => repostButtonCallback()}
+                  style={{color: repostColor, borderColor: repostBorderColor}}
+                  className="track-show-button"><i className="fa fa-retweet"></i>
+                  {repostText}
+                 </button>
+                <a href={`https://twitter.com/intent/tweet?button_hashtag=CrowdSound&ref_src=twsrc%5Etfw&text=Hey%20check%20out%20this%20awesome%20song%20on%20CrowdSound!&url=${window.location.href}`}
+                  className="twitter-hashtag-button track-show-button">
+                  <i className="fa fa-share"></i>   Share
+                </a>
+                  <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
               </div>
               <div className="track-show-stats">
                 {playsCount}

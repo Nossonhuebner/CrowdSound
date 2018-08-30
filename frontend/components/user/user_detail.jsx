@@ -36,9 +36,7 @@ class UserDetail extends React.Component {
     let form = "";
       if ((this.props.match.params.userId == this.props.currentUserId) || (this.props.match.path === "/you")) {
        form = (<form className="profile-pic-update" onSubmit={this.handleSubmit.bind(this)}>
-
         <label className="profile-pic-file-input"><i className="fa fa-camera"></i>  Update image
-
           <input type="file" accept="image/*" onChange={this.handleProfilePic.bind(this)}/>
         </label>
 

@@ -1,4 +1,4 @@
-import { nextTrack, prevTrack } from '../../actions/playback_actions';
+import { nextTrack, prevTrack, seek } from '../../actions/playback_actions';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -26,8 +26,9 @@ class AudioPlayer extends React.Component {
   }
 
   progress(e) {
-     this.setState({ellapsed: this.durationFormat(e.currentTarget.currentTime),
+    this.setState({ellapsed: this.durationFormat(e.currentTarget.currentTime),
         progress: this.durationPercentage(e.currentTarget.currentTime)});
+
   }
 
   durationFormat(secs) {
@@ -35,7 +36,6 @@ class AudioPlayer extends React.Component {
     let hours = Math.floor(minutes / 60);
     let formattedMinutes = minutes < 60 ? minutes : 0;
     const seconds =  Math.floor(secs) % 60;
-
     const formattedSeconds = seconds < 10 ? `:0${seconds}` : `:${seconds}`;
 
     if (hours && formattedMinutes < 10 ){
@@ -71,17 +71,15 @@ class AudioPlayer extends React.Component {
     let element = e.currentTarget;
     let offsetX = 0;
     let mouseX;
-
     while (element.offsetParent) {
       offsetX += element.offsetLeft;
       element = element.offsetParent;
     }
-    // offsetX += this.stylePaddingLeft + this.styleBorderLeft + this.htmlLeft;
     mouseX = e.pageX - offsetX;
-
     const newPercentage = mouseX / e.currentTarget.offsetWidth;
     const duration = this.audioRef.current.duration;
     this.audioRef.current.currentTime = duration * newPercentage;
+    this.props.seek(this.state.progress);
   }
 
   handleVolume(e) {
@@ -139,6 +137,7 @@ class AudioPlayer extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
+  seek: (time) => dispatch(seek(time)),
   nextTrack: () => dispatch(nextTrack()),
   prevTrack: () => dispatch(prevTrack())
 });
