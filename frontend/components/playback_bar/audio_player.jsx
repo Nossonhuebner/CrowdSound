@@ -28,7 +28,7 @@ class AudioPlayer extends React.Component {
   progress(e) {
     this.setState({ellapsed: this.durationFormat(e.currentTarget.currentTime),
         progress: this.durationPercentage(e.currentTarget.currentTime)});
-
+    this.props.seek(e.currentTarget.currentTime);
   }
 
   durationFormat(secs) {
@@ -62,10 +62,10 @@ class AudioPlayer extends React.Component {
       this.props.prevTrack();
     }
   }
-
-  getDuration(e){
-    this.setState({duration: e.currentTarget.duration});
-  }
+  //
+  // getDuration(e){
+  //   this.setState({duration: e.currentTarget.duration});
+  // }
 
   clickSeek(e) {
     let element = e.currentTarget;
@@ -79,8 +79,9 @@ class AudioPlayer extends React.Component {
     const newPercentage = mouseX / e.currentTarget.offsetWidth;
     const duration = this.audioRef.current.duration;
     this.audioRef.current.currentTime = duration * newPercentage;
-    this.props.seek(this.state.progress);
+    this.props.seek(e.currentTarget.currentTime);
   }
+
 
   handleVolume(e) {
     const volume = e.currentTarget.value;
@@ -95,6 +96,13 @@ class AudioPlayer extends React.Component {
     } else {
       this.setState({mute: true});
       this.audioRef.current.volume = 0;
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.stateTime + 0.3 < this.props.stateTime || prevProps.stateTime > this.props.stateTime && (!this.audioRef.current.paused)) { // previous time was within 0.3 sec behind of current time
+      debugger
+      this.audioRef.current.currentTime = this.props.stateTime;
     }
   }
 
@@ -136,10 +144,15 @@ class AudioPlayer extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {stateTime: state.ui.playback_bar.time};
+};
+
+
 const mapDispatchToProps = dispatch => ({
   seek: (time) => dispatch(seek(time)),
   nextTrack: () => dispatch(nextTrack()),
   prevTrack: () => dispatch(prevTrack())
 });
 
-export default connect(null, mapDispatchToProps)(AudioPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);

@@ -109,15 +109,13 @@ class ShowTrack extends React.Component {
     const followColor = following ? "#ff5000" : "";
     const followFill = following ? "" : "rgb(255, 80, 0)";
 
-    const waveform = <Waveform src={this.props.track.fileUrl}/>;
-
     const banner =
     (<div className="track-show-banner">
       <div className="track-banner-title">{this.props.track.title}</div>
       <Link to={`/users/${artist.id}`} className="track-banner-artist">{artist.username}</Link>
       <img className="track-show-artwork" src={this.props.track.artworkUrl}/>
       <button className="track-banner-play" onClick={this.handlePlay.bind(this)}></button>
-      {waveform}
+      <Waveform src={this.props.track.fileUrl} id={this.props.track.id}/>
       <div className="track-banner-date">{dateFormatter(this.props.track.created_at)}</div>
     </div>);
 
