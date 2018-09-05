@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 class UserDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {profilePic: null, fileUrl: null};
+    this.state = {profilePic: null, fileUrl: null, loaded: false};
   }
 
   handleProfilePic(e) {
@@ -32,7 +32,14 @@ class UserDetail extends React.Component {
     this.setState({profilePic: null});
   }
 
+  imageify() {
+    this.setState({loaded: true});
+  }
+
   render () {
+    if (this.state.loaded) {
+      console.log(123123);
+    }
     let form = "";
       if ((this.props.match.params.userId == this.props.currentUserId) || (this.props.match.path === "/you")) {
        form = (<form className="profile-pic-update" onSubmit={this.handleSubmit.bind(this)}>
@@ -48,7 +55,7 @@ class UserDetail extends React.Component {
     return (
       <div className="user-banner">
         <h1 className="show-username">{this.props.user.username}</h1>
-        <img src={this.props.user.profilePicUrl} className="show-profile-pic"/>
+        <img src={this.props.user.profilePicUrl} className="show-profile-pic" onLoad={this.imageify.bind(this)} visibility={!Boolean(this.state.loaded)}/>
         {form}
       </div>
     );

@@ -18,6 +18,8 @@ class Waveform extends React.Component {
     // };
   }
   componentDidMount() {
+    const width = this.props.width ? this.props.width : 200;
+
     const container = this.waveRef.current;
     this.wavesurfer = WaveSurfer.create({
       container: container,
@@ -25,11 +27,10 @@ class Waveform extends React.Component {
       progressColor: '#ff4400',
       barWidth: 2,
       height: 200,
-      width: 200,
+      width: width,
       fillParent: true,
       cursorWidth: 0,
       interact: true,
-      preload: true,
       hideScrollbar: true,
       removeMediaElementOnDestroy: false
     });

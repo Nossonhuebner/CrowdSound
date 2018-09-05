@@ -4,12 +4,19 @@
   grid-template-rows: 1fr 1fr 2fr 0fr;
   border-right: 1px solid #f1efef;
   padding-bottom: 35px;
-  background-image: image_url('wave_background.jpeg');
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-size: 600px;
-  background-position-x: right;
+  // background-image: image_url('wave_background.jpeg');
+  // background-repeat: no-repeat;
+  // background-position-y: center;
+  // background-size: 600px;
+  // background-position-x: right;
   height: 154px;
+}
+
+.track-item-wave{
+  position: fixed;
+  top: 99px;
+  left: 257px;
+  z-index: -1;
 }
 
 

@@ -7,6 +7,7 @@ import { createRepost, destroyRepost } from '../../actions/repost_actions';
 import { openModal } from '../../actions/modal_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
 import { dateFormatter } from '../../util/date_util';
+import Waveform from './wavesurfer';
 
 
 class TrackItem extends React.Component {
@@ -74,6 +75,7 @@ class TrackItem extends React.Component {
 
     return (
       <li  className="single-track">
+        <Waveform src={this.props.track.fileUrl} id={this.props.track.id} width={100} className="track-item-wave"/>
         <img className="track-artwork" src={this.props.track.artworkUrl}/>
         <button className="track-item-play" onClick={() => this.props.incrementPlays(this.props.track.id)}></button>
         {button}
