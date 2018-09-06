@@ -53,7 +53,7 @@ class ShowTrack extends React.Component {
       };
     }
 
-    let reposted = true;
+    let reposted;
     if (this.props.currentUserId && this.props.track.reposterIds.includes(this.props.currentUserId)) {
       reposted = true;
     } else {

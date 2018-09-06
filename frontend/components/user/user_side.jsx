@@ -7,12 +7,12 @@ class UserSide extends React.Component {
     const followers =
     <Link className="user-side-following" to={`/users/${this.props.user.id}`}>
       <div >Followers</div>
-      <div className="side-count">{this.props.user.followerIds.length}</div>
+      <div className="side-count">{this.props.user.followerIds ? this.props.user.followerIds.length : 0}</div>
     </Link>;
     const following =
     <Link className="user-side-following" to={`/users/${this.props.user.id}`}>
       <div>Following</div>
-        <div className="side-count">{this.props.user.followeeIds.length}</div>
+        <div className="side-count">{this.props.user.followeeIds ? this.props.user.followeeIds.length : 0}</div>
     </Link>;
 
     const tracks =
