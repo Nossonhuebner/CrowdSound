@@ -49,8 +49,8 @@ export const receiveNewTrack = ({track, user, comments}) => {
   return {type: RECEIVE_NEW_TRACK, track, user, comments};
 };
 
-export const receiveTrack = ({track, user, comments, commentUsers}) => {
-  return {type: RECEIVE_TRACK, track, user, comments, commentUsers};
+export const receiveTrack = ({track, user, comments, commentUsers, reposterUsers, likerUsers}) => {
+  return {type: RECEIVE_TRACK, track, user, comments, commentUsers, reposterUsers, likerUsers};
 };
 
 export const receiveTracks = ({tracks, users}) => {

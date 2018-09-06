@@ -19,7 +19,7 @@ const usersReducer = (state = {}, action) => {
       return merge(newState, action.users);
     case RECEIVE_TRACK:
       delete newState[action.user.id];
-      return merge(newState, {[action.user.id]: action.user}, action.commentUsers);
+      return merge(newState, {[action.user.id]: action.user}, action.commentUsers, action.likerUsers, action.reposterUsers);
     case REMOVE_TRACK:
       const user1 = state[action.track.artist_id];
       const userTracks = user1.trackIds.filter(id => id !== action.track.id);

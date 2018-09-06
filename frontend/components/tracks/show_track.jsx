@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { fetchTrack } from '../../actions/track_actions';
 import { openPlaybackBar } from '../../actions/playback_actions';
@@ -13,6 +12,8 @@ import { incrementPlays } from '../../actions/track_actions';
 import { createFollow, destroyFollow } from '../../actions/follow_actions';
 import { createRepost, destroyRepost } from '../../actions/repost_actions';
 import Waveform from './wavesurfer';
+import TrackLikers from '../sidebars/likers_container';
+import TrackReposters from '../sidebars/reposters_container';
 
 class ShowTrack extends React.Component {
 
@@ -212,7 +213,10 @@ class ShowTrack extends React.Component {
               </div>
             </div>
           </div>
-          <div className="comments-sidebar"></div>
+          <div className="comments-sidebar">
+            <TrackLikers track={this.props.track}/>
+            <TrackReposters track={this.props.track}/>
+          </div>
         </div>
       </div>
     );

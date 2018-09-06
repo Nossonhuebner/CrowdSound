@@ -26,6 +26,26 @@ json.commentUsers do
   end
 end
 
+json.likerUsers do
+  track.likers.each do |liker|
+    json.set! liker.id do
+      json.extract! liker, :id, :username
+      json.followerIds liker.follower_ids
+      json.profilePicUrl url_for(liker.profile_pic)
+    end
+  end
+end
+
+json.reposterUsers do
+  track.reposters.each do |reposter|
+    json.set! reposter.id do
+      json.extract! reposter, :id, :username
+      json.followerIds reposter.follower_ids
+      json.profilePicUrl url_for(reposter.profile_pic)
+    end
+  end
+end
+
 json.comments do
   track.comments.each do |comment|
     json.set! comment.id do

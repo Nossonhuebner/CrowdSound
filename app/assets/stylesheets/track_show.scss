@@ -140,3 +140,34 @@
   text-decoration: none;
   color: black;
 }
+
+.sidebar-user{
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.sidebar-ul {
+  display: flex;
+  padding-bottom: 30px;
+}
+
+.sidebar-li {
+    margin-right: -7px;
+}
+
+.sidebar-stat-label {
+  color: #a2a2a2;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 4px;
+}
+
+.sidebar-stat-label .fa:before {
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.side-chelek {
+  width: 285px;
+}
