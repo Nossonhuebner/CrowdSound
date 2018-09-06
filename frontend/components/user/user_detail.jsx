@@ -55,7 +55,7 @@ class UserDetail extends React.Component {
     return (
       <div className="user-banner">
         <h1 className="show-username">{this.props.user.username}</h1>
-        <img src={this.props.user.profilePicUrl} className="show-profile-pic" onLoad={this.imageify.bind(this)} visibility={!Boolean(this.state.loaded)}/>
+        <img src={this.props.user.profilePicUrl} className="show-profile-pic" onLoad={this.imageify.bind(this)} hidden={!this.state.loaded}/>
         {form}
       </div>
     );

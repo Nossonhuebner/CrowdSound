@@ -101,7 +101,6 @@ class AudioPlayer extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.stateTime + 0.3 < this.props.stateTime || prevProps.stateTime > this.props.stateTime) { // previous time was within 0.3 sec behind of current time
-      debugger
       this.audioRef.current.currentTime = this.props.stateTime;
     }
   }

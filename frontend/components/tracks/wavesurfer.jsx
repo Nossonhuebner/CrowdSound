@@ -34,13 +34,10 @@ class Waveform extends React.Component {
       hideScrollbar: true,
       removeMediaElementOnDestroy: false
     });
-    this.wavesurfer.load(this.props.src);
     this.wavesurfer.setMute(true);
     this.wavesurfer.setPlaybackRate(0.00001);
-
     this.wavesurfer.on('seek', (e) => {
       const percent = this.wavesurfer.getDuration() * (e);
-
       if (this.props.id == this.props.playingId){
         this.props.seek(percent);
       } else {
@@ -50,13 +47,19 @@ class Waveform extends React.Component {
         }, 0);
       }
     });
+
+    if (this.props.id) {
+      this.wavesurfer.load(this.props.src);
+    }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.wavesurfer.load(this.props.src);
+    }
+
     if (this.props.id == this.props.playingId && this.props.time < this.wavesurfer.getDuration()){
-      // this.props.seek(this.props.time / this.wavesurfer.getDuration());
       this.wavesurfer.play(this.props.time);
-      // this.wavesurfer.pause();
     }
   }
   render() {
