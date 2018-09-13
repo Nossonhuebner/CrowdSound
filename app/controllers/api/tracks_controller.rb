@@ -7,7 +7,7 @@ class Api::TracksController < ApplicationController
 
   def show
     @track = Track.with_attached_file.with_attached_artwork
-    .includes(:genre, :likes, reposters: [:followers, profile_pic_attachment: :blob], likers: [:followers, profile_pic_attachment: :blob], artist: [:tracks, :followers, :followees, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]]).find(params[:id])
+    .includes(:genre, :likes, reposters: [:tracks, :followers, profile_pic_attachment: :blob], likers: [:tracks, :followers, profile_pic_attachment: :blob], artist: [:tracks, :followers, :followees, :albums, profile_pic_attachment: :blob], comments: [user: [profile_pic_attachment: :blob]]).find(params[:id])
     render '/api/tracks/show'
   end
 

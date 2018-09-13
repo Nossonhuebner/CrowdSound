@@ -18,7 +18,7 @@ class TrackReposters extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const ids = ownProps.track.reposterIds.slice(0, 10);
+  const ids = ownProps.track.reposterIds ? ownProps.track.reposterIds.slice(0, 10) : [];
   const reposters = [];
   for ( let i = 0; i < ids.length; i++) {
     if (state.entities.users[ids[i]]) {

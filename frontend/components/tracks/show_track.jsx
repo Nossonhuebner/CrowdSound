@@ -121,10 +121,12 @@ class ShowTrack extends React.Component {
     </div>);
 
     let comments = [];
-    for (var i = 0; i < this.props.track.commentIds.length; i++) {
-      const comment  = this.props.comments[this.props.track.commentIds[i]];
-      if (comment) {
-        comments.unshift(comment);
+    if (this.props.track.commentIds) {
+      for (var i = 0; i < this.props.track.commentIds.length; i++) {
+        const comment  = this.props.comments[this.props.track.commentIds[i]];
+        if (comment) {
+          comments.unshift(comment);
+        }
       }
     }
 
@@ -154,7 +156,8 @@ class ShowTrack extends React.Component {
         </div>
       );
 
-      const repostsCount = this.props.track.reposterIds.length === 0 ? "" : (
+      const reposts = this.props.track.reposterIds ? this.props.track.reposterIds.length : null;
+      const repostsCount = (!reposts) ? "" : (
         <div className="show-like-count"><i className="fa fa-retweet"></i>
         {`   ${this.props.track.reposterIds.length}`}
         </div>

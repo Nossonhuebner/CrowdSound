@@ -31,6 +31,7 @@ json.likerUsers do
     json.set! liker.id do
       json.extract! liker, :id, :username
       json.followerIds liker.follower_ids
+      json.trackIds liker.track_ids
       json.profilePicUrl url_for(liker.profile_pic)
     end
   end
@@ -41,6 +42,7 @@ json.reposterUsers do
     json.set! reposter.id do
       json.extract! reposter, :id, :username
       json.followerIds reposter.follower_ids
+      json.trackIds reposter.track_ids
       json.profilePicUrl url_for(reposter.profile_pic)
     end
   end

@@ -37,9 +37,6 @@ class UserDetail extends React.Component {
   }
 
   render () {
-    if (this.state.loaded) {
-      console.log(123123);
-    }
     let form = "";
       if ((this.props.match.params.userId == this.props.currentUserId) || (this.props.match.path === "/you")) {
        form = (<form className="profile-pic-update" onSubmit={this.handleSubmit.bind(this)}>
