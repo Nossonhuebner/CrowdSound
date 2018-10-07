@@ -11,7 +11,7 @@ export default (state = {queue: [], queueIdx: null, playingId: null, time: 0}, a
       return { queueIdx: state.queue.findIndex((el) => {return parseInt(el) === action.track.id;}), queue: state.queue, playingId: action.track.id, time: 0};
     case RECEIVE_TRACKS:
     case RECEIVE_USER:
-      return merge({}, {queueIdx: state.queueIdx, queue: Object.keys(action.tracks), playingId: state.playingId, time: 0});
+      return merge({}, {queueIdx: state.queueIdx, queue: Object.keys(action.tracks), playingId: state.playingId, time: state.time});
     case NEXT_TRACK:
       let idx;
       let nextId;
