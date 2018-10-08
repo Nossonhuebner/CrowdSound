@@ -63,7 +63,7 @@ class Waveform extends React.Component {
   }
   render() {
     return (
-      <div className='waveform' style={{width: "600px"}}>
+      <div className='waveform' style={{width: "600px", gridArea: this.props.grid}}>
         <div ref={this.waveRef} style={{width: this.props.width}} className='wave'></div>
       </div>
     );
