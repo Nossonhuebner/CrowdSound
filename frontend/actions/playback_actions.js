@@ -3,10 +3,11 @@ export const NEXT_TRACK = "NEXT_TRACK";
 export const PREV_TRACK = "PREV_TRACK";
 export const SEEK = "SEEK";
 
-export const openPlaybackBar = ({track}) => {
+export const openPlaybackBar = ({track, time}) => {
   return {
     type: OPEN_PLAYBACK_BAR,
-    track
+    track,
+    time
   };
 };
 

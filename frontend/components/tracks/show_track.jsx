@@ -116,7 +116,7 @@ class ShowTrack extends React.Component {
       <Link to={`/users/${artist.id}`} className="track-banner-artist">{artist.username}</Link>
       <img className="track-show-artwork" src={this.props.track.artworkUrl}/>
       <button className="track-banner-play" onClick={this.handlePlay.bind(this)}></button>
-      <Waveform src={this.props.track.fileUrl} id={this.props.track.id}/>
+      <Waveform src={this.props.track.fileUrl} height={200} width={650} id={this.props.track.id}/>
       <div className="track-banner-date">{dateFormatter(this.props.track.created_at)}</div>
     </div>);
 

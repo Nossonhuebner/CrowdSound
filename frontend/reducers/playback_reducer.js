@@ -8,10 +8,22 @@ import { merge } from 'lodash';
 export default (state = {queue: [], queueIdx: null, playingId: null, time: 0}, action) => {
   switch (action.type) {
     case OPEN_PLAYBACK_BAR:
-      return { queueIdx: state.queue.findIndex((el) => {return parseInt(el) === action.track.id;}), queue: state.queue, playingId: action.track.id, time: 0};
+      return {
+        queueIdx: state.queue.findIndex((el) => {
+          return parseInt(el) === action.track.id;
+        }),
+        queue: state.queue,
+        playingId: action.track.id,
+        time: action.time || 0
+      };
     case RECEIVE_TRACKS:
     case RECEIVE_USER:
-      return merge({}, {queueIdx: state.queueIdx, queue: Object.keys(action.tracks), playingId: state.playingId, time: state.time});
+      return merge({}, {
+        queueIdx: state.queueIdx,
+        queue: Object.keys(action.tracks),
+        playingId: state.playingId,
+        time: state.time
+      });
     case NEXT_TRACK:
       let idx;
       let nextId;
@@ -22,7 +34,12 @@ export default (state = {queue: [], queueIdx: null, playingId: null, time: 0}, a
         idx = state.queueIdx + 1;
         nextId = state.queue[idx];
       }
-      return {queueIdx: idx, queue: state.queue, playingId: nextId, time: 0};
+      return {
+              queueIdx: idx,
+              queue: state.queue,
+              playingId: nextId,
+              time: 0
+            };
     case PREV_TRACK:
       if (state.queueIdx === 0) {
         return state;

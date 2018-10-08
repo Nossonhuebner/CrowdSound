@@ -7,8 +7,7 @@ class AudioPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.audioRef = React.createRef();
-
-    this.state = {playButton: <i className="fa fa-pause"></i>, ellapsed: 0, progress: "", volume: 0.5, mute: false};
+    this.state = {playing: true, ellapsed: 0, progress: "", volume: 0.5, mute: false};
   }
 
 
@@ -16,14 +15,11 @@ class AudioPlayer extends React.Component {
   togglePlay() {
     if (this.audioRef.current.paused) {
       this.audioRef.current.play();
-      this.setState({playButton: <i className="fa fa-pause"></i>});
-
     } else {
-      this.setState({playButton: <i className="fa fa-play"></i>});
-
       this.audioRef.current.pause();
     }
   }
+
 
   progress(e) {
     this.setState({ellapsed: this.durationFormat(e.currentTarget.currentTime),
@@ -102,6 +98,7 @@ class AudioPlayer extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.stateTime + 0.3 < this.props.stateTime || prevProps.stateTime > this.props.stateTime) { // previous time was within 0.3 sec behind of current time
       this.audioRef.current.currentTime = this.props.stateTime;
+      this.audioRef.current.play();
     }
   }
 
@@ -115,12 +112,23 @@ class AudioPlayer extends React.Component {
         volumeIcon = <i className="fa fa-volume-up"></i>;
       }
 
+      let playButton;
+      if (this.audioRef.current && !this.audioRef.current.paused) {
+        playButton = <i className="fa fa-pause"></i>;
+      } else {
+        playButton = <i className="fa fa-play"></i>;
+      }
+
       return (
         <div className="audio-player-container">
           <button className="rewind" onClick={() => this.rewind()}><i className="fa fa-step-backward"></i></button>
-          <button onClick={() => this.togglePlay()}>{this.state.playButton}</button>
+          <button onClick={() => this.togglePlay()}>{playButton}</button>
           <button className="next" onClick={() => this.props.nextTrack()}><i className="fa fa-step-forward"></i></button>
-          <audio onTimeUpdate={this.progress.bind(this)} onEnded={this.props.nextTrack} ref={this.audioRef} id="audio-el" autoPlay="true" src={this.props.source} className="audio-element" controlsList="nodownload"></audio>
+          <audio onTimeUpdate={this.progress.bind(this)}
+             onEnded={this.props.nextTrack} ref={this.audioRef} id="audio-el"
+             autoPlay="true" src={this.props.source} className="audio-element"
+             controlsList="nodownload">
+          </audio>
           <div className="ellapsed-time">{this.state.ellapsed}</div>
           <div onClick={this.clickSeek.bind(this)} className="full-length-body">
             <div className="audio-full-length"></div>

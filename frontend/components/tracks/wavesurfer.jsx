@@ -18,7 +18,6 @@ class Waveform extends React.Component {
     // };
   }
   componentDidMount() {
-    const width = this.props.width ? this.props.width : 200;
 
     const container = this.waveRef.current;
     this.wavesurfer = WaveSurfer.create({
@@ -26,8 +25,7 @@ class Waveform extends React.Component {
       waveColor: '#f2f2f2',
       progressColor: '#ff4400',
       barWidth: 2,
-      height: 200,
-      width: width,
+      height: this.props.height,
       fillParent: true,
       cursorWidth: 0,
       interact: true,
@@ -41,10 +39,7 @@ class Waveform extends React.Component {
       if (this.props.id == this.props.playingId){
         this.props.seek(percent);
       } else {
-        this.props.incrementPlays(this.props.id);
-        setTimeout(() => {
-          this.props.seek(percent);
-        }, 0);
+        this.props.incrementPlays(this.props.id, percent);
       }
     });
 
@@ -58,6 +53,10 @@ class Waveform extends React.Component {
       this.wavesurfer.load(this.props.src);
     }
 
+    if (this.props.id !== this.props.playingId) {
+      this.wavesurfer.play(0);
+    }
+
     if (this.props.id == this.props.playingId && this.props.time < this.wavesurfer.getDuration()){
       this.wavesurfer.play(this.props.time);
     }
@@ -65,7 +64,7 @@ class Waveform extends React.Component {
   render() {
     return (
       <div className='waveform' style={{width: "600px"}}>
-        <div ref={this.waveRef} className='wave'></div>
+        <div ref={this.waveRef} style={{width: this.props.width}} className='wave'></div>
       </div>
     );
   }
@@ -80,7 +79,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   seek: time => dispatch(seek(time)),
-  incrementPlays: id => dispatch(incrementPlays(id))
+  incrementPlays: (id, time) => dispatch(incrementPlays(id, time))
 });
 
 

@@ -75,7 +75,7 @@ class TrackItem extends React.Component {
 
     return (
       <li  className="single-track">
-        <Waveform src={this.props.track.fileUrl} id={this.props.track.id} width={100} className="track-item-wave"/>
+        <Waveform src={this.props.track.fileUrl} id={this.props.track.id} width={550} height={100} className="track-item-wave"/>
         <img className="track-artwork" src={this.props.track.artworkUrl}/>
         <button className="track-item-play" onClick={() => this.props.incrementPlays(this.props.track.id)}></button>
         {button}
