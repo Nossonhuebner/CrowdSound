@@ -36,6 +36,7 @@ json.tracks do
       json.commentIds track.comment_ids
       json.likerIds track.likers.ids
       json.reposterIds track.reposter_ids
+      json.artistName user.username
     end
   end
   user.liked_tracks.each do |track|
@@ -45,6 +46,7 @@ json.tracks do
       json.likerIds track.likers.ids
       json.reposterIds track.reposter_ids
       json.commentIds track.comment_ids
+      json.artistName track.artist.username
     end
   end
 end

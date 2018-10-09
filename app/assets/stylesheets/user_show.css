@@ -36,7 +36,7 @@
   left: 275px;
 }
 
-.show-user-container ul {
+.user-show-list {
   width: 65%;
   padding-left: 4%;
   z-index: -1;
@@ -97,7 +97,7 @@
   position: absolute;
   z-index: -1;
 }
-.user-show-side{
+.user-show-side {
   width: 100%;
   margin-left: 8px;
   display: flex;
@@ -122,22 +122,115 @@
   border-right: 1px solid #e4e4e4;
 }
 
+.user-show-side .fa-heart::before{
+  font-size: 17px;
+}
+
 .side-count{
   font-size: 27px;
   padding-top: 3px;
 }
 
-.side-liked-tracks img{
-  width: 75px;
-  border: 1px solid #e6e6e6;
-}
 
 .user-side-ul{
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .user-side-ul li{
+  width: 100%;
+  min-width: 150px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  color: #afaaaa;
+  margin-bottom: 15px;
+}
+
+.side-liked-tracks img{
+  width: 75px;
+  border: 1px solid #e6e6e6;
+  grid-area: 1/1/4/2;
+  cursor: pointer;
+}
+
+.user-side-ul .artist{
+  grid-area: 1/2;
+  justify-self: baseline;
+}
+
+.user-side-ul .artist:hover{
+  color: black;
+}
+
+.user-side-ul .title{
+  grid-area: 2/2;
+  justify-self: baseline;
+  align-self: self-start;
+  color: black;
+}
+
+.user-side-ul .play-count{
+  grid-area: 3/2;
+}
+
+.user-side-ul .like-count{
+  grid-area: 3/3;
+}
+
+.user-side-ul .repost-count{
+  grid-area: 3/4;
+}
+
+.user-side-ul .comment-count{
+  grid-area: 3/5;
+}
+
+.user-side-ul .fa{
+  font-size: 10px
+}
+
+.user-side-ul .fa-heart::before{
+  font-size: 10px
+}
+
+.user-side-ul div {
+  font-size: 13px;
+}
+
+.user-side-ul a {
+  text-decoration: none;
+  font-size: unset;
+  color: inherit;
+  font-size: 15px;
+  padding-left: 5px;
+}
+
+
+.user-side-header{
   display: flex;
-  flex-direction: column;
+  padding-top: 40px;
+  color: #888888;
+  font-size: 19px;
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+}
+
+.user-side-header .fa-heart{
+  padding-right: 5px;
+}
+
+#side-likes{
+  padding-left: 13px;
+}
+
+.user-side-ul li button{
+  border: 1px solid;
+  padding: 0px 3px 1px 3px;
+  font-size: 15px;
+  border-radius: 2px;
 }

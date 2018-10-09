@@ -91,7 +91,7 @@ class TrackItem extends React.Component {
           <a href={`https://twitter.com/intent/tweet?button_hashtag=CrowdSound&ref_src=twsrc%5Etfw&text=Hey%20check%20out%20this%20awesome%20song%20on%20CrowdSound!&url=${window.location.href}`} className="twitter-hashtag-button track-item-share"><i className="fa fa-share" style={{paddingRight: "6px"}}></i>Share</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
         </div>
         <Link className="track-item-comment" to={`/users/${this.props.track.artist_id}/${this.props.track.id}`}>
-          <button ><i className="fa fa-comment"></i><div className="comment-count">{this.props.track.commentIds.length}</div>
+          <button><i className="fa fa-comment"></i><div className="comment-count">{this.props.track.commentIds.length}</div>
           </button>
         </Link>
         <div className="track-item-date">{dateFormatter(this.props.track.created_at)}</div>
@@ -112,14 +112,14 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   // addToAlbum: (id, albumName) => dispatch(addToAlbum(id, albumName)),
   return {
-  createRepost: id => dispatch(createRepost(id)),
-  destroyRepost: id => dispatch(destroyRepost(id)),
-  likeTrack: trackId => dispatch(createLike(trackId)),
-  destroyLike: trackId => dispatch(destroyLike(trackId)),
-  openModal: action => dispatch(openModal(action)),
-  deleteTrack: track => dispatch(deleteTrack(track)),
-  incrementPlays: id => dispatch(incrementPlays(id))
-};
+    createRepost: id => dispatch(createRepost(id)),
+    destroyRepost: id => dispatch(destroyRepost(id)),
+    likeTrack: trackId => dispatch(createLike(trackId)),
+    destroyLike: trackId => dispatch(destroyLike(trackId)),
+    openModal: action => dispatch(openModal(action)),
+    deleteTrack: track => dispatch(deleteTrack(track)),
+    incrementPlays: id => dispatch(incrementPlays(id))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackItem);
