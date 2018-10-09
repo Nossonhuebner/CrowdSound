@@ -7,7 +7,9 @@ class TrackSidebar extends React.Component {
     const users = this.props.users.map(user => {
       return (
         <li key={user.id} className="sidebar-li">
-          <Link to={`/users/${user.id}`}><img className="sidebar-user" src={user.profilePicUrl}></img></Link>
+          <Link to={`/users/${user.id}`}>
+            <img className="sidebar-user" src={user.profilePicUrl}></img>
+          </Link>
         </li>
       );
     });

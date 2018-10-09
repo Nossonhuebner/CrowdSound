@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
     if @user.save
       log_in!(@user)
       @user = User.with_attached_profile_pic.includes(:albums,
-        liked_tracks: [:likers, artwork_attachment: :blob],
+        liked_tracks: [:likers, :reposters, :comments, artwork_attachment: :blob],
         followers: [profile_pic_attachment: :blob],
         followees: [:tracks, :followers, profile_pic_attachment: :blob],
         tracks: [:genre, :comments, :reposters, :likes, :likers,
@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
 
     if @user.update(user_params)
       @user = User.with_attached_profile_pic.includes(:albums,
-        liked_tracks: [:likers, artwork_attachment: :blob],
+        liked_tracks: [:likers, :reposters, :comments, artwork_attachment: :blob],
         followers: [profile_pic_attachment: :blob],
         followees: [:tracks, :followers, profile_pic_attachment: :blob],
         tracks: [:genre, :comments, :reposters, :likes, :likers,
@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.with_attached_profile_pic.includes(:albums,
-      liked_tracks: [:likers, artwork_attachment: :blob],
+      liked_tracks: [:likers, :reposters, :comments, artwork_attachment: :blob],
       followers: [profile_pic_attachment: :blob],
       followees: [:tracks, :followers, profile_pic_attachment: :blob],
       tracks: [:genre, :comments, :reposters, :likes, :likers,

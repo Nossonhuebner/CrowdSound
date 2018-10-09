@@ -120,10 +120,24 @@
 
 .user-side-following, .user-side-followers{
   border-right: 1px solid #e4e4e4;
-
 }
 
 .side-count{
   font-size: 27px;
   padding-top: 3px;
+}
+
+.side-liked-tracks img{
+  width: 75px;
+  border: 1px solid #e6e6e6;
+}
+
+.user-side-ul{
+  display: flex;
+  flex-direction: column;
+}
+
+.user-side-ul li{
+  display: flex;
+  flex-direction: column;
 }

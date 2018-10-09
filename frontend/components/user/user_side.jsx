@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import  UserLikes from './show_side_stats';
 
 class UserSide extends React.Component {
 
@@ -28,9 +29,11 @@ class UserSide extends React.Component {
           {following}
           {tracks}
         </div>
+        <UserLikes user={this.props.user}/>
       </div>
     );
   }
 }
 
+// <UserFollowees user={this.props.user}/>
 export default UserSide;

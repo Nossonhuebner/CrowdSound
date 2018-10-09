@@ -14,6 +14,7 @@ json.user do
   json.profilePicUrl url_for(track.artist.profile_pic)
   json.followerIds track.artist.follower_ids
   json.followeeIds track.artist.followee_ids
+  json.likedTrackIds track.artist.liked_track_ids
 end
 
 json.commentUsers do

@@ -2,6 +2,7 @@ json.user do
   json.extract! user, :id, :username
   json.trackIds user.track_ids
   json.albumIds user.album_ids
+  json.likedTrackIds user.liked_track_ids
   json.profilePicUrl url_for(user.profile_pic)
   json.followerIds user.follower_ids
   json.followeeIds user.followee_ids
@@ -42,6 +43,8 @@ json.tracks do
       json.extract! track, :id, :title, :album_id, :artist_id, :plays, :created_at
       json.artworkUrl url_for(track.artwork)
       json.likerIds track.likers.ids
+      json.reposterIds track.reposter_ids
+      json.commentIds track.comment_ids
     end
   end
 end
