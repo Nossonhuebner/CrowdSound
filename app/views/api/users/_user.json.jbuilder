@@ -8,21 +8,23 @@ json.user do
   json.followeeIds user.followee_ids
 end
 
-json.followees do
-  user.followees.each do |followee|
-    json.set! followee.id do
-      json.extract! followee, :id, :username
-      json.profilePicUrl url_for(followee.profile_pic)
-      json.trackIds followee.track_ids
-      json.followerIds followee.follower_ids
+json.users do
+  json.followees do
+    user.followees.each do |followee|
+      json.set! followee.id do
+        json.extract! followee, :id, :username
+        json.profilePicUrl url_for(followee.profile_pic)
+        json.trackIds followee.track_ids
+        json.followerIds followee.follower_ids
+      end
     end
   end
-end
 
-json.followers do
-  user.followers.each do |follower|
-    json.set! follower.id do
-      json.profilePicUrl url_for(follower.profile_pic)
+  json.followers do
+    user.followers.each do |follower|
+      json.set! follower.id do
+        json.profilePicUrl url_for(follower.profile_pic)
+      end
     end
   end
 end

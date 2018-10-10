@@ -9,6 +9,11 @@ import { openModal } from '../../actions/modal_actions';
 class UserLikes extends React.Component {
 
 
+  loaded(e) {
+    e.currentTarget.classList.remove("blurred");
+    e.currentTarget.classList.add("unblurred");
+  }
+
   render() {
     const trackLIs = this.props.tracks.map(track => {
 
@@ -28,7 +33,9 @@ class UserLikes extends React.Component {
 
       return (
         <li className="side-liked-tracks" key={track.id}>
-          <img src={track.artworkUrl} onClick={() => this.props.play(track.id)} />
+          <div className="blur">
+            <img className="side-pic-dummy blurred" src={track.artworkUrl} onLoad={this.loaded.bind(this)} onClick={() => this.props.play(track.id)} />
+          </div>
           <Link className="artist"to={`/users/${track.artist_id}`}>{track.artistName}</Link>
           <Link className="title" to={`/users/${track.artist_id}/${track.id}`}>{track.title}</Link>
           <div className="play-count"><i className="fa fa-play"></i>{track.plays}</div>

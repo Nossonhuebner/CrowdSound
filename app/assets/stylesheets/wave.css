@@ -2,4 +2,5 @@
   width: 100%;
   grid-area: 4/1/4/5;
   padding-left: 20px;
+  justify-self: center;
 }

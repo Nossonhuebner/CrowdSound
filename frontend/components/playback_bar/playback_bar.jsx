@@ -10,7 +10,7 @@ import AudioPlayer from './audio_player';
 class PlaybackBar extends React.Component {
 
   render () {
-
+    console.log(this.props);
     const display = () => {
       if (!this.props.playback) {
         return "";
@@ -43,13 +43,13 @@ class PlaybackBar extends React.Component {
         }
         const heartColor = liked ? "#ff5000" : "black";
 
-
+        console.log(artist);
         return (
           <div className="playback-container">
             <AudioPlayer source={track.fileUrl}/>
             <div className="playback-links">
               <img className="playback-track-artwork" style={{height: "inherit"}} src={track.artworkUrl}/>
-              <Link className="playback-link-artist" to={`/users/${track.artist_id}`}>{artist.username}</Link>
+              <Link className="playback-link-artist" to={`/users/${track.artist_id}`}>{track.artistName}</Link>
               <Link className="playback-link-track" to={`/users/${track.artist_id}/${track.id}`}>{track.title}</Link>
             </div>
             <button onClick={() => likeButtonCallback()} className="playback-like"><i className="fa fa-heart" style={{color: heartColor}}></i></button>

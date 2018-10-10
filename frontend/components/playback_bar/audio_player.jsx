@@ -7,7 +7,7 @@ class AudioPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.audioRef = React.createRef();
-    this.state = {playing: true, ellapsed: 0, progress: "", volume: 0.5, mute: false};
+    this.state = {playing: true, ellapsed: '0:00', progress: "", volume: 0.5, mute: false};
   }
 
 
@@ -119,6 +119,12 @@ class AudioPlayer extends React.Component {
         playButton = <i className="fa fa-play"></i>;
       }
 
+      let totalDuration = "0:00";
+      if (this.audioRef.current && this.audioRef.current.duration > 0) {
+        totalDuration = this.durationFormat(this.audioRef.current.duration);
+      }
+
+
       return (
         <div className="audio-player-container">
           <button className="rewind" onClick={() => this.rewind()}><i className="fa fa-step-backward"></i></button>
@@ -135,9 +141,7 @@ class AudioPlayer extends React.Component {
             <div className="audio-progress" style={{width: `${this.state.progress}%`}}></div>
             <div className="progress-ball"style={{left: `${this.state.progress}%`}}></div>
           </div>
-          <div className="duration">{this.audioRef.current ?
-              this.durationFormat(this.audioRef.current.duration)
-               : "0:00"}
+          <div className="duration">{totalDuration}
           </div>
           <div className="volume-container">
             <button className="volume-button" onClick={this.toggleMute.bind(this)}>{volumeIcon}</button>

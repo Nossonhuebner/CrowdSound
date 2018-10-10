@@ -28,10 +28,12 @@ export const fetchUser = (id) => {
   };
 };
 
-export const receiveUser = ({user, tracks}) => {
+export const receiveUser = ({user, users, tracks}) => {
   return ({
     type: RECEIVE_USER,
     user,
+    followers: users.followers,
+    followees: users.followees,
     tracks
   });
 };

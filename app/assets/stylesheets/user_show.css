@@ -102,14 +102,16 @@
   margin-left: 8px;
   display: flex;
   flex-direction: column;
+  max-width: 375px;
 }
 
 .user-side-stats{
   display: flex;
+  padding-bottom: 42px;
 }
 .user-side-stats a {
   text-decoration: none;
-  padding: 15px;
+  padding: 0 15px;
   color: #888888;
   font-size: 15px;
   justify-content: space-evenly;
@@ -120,6 +122,10 @@
 
 .user-side-following, .user-side-followers{
   border-right: 1px solid #e4e4e4;
+}
+
+.user-side-following:last-of-type{
+  border: none;
 }
 
 .user-show-side .fa-heart::before{
@@ -150,12 +156,7 @@
   margin-bottom: 15px;
 }
 
-.side-liked-tracks img{
-  width: 75px;
-  border: 1px solid #e6e6e6;
-  grid-area: 1/1/4/2;
-  cursor: pointer;
-}
+
 
 .user-side-ul .artist{
   grid-area: 1/2;
@@ -212,7 +213,6 @@
 
 .user-side-header{
   display: flex;
-  padding-top: 40px;
   color: #888888;
   font-size: 19px;
   border-bottom: 1px solid #e4e4e4;
@@ -226,6 +226,7 @@
 
 #side-likes{
   padding-left: 13px;
+  margin-top: 45px;
 }
 
 .user-side-ul li button{
@@ -233,4 +234,38 @@
   padding: 0px 3px 1px 3px;
   font-size: 15px;
   border-radius: 2px;
+}
+
+.user-side-ul img {
+  width: 75px;
+  border: 1px solid #e6e6e6;
+  grid-area: 1/1/4/2;
+  cursor: pointer;
+}
+
+
+.unblurred{
+  position: absolute;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.4s, filter 0.4s;
+  transition-timing-function: cubic-bezier(0.51, 0, 0, 0.92);;
+}
+
+.blurred {
+  cursor: pointer;
+  position: absolute;
+  z-index: -1;
+  filter: blur(2px);
+  opacity: 0;
+}
+
+.blur {
+  position: relative;
+  width: 75px;
+  height: 75px;
+  border: 1px solid #e6e6e6;
+  grid-area: 1/1/4/2;
+  cursor: pointer;
+  background: linear-gradient(-116deg, #7e9da3, #886a79);
 }
