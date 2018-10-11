@@ -10,7 +10,6 @@ import AudioPlayer from './audio_player';
 class PlaybackBar extends React.Component {
 
   render () {
-    console.log(this.props);
     const display = () => {
       if (!this.props.playback) {
         return "";
@@ -43,7 +42,6 @@ class PlaybackBar extends React.Component {
         }
         const heartColor = liked ? "#ff5000" : "black";
 
-        console.log(artist);
         return (
           <div className="playback-container">
             <AudioPlayer source={track.fileUrl}/>
